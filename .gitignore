@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+
+# Build
+dist/
+dist-ssr/
+*.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+vite-*.log
+vite-*.err
+serve-dist.*.log
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# Temp / local tooling
+tmp-chrome-profile/
+tmp-edge-profile/
+.agents/
+*.tmp
+*.temp

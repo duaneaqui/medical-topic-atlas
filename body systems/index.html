@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Body Systems HUD</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="scanline" aria-hidden="true"></div>
+
+  <main class="hud-shell">
+    <header class="hud-header">
+      <div>
+        <p class="eyebrow">Human Anatomy Interface</p>
+        <h1 id="screenTitle">Body Systems</h1>
+      </div>
+      <div class="status-strip" aria-label="Interface status">
+        <span>Systems: 12</span>
+        <span>Interface: Active</span>
+        <span>Signal: Synced</span>
+      </div>
+    </header>
+
+    <section class="hud-grid">
+      <aside class="bio-panel" aria-label="System overview scanner">
+        <div class="panel-label">System Atlas</div>
+        <div class="visual-array" aria-hidden="true">
+          <figure class="holo-window holo-primary">
+            <img id="previewImage" class="holo-image" src="assets/hologram-body.png" alt="">
+            <figcaption id="previewCaption">Full Systems Scan</figcaption>
+          </figure>
+          <div class="mini-holos">
+            <figure class="holo-window">
+              <img class="holo-image" src="assets/hologram-brain.png" alt="">
+              <figcaption>Neural Map</figcaption>
+            </figure>
+            <figure class="holo-window">
+              <img class="holo-image" src="assets/hologram-diagnostics.png" alt="">
+              <figcaption>Cellular Index</figcaption>
+            </figure>
+          </div>
+        </div>
+        <div class="telemetry">
+          <div>
+            <strong id="telemetryMode">Layer 01</strong>
+            <span>Navigation depth</span>
+          </div>
+          <div>
+            <strong id="telemetryFocus">Body Systems</strong>
+            <span>Current focus</span>
+          </div>
+          <div>
+            <strong>100%</strong>
+            <span>Scan progress</span>
+          </div>
+        </div>
+      </aside>
+
+      <section class="command-panel" aria-label="Body systems navigation">
+        <nav class="breadcrumbs" aria-label="Navigation path">
+          <button id="homeCrumb" class="crumb active" type="button">BODY SYSTEMS</button>
+          <button id="systemCrumb" class="crumb" type="button" hidden></button>
+          <button id="topicCrumb" class="crumb" type="button" hidden></button>
+        </nav>
+
+        <div id="systemLayer" class="layer layer-active" data-layer="systems">
+          <div class="layer-copy">
+            <span>Layer 1</span>
+            <p>Select a body system to enter its topic layer.</p>
+          </div>
+          <div id="systemsList" class="system-stack"></div>
+        </div>
+
+        <div id="topicLayer" class="layer" data-layer="topics" aria-hidden="true">
+          <div class="layer-copy">
+            <span>Layer 2</span>
+            <p id="topicIntro">Select a subtopic to open the visual card bay.</p>
+          </div>
+          <div id="topicsGrid" class="topic-grid"></div>
+        </div>
+
+        <div id="cardLayer" class="layer" data-layer="cards" aria-hidden="true">
+          <div class="layer-copy">
+            <span>Layer 3</span>
+            <p id="cardIntro">Portrait card placeholders are staged here.</p>
+          </div>
+          <div id="cardBay" class="card-bay"></div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
