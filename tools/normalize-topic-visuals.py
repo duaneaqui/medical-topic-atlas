@@ -24,7 +24,6 @@ def resize_contain(image, width, height):
 
 
 def trim_panel_edges(image):
-    # Crops away atlas dividers and hard cell borders before making the wide version.
     margin_x = max(10, round(image.width * 0.045))
     margin_y = max(10, round(image.height * 0.055))
     return image.crop((margin_x, margin_y, image.width - margin_x, image.height - margin_y))
@@ -37,8 +36,6 @@ def normalize(path):
     canvas = resize_cover(subject_source, TARGET_W, TARGET_H)
     canvas = ImageEnhance.Brightness(canvas).enhance(1.02)
     canvas = ImageEnhance.Contrast(canvas).enhance(1.1)
-
-    # HUD-safe edge falloff so readouts remain legible without creating side bars.
     horizontal = [
         round((1 - min(min(x, TARGET_W - x) / (TARGET_W / 2), 1)) ** 2 * 54)
         for x in range(TARGET_W)

@@ -31,6 +31,7 @@ Desktop.ini
 !.env.example
 
 # Temp / local tooling
+tmp/
 tmp-chrome-profile/
 tmp-edge-profile/
 .agents/

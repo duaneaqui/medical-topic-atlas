@@ -12,7 +12,6 @@
   --font-display: "Bahnschrift SemiCondensed", "Arial Narrow", "Segoe UI", sans-serif;
   --font-body: "Segoe UI", Arial, sans-serif;
 
-  /* Atlas motion language — one easing family, stepped durations */
   --motion-ease: cubic-bezier(0.16, 1, 0.3, 1);
   --motion-ease-zoom: cubic-bezier(0.12, 0.82, 0.18, 1);
   --motion-micro: 320ms;
@@ -88,7 +87,6 @@ a {
   animation: none;
 }
 
-/* Keep vertical title flip while lite fade runs (don't let translateY wipe rotate) */
 .subject-title-panel h2.signal-text.is-lite,
 .subject-title-panel p.signal-text.is-lite {
   animation-name: signalLiteInVertical;
@@ -167,17 +165,16 @@ a {
   box-shadow: none;
   opacity: 0.92;
   background:
-    /* outer rim segments that avoid the top-left branding zone */
     linear-gradient(90deg, transparent 0 28%, rgba(120, 244, 255, 0.34) 32%, rgba(120, 244, 255, 0.34) 72%, transparent 76%) top 0 left 0 / 100% 1px no-repeat,
     linear-gradient(90deg, transparent 0 18%, rgba(255, 211, 124, 0.22) 34%, rgba(120, 244, 255, 0.2) 66%, transparent 82%) bottom 0 left 0 / 100% 1px no-repeat,
     linear-gradient(180deg, transparent 0 24%, rgba(120, 244, 255, 0.28) 30%, rgba(120, 244, 255, 0.28) 78%, transparent 86%) left 0 top 0 / 1px 100% no-repeat,
     linear-gradient(180deg, rgba(120, 244, 255, 0.3), rgba(120, 244, 255, 0.16) 50%, rgba(255, 211, 124, 0.22)) right 0 top 0 / 1px 100% no-repeat,
 
-    /* inner dashed scanner rim — shorter spans so logos stay clear */
+    /* inner dashed scanner rim â€” shorter spans so logos stay clear */
     linear-gradient(90deg, transparent 0 32%, rgba(248, 248, 255, 0.16) 34%, transparent 36%, rgba(248, 248, 255, 0.16) 38%, transparent 40%, rgba(248, 248, 255, 0.16) 42%, transparent 44%, rgba(248, 248, 255, 0.16) 46%, transparent 48%, rgba(248, 248, 255, 0.16) 50%, transparent 52%, rgba(248, 248, 255, 0.16) 54%, transparent 56%, rgba(248, 248, 255, 0.16) 58%, transparent 60%, rgba(248, 248, 255, 0.16) 62%, transparent 64%, rgba(248, 248, 255, 0.16) 66%, transparent 68%, rgba(248, 248, 255, 0.16) 70%, transparent 100%) top 8px left 0 / 100% 1px no-repeat,
     linear-gradient(90deg, transparent 0 22%, rgba(248, 248, 255, 0.14) 24%, transparent 26%, rgba(248, 248, 255, 0.14) 28%, transparent 30%, rgba(248, 248, 255, 0.14) 32%, transparent 34%, rgba(248, 248, 255, 0.14) 36%, transparent 38%, rgba(248, 248, 255, 0.14) 40%, transparent 42%, rgba(248, 248, 255, 0.14) 44%, transparent 46%, rgba(248, 248, 255, 0.14) 48%, transparent 50%, rgba(248, 248, 255, 0.14) 52%, transparent 54%, rgba(248, 248, 255, 0.14) 56%, transparent 58%, rgba(248, 248, 255, 0.14) 60%, transparent 62%, rgba(248, 248, 255, 0.14) 64%, transparent 66%, rgba(248, 248, 255, 0.14) 68%, transparent 70%, rgba(248, 248, 255, 0.14) 72%, transparent 100%) bottom 8px left 0 / 100% 1px no-repeat,
 
-    /* corner brackets — skip top-left so it clears the brand/atlas panel */
+    /* corner brackets â€” skip top-left so it clears the brand/atlas panel */
     linear-gradient(rgba(120, 244, 255, 0.95), rgba(120, 244, 255, 0.95)) right 0 top 0 / 42px 2px no-repeat,
     linear-gradient(rgba(120, 244, 255, 0.95), rgba(120, 244, 255, 0.95)) right 0 top 0 / 2px 42px no-repeat,
     linear-gradient(rgba(255, 211, 124, 0.55), rgba(255, 211, 124, 0.55)) right 8px top 8px / 16px 1px no-repeat,
@@ -193,7 +190,6 @@ a {
     linear-gradient(rgba(255, 211, 124, 0.55), rgba(255, 211, 124, 0.55)) right 8px bottom 8px / 16px 1px no-repeat,
     linear-gradient(rgba(255, 211, 124, 0.55), rgba(255, 211, 124, 0.55)) right 8px bottom 8px / 1px 16px no-repeat,
 
-    /* mid-edge nodes */
     linear-gradient(rgba(120, 244, 255, 0.85), rgba(120, 244, 255, 0.85)) left 50% top -1px / 8px 3px no-repeat,
     linear-gradient(rgba(120, 244, 255, 0.85), rgba(120, 244, 255, 0.85)) left 50% bottom -1px / 8px 3px no-repeat,
     linear-gradient(rgba(120, 244, 255, 0.85), rgba(120, 244, 255, 0.85)) right -1px top 50% / 3px 8px no-repeat,
@@ -865,7 +861,6 @@ a {
   box-shadow: 0 18px 56px rgba(4, 9, 15, 0.5);
 }
 
-/* Opening resolve animation is tuned for dark HUD — keep it off for light patient art */
 .scroll-anatomy-app[data-atlas-mode="patient"] .system-reveal.is-opening .ghost-image-frame img,
 .scroll-anatomy-app[data-atlas-mode="patient"] .system-reveal.is-opening .ghost-image-stack img {
   animation: none;
@@ -898,7 +893,6 @@ a {
   opacity: 0;
 }
 
-/* GSAP owns Layer 02 entrance — kill competing CSS entrances */
 .system-reveal.is-motion-owned:not(.is-revealed) .subject-title-panel,
 .system-reveal.is-motion-owned:not(.is-revealed) .subject-topic-dock,
 .system-reveal.is-motion-owned:not(.is-revealed) .subject-image-readout,
@@ -1675,7 +1669,6 @@ a {
   opacity: 1;
 }
 
-/* Patient Layer 04 — light clinical popups (match light unit art) */
 .scroll-anatomy-app[data-atlas-mode="patient"] .layer04-side-vignette {
   background:
     linear-gradient(90deg, rgba(236, 244, 248, 0.82) 0%, rgba(236, 244, 248, 0.42) 24%, rgba(236, 244, 248, 0.12) 46%, transparent 62%),
@@ -3522,7 +3515,7 @@ a {
   z-index: 3;
 }
 
-/* Edge-only sci-fi frame — never crosses logo/title */
+/* Edge-only sci-fi frame â€” never crosses logo/title */
 .intro-brand-plate::before {
   inset: 0;
   background:
@@ -3648,19 +3641,17 @@ a {
   box-shadow: none;
   opacity: 0.9;
   background:
-    /* soft clinical double rim, open at top-left branding zone */
     linear-gradient(90deg, transparent 0 30%, rgba(70, 108, 132, 0.38) 34%, rgba(70, 108, 132, 0.38) 74%, transparent 78%) top 0 left 0 / 100% 1px no-repeat,
     linear-gradient(90deg, transparent 0 16%, rgba(90, 130, 150, 0.3) 22%, rgba(90, 130, 150, 0.3) 78%, transparent 84%) bottom 0 left 0 / 100% 1px no-repeat,
     linear-gradient(180deg, transparent 0 26%, rgba(70, 108, 132, 0.32) 32%, rgba(70, 108, 132, 0.32) 80%, transparent 88%) left 0 top 0 / 1px 100% no-repeat,
     linear-gradient(180deg, rgba(70, 108, 132, 0.36), rgba(110, 150, 170, 0.28) 50%, rgba(70, 108, 132, 0.34)) right 0 top 0 / 1px 100% no-repeat,
 
-    /* second soft inner rim */
     linear-gradient(90deg, transparent 0 32%, rgba(255, 255, 255, 0.34) 36%, rgba(255, 255, 255, 0.34) 70%, transparent 74%) top 8px left 0 / 100% 1px no-repeat,
     linear-gradient(90deg, transparent 0 18%, rgba(255, 255, 255, 0.28) 24%, rgba(255, 255, 255, 0.28) 76%, transparent 82%) bottom 8px left 0 / 100% 1px no-repeat,
     linear-gradient(180deg, transparent 0 28%, rgba(255, 255, 255, 0.24) 34%, rgba(255, 255, 255, 0.24) 76%, transparent 84%) left 8px top 0 / 1px 100% no-repeat,
     linear-gradient(180deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.16) 50%, rgba(255, 255, 255, 0.26)) right 8px top 0 / 1px 100% no-repeat,
 
-    /* clinical corners — skip top-left near brand plate */
+    /* clinical corners â€” skip top-left near brand plate */
     linear-gradient(rgba(55, 96, 120, 0.88), rgba(55, 96, 120, 0.88)) right 0 top 0 / 36px 2px no-repeat,
     linear-gradient(rgba(55, 96, 120, 0.88), rgba(55, 96, 120, 0.88)) right 0 top 0 / 2px 36px no-repeat,
     radial-gradient(circle at center, rgba(255, 255, 255, 0.85) 0 1.5px, transparent 2px) right 14px top 14px / 8px 8px no-repeat,
@@ -3673,7 +3664,6 @@ a {
     linear-gradient(rgba(55, 96, 120, 0.88), rgba(55, 96, 120, 0.88)) right 0 bottom 0 / 2px 36px no-repeat,
     radial-gradient(circle at center, rgba(255, 255, 255, 0.85) 0 1.5px, transparent 2px) right 14px bottom 14px / 8px 8px no-repeat,
 
-    /* mid ticks */
     linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)) left 50% top 0 / 28px 2px no-repeat,
     linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)) left 50% bottom 0 / 28px 2px no-repeat,
     linear-gradient(rgba(70, 108, 132, 0.75), rgba(70, 108, 132, 0.75)) right 0 top 50% / 2px 28px no-repeat,
@@ -3685,7 +3675,6 @@ a {
   display: none;
 }
 
-/* Keep connector endpoints for layout, but hide the visible dots on unit icons. */
 .scroll-anatomy-app[data-atlas-mode="patient"] .target-dot {
   display: none;
 }

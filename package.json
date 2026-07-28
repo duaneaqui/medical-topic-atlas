@@ -1,4 +1,8 @@
 {
+  "name": "medical-topic-atlas",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -11,7 +15,6 @@
     "gsap": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "three": "^0.185.1",
     "vite": "latest",
     "zustand": "latest"
   }

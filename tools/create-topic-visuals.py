@@ -6,7 +6,7 @@ from PIL import Image
 
 
 ROOT = Path(__file__).resolve().parents[1]
-GENERATED = Path.home() / ".codex" / "generated_images" / "019ef030-6636-74a2-8ee1-3c0304338cea"
+GENERATED = ROOT / "tmp" / "generated-images"
 ATLAS_DIR = ROOT / "public" / "assets" / "topic-atlases"
 VISUAL_DIR = ROOT / "public" / "assets" / "topic-visuals"
 DATA_FILE = ROOT / "src" / "data" / "bodySystems.js"

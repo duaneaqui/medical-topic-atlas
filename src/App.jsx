@@ -2,7 +2,6 @@ import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { createTimeline, stagger } from "animejs";
 import { AnimatePresence, motion } from "framer-motion";
 import { gsap } from "gsap";
-import * as THREE from "three";
 import { bodySystems } from "./data/bodySystems.js";
 import { patientUnits } from "./data/patientUnits.js";
 
@@ -13,7 +12,6 @@ const PATIENT_PLOT_STORAGE_KEY = "patient-unit-node-plot-v1";
 const PATIENT_MAP_IMAGE = "/assets/patient-units-asclepius-clinical-light.png";
 const PATIENT_STATIC_BACKGROUND = "/assets/patient-units-anatomy-caduceus.png";
 
-/** Shared atlas motion language — keep CSS vars in sync with these. */
 const MOTION = {
   ease: [0.16, 1, 0.3, 1],
   micro: 0.32,
@@ -127,7 +125,6 @@ const patientIntroNode = {
 const bodyAtlasNodes = [bodyIntroNode, ...systemNodes];
 const patientAtlasNodes = [patientIntroNode, ...patientUnitNodes];
 
-/** Core systems pulled forward on the Body Systems intro (Urinary = NPH). */
 const BODY_CORE_DEPTH_IDS = new Set(["CV", "RS", "GI", "NPH", "HM", "IF", "NE"]);
 
 function getBodyIntroDepthTier(nodeId, depthMode) {
@@ -150,8 +147,6 @@ const atlasConfigs = {
     tone: "unit",
     title: "Patient Units",
     nodes: patientAtlasNodes,
-    // Temporarily disabled during tab-switch fade (rod / hospital map was flashing through).
-    // backgroundImage: PATIENT_MAP_IMAGE,
     backgroundImage: null,
     backgroundAlt: "Rod of Asclepius patient unit atlas overview"
   }
@@ -246,8 +241,6 @@ function useScrollProgress() {
 }
 
 function getNodeZoomTarget(node, zoomToMainNode) {
-  // Body atlas zooms to the anatomical anchor (tail). Patient units invert:
-  // zoom to the main circular unit node itself.
   if (zoomToMainNode && !node.isIntro) {
     return { x: node.x, y: node.y };
   }
@@ -363,7 +356,6 @@ function fitSubjectTitlePanel(panel, title = "", region = "") {
     const indexBudget = 26;
     const usable = Math.max(120, panelHeight - pad - gaps - indexBudget);
 
-    // Keep region readable first, then give remaining height to the title.
     let regionPx = clamp(usable * 0.28 / Math.max(regionLen * 0.58, 1), 9.5, 12);
     let regionSpan = regionLen * regionPx * 0.58;
     if (regionSpan > usable * 0.34) {
@@ -458,117 +450,6 @@ function NodePulseGrid() {
       ))}
     </span>
   );
-}
-
-function SubtopicParticleField({ themeRgb = "120, 244, 255" }) {
-  const canvasRef = useRef(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return undefined;
-
-    const ctx = canvas.getContext("2d");
-    const colors = {
-      theme: themeRgb,
-      warm: "246, 189, 55",
-      white: "248, 248, 255"
-    };
-    let width = 0;
-    let height = 0;
-    let particles = [];
-    let tick = 0;
-    let frame = 0;
-
-    const buildParticles = () => {
-      const count = Math.floor(Math.min(220, Math.max(96, width / 8)));
-      particles = Array.from({ length: count }, (_, index) => {
-        const warm = index % 5 === 0;
-        const bright = index % 11 === 0;
-
-        return {
-          x: Math.random() * width,
-          y: Math.random() * height,
-          vx: (Math.random() - 0.5) * 0.22,
-          vy: (Math.random() - 0.5) * 0.18,
-          r: Math.random() * 1.8 + 0.35,
-          a: Math.random() * 0.58 + 0.16,
-          warm,
-          bright
-        };
-      });
-    };
-
-    const resize = () => {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      width = window.innerWidth;
-      height = window.innerHeight;
-      canvas.width = Math.floor(width * dpr);
-      canvas.height = Math.floor(height * dpr);
-      canvas.style.width = `${width}px`;
-      canvas.style.height = `${height}px`;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      buildParticles();
-    };
-
-    const draw = () => {
-      tick += 0.008;
-      ctx.clearRect(0, 0, width, height);
-
-      for (const particle of particles) {
-        particle.x += particle.vx + Math.sin(tick + particle.y * 0.003) * 0.04;
-        particle.y += particle.vy + Math.cos(tick + particle.x * 0.002) * 0.015;
-
-        if (particle.x < -20) particle.x = width + 20;
-        if (particle.x > width + 20) particle.x = -20;
-        if (particle.y < -20) particle.y = height + 20;
-        if (particle.y > height + 20) particle.y = -20;
-
-        const color = particle.warm ? colors.warm : particle.bright ? colors.white : colors.theme;
-
-        ctx.beginPath();
-        ctx.fillStyle = `rgba(${color}, ${particle.a})`;
-        ctx.shadowColor = `rgba(${color}, 0.9)`;
-        ctx.shadowBlur = particle.warm ? 10 : 8;
-        ctx.arc(particle.x, particle.y, particle.r, 0, Math.PI * 2);
-        ctx.fill();
-      }
-
-      ctx.shadowBlur = 0;
-
-      for (let i = 0; i < particles.length; i += 1) {
-        for (let j = i + 1; j < particles.length; j += 1) {
-          const a = particles[i];
-          const b = particles[j];
-          const dx = a.x - b.x;
-          const dy = a.y - b.y;
-          const distance = Math.hypot(dx, dy);
-
-          if (distance < 105 && (a.warm || b.warm || a.bright || b.bright)) {
-            const linkColor = a.warm || b.warm ? colors.warm : colors.theme;
-            ctx.strokeStyle = `rgba(${linkColor}, ${(0.1 * (1 - distance / 105)).toFixed(3)})`;
-            ctx.lineWidth = 1;
-            ctx.beginPath();
-            ctx.moveTo(a.x, a.y);
-            ctx.lineTo(b.x, b.y);
-            ctx.stroke();
-          }
-        }
-      }
-
-      frame = window.requestAnimationFrame(draw);
-    };
-
-    resize();
-    draw();
-    window.addEventListener("resize", resize);
-
-    return () => {
-      window.cancelAnimationFrame(frame);
-      window.removeEventListener("resize", resize);
-    };
-  }, [themeRgb]);
-
-  return <canvas ref={canvasRef} className="subtopic-particle-field" aria-hidden="true" />;
 }
 
 function MainTopicDepthField({ themeRgb = "120, 244, 255" }) {
@@ -726,397 +607,6 @@ function MainTopicDepthField({ themeRgb = "120, 244, 255" }) {
   return <canvas ref={canvasRef} className="main-topic-depth-field" aria-hidden="true" />;
 }
 
-function PatientUnitNetworkField({ themeRgb = "220, 231, 255", isActive }) {
-  const canvasRef = useRef(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas || !isActive) return undefined;
-
-    const ctx = canvas.getContext("2d");
-    let width = 0;
-    let height = 0;
-    let frame = 0;
-    let tick = 0;
-    let orbs = [];
-
-    const buildOrbs = () => {
-      const count = Math.floor(Math.min(46, Math.max(24, width / 42)));
-      orbs = Array.from({ length: count }, (_, index) => ({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        z: Math.random(),
-        r: 5 + Math.random() * 18,
-        phase: Math.random() * Math.PI * 2,
-        speed: 0.28 + Math.random() * 0.68,
-        warm: index % 7 === 0
-      }));
-    };
-
-    const resize = () => {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      width = window.innerWidth;
-      height = window.innerHeight;
-      canvas.width = Math.floor(width * dpr);
-      canvas.height = Math.floor(height * dpr);
-      canvas.style.width = `${width}px`;
-      canvas.style.height = `${height}px`;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      buildOrbs();
-    };
-
-    const draw = () => {
-      tick += 0.009;
-      ctx.clearRect(0, 0, width, height);
-
-      const centerX = width * 0.5;
-      const centerY = height * 0.5;
-
-      for (let ring = 0; ring < 5; ring += 1) {
-        const radiusX = width * (0.16 + ring * 0.075);
-        const radiusY = height * (0.08 + ring * 0.04);
-        ctx.save();
-        ctx.translate(centerX, centerY + Math.sin(tick + ring) * 14);
-        ctx.rotate(-0.22 + Math.sin(tick * 0.35 + ring) * 0.08);
-        ctx.strokeStyle = `rgba(${themeRgb}, ${0.045 + ring * 0.01})`;
-        ctx.lineWidth = 1;
-        ctx.setLineDash([12 + ring * 4, 18]);
-        ctx.lineDashOffset = -tick * (80 + ring * 22);
-        ctx.beginPath();
-        ctx.ellipse(0, 0, radiusX, radiusY, 0, 0, Math.PI * 2);
-        ctx.stroke();
-        ctx.restore();
-      }
-
-      for (const orb of orbs) {
-        const drift = (tick * orb.speed + orb.phase) % (Math.PI * 2);
-        const zoom = 0.58 + ((Math.sin(drift) + 1) / 2) * 0.9 + orb.z * 0.52;
-        const x = centerX + (orb.x - centerX) * zoom + Math.sin(drift * 1.7) * 18;
-        const y = centerY + (orb.y - centerY) * zoom + Math.cos(drift * 1.2) * 14;
-        const alpha = Math.max(0, 0.3 - Math.abs(zoom - 1.1) * 0.16);
-        const rgb = orb.warm ? "246, 189, 55" : themeRgb;
-        const radius = orb.r * zoom;
-        const gradient = ctx.createRadialGradient(x, y, 0, x, y, radius);
-        gradient.addColorStop(0, `rgba(248, 248, 255, ${alpha * 0.9})`);
-        gradient.addColorStop(0.32, `rgba(${rgb}, ${alpha * 0.72})`);
-        gradient.addColorStop(1, `rgba(${rgb}, 0)`);
-
-        ctx.fillStyle = gradient;
-        ctx.beginPath();
-        ctx.arc(x, y, radius, 0, Math.PI * 2);
-        ctx.fill();
-
-        if (orb.z > 0.72) {
-          ctx.strokeStyle = `rgba(${rgb}, ${alpha * 0.56})`;
-          ctx.lineWidth = 1;
-          ctx.beginPath();
-          ctx.arc(x, y, radius * 1.32, 0, Math.PI * 2);
-          ctx.stroke();
-        }
-      }
-
-      frame = window.requestAnimationFrame(draw);
-    };
-
-    resize();
-    draw();
-    window.addEventListener("resize", resize);
-
-    return () => {
-      window.cancelAnimationFrame(frame);
-      window.removeEventListener("resize", resize);
-    };
-  }, [isActive, themeRgb]);
-
-  if (!isActive) return null;
-
-  return <canvas ref={canvasRef} className="patient-unit-field" aria-hidden="true" />;
-}
-
-function PatientUnitThreeIntro({ isActive, nodes, zoomIntensity }) {
-  const mountRef = useRef(null);
-  const zoomRef = useRef(zoomIntensity);
-
-  useEffect(() => {
-    zoomRef.current = zoomIntensity;
-  }, [zoomIntensity]);
-
-  useEffect(() => {
-    const mount = mountRef.current;
-    if (!mount || !isActive) return undefined;
-
-    const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: "high-performance" });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-    renderer.setSize(MAP_WIDTH, MAP_HEIGHT, false);
-    renderer.setClearColor(0xffffff, 0);
-    renderer.domElement.className = "patient-3d-intro-canvas";
-    mount.appendChild(renderer.domElement);
-
-    const scene = new THREE.Scene();
-    const camera = new THREE.OrthographicCamera(0, MAP_WIDTH, MAP_HEIGHT, 0, -1200, 1200);
-    camera.position.set(0, 0, 620);
-    camera.lookAt(MAP_WIDTH / 2, MAP_HEIGHT / 2, 0);
-
-    const atlasGroup = new THREE.Group();
-    atlasGroup.position.set(MAP_WIDTH / 2, MAP_HEIGHT / 2, 0);
-    scene.add(atlasGroup);
-
-    const ambientLight = new THREE.AmbientLight(0xf4fbff, 1.8);
-    const keyLight = new THREE.DirectionalLight(0xffffff, 2.2);
-    keyLight.position.set(-280, -420, 520);
-    const rimLight = new THREE.PointLight(0x86c4d8, 1.7, 1300);
-    rimLight.position.set(290, 20, 260);
-    const violetLight = new THREE.PointLight(0x9a84d6, 0.9, 900);
-    violetLight.position.set(-360, 220, 210);
-    scene.add(ambientLight, keyLight, rimLight, violetLight);
-
-    const pearlMaterial = new THREE.MeshPhysicalMaterial({
-      color: 0xeef7fb,
-      metalness: 0.18,
-      roughness: 0.18,
-      transmission: 0.32,
-      transparent: true,
-      opacity: 0.56,
-      emissive: 0x9ec7d7,
-      emissiveIntensity: 0.1,
-      clearcoat: 0.82,
-      clearcoatRoughness: 0.22,
-      depthWrite: false
-    });
-
-    const glassMaterial = new THREE.MeshPhysicalMaterial({
-      color: 0xffffff,
-      metalness: 0.06,
-      roughness: 0.1,
-      transmission: 0.7,
-      transparent: true,
-      opacity: 0.18,
-      clearcoat: 1,
-      clearcoatRoughness: 0.12,
-      depthWrite: false,
-      blending: THREE.AdditiveBlending
-    });
-
-    const rodGroup = new THREE.Group();
-    rodGroup.position.set(0, -8, 12);
-    atlasGroup.add(rodGroup);
-
-    const rodMaterial = pearlMaterial.clone();
-    rodMaterial.opacity = 0.5;
-    rodMaterial.emissiveIntensity = 0.16;
-
-    const rod = new THREE.Mesh(new THREE.CylinderGeometry(9, 9, 420, 32), rodMaterial);
-    rod.position.set(0, 0, 0);
-    rodGroup.add(rod);
-
-    const capMaterial = pearlMaterial.clone();
-    capMaterial.opacity = 0.44;
-    [-226, 226].forEach((y) => {
-      const cap = new THREE.Mesh(new THREE.SphereGeometry(19, 32, 16), capMaterial);
-      cap.position.set(0, y, 0);
-      cap.scale.set(1, 0.72, 1);
-      rodGroup.add(cap);
-    });
-
-    const snakePoints = [];
-    for (let i = 0; i <= 96; i += 1) {
-      const t = i / 96;
-      const y = -192 + t * 384;
-      const turn = t * Math.PI * 6.2;
-      const radius = 68 - Math.abs(t - 0.5) * 34;
-      snakePoints.push(new THREE.Vector3(Math.sin(turn) * radius, y, Math.cos(turn) * 38));
-    }
-    const snakeCurve = new THREE.CatmullRomCurve3(snakePoints);
-    const snakeMaterial = new THREE.MeshPhysicalMaterial({
-      color: 0xddeef4,
-      metalness: 0.16,
-      roughness: 0.2,
-      transmission: 0.26,
-      transparent: true,
-      opacity: 0.48,
-      emissive: 0x8cc5d2,
-      emissiveIntensity: 0.18,
-      clearcoat: 0.78,
-      depthWrite: false
-    });
-    const snake = new THREE.Mesh(new THREE.TubeGeometry(snakeCurve, 128, 7.5, 16, false), snakeMaterial);
-    rodGroup.add(snake);
-
-    const head = new THREE.Mesh(new THREE.SphereGeometry(18, 32, 16), snakeMaterial);
-    head.position.copy(snakePoints[snakePoints.length - 1]);
-    head.scale.set(1.18, 0.78, 0.92);
-    rodGroup.add(head);
-
-    const haloMaterial = new THREE.MeshBasicMaterial({
-      color: 0xd5e9f1,
-      transparent: true,
-      opacity: 0.12,
-      blending: THREE.AdditiveBlending,
-      depthWrite: false
-    });
-
-    const haloGroup = new THREE.Group();
-    atlasGroup.add(haloGroup);
-    [0, 1, 2].forEach((index) => {
-      const ring = new THREE.Mesh(new THREE.TorusGeometry(230 + index * 78, 1.8, 8, 180), haloMaterial.clone());
-      ring.material.opacity = 0.1 - index * 0.02;
-      ring.scale.set(1.38, 0.58, 1);
-      ring.rotation.set(THREE.MathUtils.degToRad(72), 0, THREE.MathUtils.degToRad(index * 18 - 8));
-      ring.position.z = -70 - index * 16;
-      haloGroup.add(ring);
-    });
-
-    const orbGroup = new THREE.Group();
-    scene.add(orbGroup);
-    const orbGeometry = new THREE.SphereGeometry(43, 48, 24);
-    const ringGeometry = new THREE.TorusGeometry(55, 1.45, 8, 96);
-    const activeNodes = nodes.filter((node) => !node.isIntro);
-
-    activeNodes.forEach((node, index) => {
-      const color = new THREE.Color(node.theme?.color || "#7d93a8");
-      const material = glassMaterial.clone();
-      material.color = color.clone().lerp(new THREE.Color("#ffffff"), 0.58);
-      material.emissive = color;
-      material.emissiveIntensity = 0.08;
-
-      const orb = new THREE.Mesh(orbGeometry, material);
-      orb.position.set(node.x, node.y, 32 + (index % 3) * 8);
-      orb.scale.set(1, 1, 0.34);
-      orb.userData = {
-        baseX: node.x,
-        baseY: node.y,
-        phase: index * 0.77,
-        color
-      };
-      orbGroup.add(orb);
-
-      const ringMaterial = new THREE.MeshBasicMaterial({
-        color,
-        transparent: true,
-        opacity: 0.18,
-        blending: THREE.AdditiveBlending,
-        depthWrite: false
-      });
-      const ring = new THREE.Mesh(ringGeometry, ringMaterial);
-      ring.position.copy(orb.position);
-      ring.rotation.x = THREE.MathUtils.degToRad(68);
-      ring.userData = { parentOrb: orb, phase: index * 0.91 };
-      orbGroup.add(ring);
-    });
-
-    const particleCount = 120;
-    const positions = new Float32Array(particleCount * 3);
-    const colors = new Float32Array(particleCount * 3);
-    const colorA = new THREE.Color("#9bc0ce");
-    const colorB = new THREE.Color("#9583c8");
-    for (let i = 0; i < particleCount; i += 1) {
-      const angle = Math.random() * Math.PI * 2;
-      const radius = 190 + Math.random() * 520;
-      positions[i * 3] = Math.cos(angle) * radius;
-      positions[i * 3 + 1] = Math.sin(angle) * radius * 0.54 + (Math.random() - 0.5) * 140;
-      positions[i * 3 + 2] = -180 + Math.random() * 250;
-      const color = colorA.clone().lerp(colorB, Math.random());
-      colors[i * 3] = color.r;
-      colors[i * 3 + 1] = color.g;
-      colors[i * 3 + 2] = color.b;
-    }
-
-    const particleGeometry = new THREE.BufferGeometry();
-    particleGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
-    particleGeometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
-    const particleMaterial = new THREE.PointsMaterial({
-      size: 4.2,
-      transparent: true,
-      opacity: 0.32,
-      vertexColors: true,
-      blending: THREE.AdditiveBlending,
-      depthWrite: false
-    });
-    const particles = new THREE.Points(particleGeometry, particleMaterial);
-    particles.position.set(MAP_WIDTH / 2, MAP_HEIGHT / 2, 0);
-    scene.add(particles);
-
-    const pointer = { x: 0, y: 0 };
-    const onPointerMove = (event) => {
-      pointer.x = event.clientX / window.innerWidth - 0.5;
-      pointer.y = event.clientY / window.innerHeight - 0.5;
-    };
-    window.addEventListener("pointermove", onPointerMove);
-
-    let frame = 0;
-    const startTime = window.performance.now();
-
-    const animate = () => {
-      const elapsed = (window.performance.now() - startTime) / 1000;
-      const drift = reduceMotion ? 0 : elapsed;
-      const fade = 1 - Math.min(1, zoomRef.current * 1.55);
-
-      mount.style.opacity = `${Math.max(0, fade)}`;
-      atlasGroup.rotation.y = Math.sin(drift * 0.24) * 0.09 + pointer.x * 0.06;
-      atlasGroup.rotation.x = Math.cos(drift * 0.2) * 0.035 - pointer.y * 0.045;
-      atlasGroup.rotation.z = Math.sin(drift * 0.16) * 0.025;
-      rodGroup.rotation.y = Math.sin(drift * 0.38) * 0.16;
-      haloGroup.rotation.z = drift * 0.035;
-      haloGroup.rotation.x = Math.sin(drift * 0.18) * 0.04;
-      particles.rotation.z = drift * -0.018;
-      particles.rotation.x = Math.sin(drift * 0.13) * 0.05;
-
-      orbGroup.children.forEach((child, index) => {
-        const phase = child.userData.phase || 0;
-        const lift = Math.sin(drift * 0.9 + phase) * 8;
-        if (child.userData.parentOrb) {
-          child.position.copy(child.userData.parentOrb.position);
-          child.rotation.z = drift * (0.3 + index * 0.01) + phase;
-          child.rotation.x = THREE.MathUtils.degToRad(68) + Math.sin(drift * 0.42 + phase) * 0.12;
-          child.material.opacity = 0.13 + Math.sin(drift * 0.82 + phase) * 0.035;
-        } else {
-          child.position.x = child.userData.baseX + pointer.x * 18 + Math.sin(drift * 0.55 + phase) * 6;
-          child.position.y = child.userData.baseY + pointer.y * 14 + lift;
-          child.rotation.y = drift * 0.32 + phase;
-          child.rotation.x = Math.sin(drift * 0.48 + phase) * 0.18;
-          child.material.opacity = 0.12 + Math.sin(drift * 0.75 + phase) * 0.035;
-        }
-      });
-
-      renderer.render(scene, camera);
-
-      if (!reduceMotion) {
-        frame = window.requestAnimationFrame(animate);
-      }
-    };
-
-    animate();
-
-    return () => {
-      window.cancelAnimationFrame(frame);
-      window.removeEventListener("pointermove", onPointerMove);
-      renderer.dispose();
-      particleGeometry.dispose();
-      particleMaterial.dispose();
-      orbGeometry.dispose();
-      ringGeometry.dispose();
-      scene.traverse((object) => {
-        if (object.geometry && object.geometry !== particleGeometry && object.geometry !== orbGeometry && object.geometry !== ringGeometry) {
-          object.geometry.dispose();
-        }
-        if (object.material) {
-          if (Array.isArray(object.material)) {
-            object.material.forEach((material) => material.dispose());
-          } else {
-            object.material.dispose();
-          }
-        }
-      });
-      mount.replaceChildren();
-    };
-  }, [isActive, nodes]);
-
-  if (!isActive) return null;
-
-  return <div ref={mountRef} className="patient-3d-intro-field" aria-hidden="true" />;
-}
-
 function PatientVideoBackdrop({ isActive }) {
   if (!isActive) return null;
 
@@ -1131,7 +621,6 @@ function AnatomyMap({
   backgroundImage,
   backgroundAlt,
   atlasMode,
-  isIntroActive,
   introDepthActive,
   nodeDepthMode,
   camera,
@@ -1231,7 +720,6 @@ function AnatomyMap({
         transform: `translate3d(${camera.x}px, ${camera.y}px, 0) scale(${camera.scale})`
       }}
     >
-      {/* Temporarily hide map background when null (Patient Units tab-switch flash). */}
       {backgroundImage ? (
         <img
           className="body-background"
@@ -1243,11 +731,6 @@ function AnatomyMap({
           alt={backgroundAlt}
         />
       ) : null}
-      {/* Temporarily disabled: transparent Asclepius rod overlay was visible during tab switches.
-      {atlasMode === "patient" && (
-        <PatientUnitThreeIntro isActive={isIntroActive} nodes={visibleNodes} zoomIntensity={zoomIntensity} />
-      )}
-      */}
       {atlasMode === "patient" && isPlotMode && (
         <svg className="patient-plot-guide" viewBox={`0 0 ${MAP_WIDTH} ${MAP_HEIGHT}`} aria-hidden="true">
           <circle className="patient-plot-orbit" cx="1200" cy="600" r="500" />
@@ -1572,7 +1055,7 @@ function SystemReveal({ node, activeIndex, zoomIntensity, isOpening, isOpened, o
 
     const items = selectedItems.length
       ? selectedItems
-      : [{ id: `${selectedTopic.id}-placeholder`, code: "—", title: "Card set not assigned yet", isPlaceholder: true }];
+      : [{ id: `${selectedTopic.id}-placeholder`, code: "â€”", title: "Card set not assigned yet", isPlaceholder: true }];
 
     return (
       <motion.aside
@@ -2070,7 +1553,6 @@ export default function App() {
           backgroundImage={atlasConfig.backgroundImage}
           backgroundAlt={atlasConfig.backgroundAlt}
           atlasMode={atlasMode}
-          isIntroActive={isPatient && activeNode.isIntro && !isPlotMode}
           introDepthActive={introDepthActive}
           nodeDepthMode={nodeDepthMode}
           camera={camera}
