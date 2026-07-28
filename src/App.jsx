@@ -9,8 +9,8 @@ const MAP_WIDTH = 2400;
 const MAP_HEIGHT = 1350;
 const BODY_PLOT_STORAGE_KEY = "body-system-node-plot-v9";
 const PATIENT_PLOT_STORAGE_KEY = "patient-unit-node-plot-v1";
-const PATIENT_MAP_IMAGE = "/assets/patient-units-asclepius-clinical-light.png";
-const PATIENT_STATIC_BACKGROUND = "/assets/patient-units-anatomy-caduceus.png";
+const PATIENT_MAP_IMAGE = `${import.meta.env.BASE_URL}assets/patient-units-asclepius-clinical-light.png`;
+const PATIENT_STATIC_BACKGROUND = `${import.meta.env.BASE_URL}assets/patient-units-anatomy-caduceus.png`;
 
 const MOTION = {
   ease: [0.16, 1, 0.3, 1],
@@ -100,7 +100,7 @@ const bodyIntroNode = {
   system: {
     id: "INTRO",
     title: "Body Systems",
-    image: "/assets/anatomy-scroll-background.png",
+    image: `${import.meta.env.BASE_URL}assets/anatomy-scroll-background.png`,
     topics: systemNodes.map((node) => ({ id: node.id, title: `${node.index} ${node.system.title}` }))
   }
 };
@@ -139,7 +139,7 @@ const atlasConfigs = {
     tone: "sun",
     title: "Body Systems",
     nodes: bodyAtlasNodes,
-    backgroundImage: "/assets/anatomy-scroll-background.png",
+    backgroundImage: `${import.meta.env.BASE_URL}assets/anatomy-scroll-background.png`,
     backgroundAlt: "Full human body systems anatomical overview"
   },
   patient: {
@@ -386,13 +386,13 @@ function fitSubjectTitlePanel(panel, title = "", region = "") {
 }
 
 const patientUnitIconSources = {
-  MB: "/assets/patient-icons/mb.png",
-  PD: "/assets/patient-icons/pd.png",
-  MS: "/assets/patient-icons/ms.png",
-  CC: "/assets/patient-icons/cc.png",
-  ER: "/assets/patient-icons/er.png",
-  MH: "/assets/patient-icons/mh.png",
-  NS: "/assets/patient-icons/ns.png"
+  MB: `${import.meta.env.BASE_URL}assets/patient-icons/mb.png`,
+  PD: `${import.meta.env.BASE_URL}assets/patient-icons/pd.png`,
+  MS: `${import.meta.env.BASE_URL}assets/patient-icons/ms.png`,
+  CC: `${import.meta.env.BASE_URL}assets/patient-icons/cc.png`,
+  ER: `${import.meta.env.BASE_URL}assets/patient-icons/er.png`,
+  MH: `${import.meta.env.BASE_URL}assets/patient-icons/mh.png`,
+  NS: `${import.meta.env.BASE_URL}assets/patient-icons/ns.png`
 };
 
 function getPatientNodeSide(node) {
@@ -1385,7 +1385,7 @@ function IntroBrandPlate({ atlasMode }) {
   return (
     <aside className="intro-brand-plate" aria-label="Core Zigma branding">
       <div className="intro-brand-emblem">
-        <img src="/assets/corezigma-logo.png" alt="Core Zigma" />
+        <img src={`${import.meta.env.BASE_URL}assets/corezigma-logo.png`} alt="Core Zigma" />
       </div>
       <div className="intro-brand-copy">
         <span>Core Zigma System</span>
