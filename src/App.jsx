@@ -858,8 +858,228 @@ function AnatomyMap({
   );
 }
 
+function applyCardOrientation(event) {
+  const image = event.currentTarget;
+  const frame = image.closest(".deck-card, .card-reader-image-shell");
+  if (!frame) return;
+
+  const isLandscape = image.naturalWidth > image.naturalHeight;
+  frame.classList.toggle("is-landscape", isLandscape);
+  frame.classList.toggle("is-portrait", !isLandscape);
+}
+
+function CardDeckExperience({ deck, topic, system, onClose }) {
+  const [selectedFace, setSelectedFace] = useState(null);
+  const fanRef = useRef(null);
+  const images = deck?.images || [];
+  const activeImage = selectedFace == null ? null : images[selectedFace];
+
+  const scrollDeck = (direction) => {
+    const fan = fanRef.current;
+    if (!fan) return;
+    fan.scrollBy({
+      left: direction * Math.min(520, fan.clientWidth * 0.72),
+      behavior: "smooth"
+    });
+  };
+
+  useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") {
+        if (selectedFace != null) setSelectedFace(null);
+        else onClose();
+      }
+      if (selectedFace != null && event.key === "ArrowRight") {
+        setSelectedFace((current) => (current + 1) % images.length);
+      }
+      if (selectedFace != null && event.key === "ArrowLeft") {
+        setSelectedFace((current) => (current - 1 + images.length) % images.length);
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [images.length, onClose, selectedFace]);
+
+  return (
+    <motion.div
+      className={["card-deck-shell", activeImage ? "is-reading" : "is-choosing"].join(" ")}
+      role="dialog"
+      aria-modal="true"
+      aria-label={`${deck.title} cards`}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.32, ease: MOTION.ease }}
+      onMouseDown={(event) => {
+        if (event.target === event.currentTarget) onClose();
+      }}
+    >
+      <motion.div
+        className="card-deck-backdrop"
+        aria-hidden="true"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+      />
+      <div className="card-deck-atmosphere" aria-hidden="true">
+        <span />
+        <span />
+        <span />
+      </div>
+
+      <header className="card-deck-header">
+        <div>
+          <span>{system.title} / {topic.title}</span>
+          <h3>{deck.title}</h3>
+          <p>
+            {activeImage
+              ? `Face ${String(selectedFace + 1).padStart(2, "0")} of ${String(images.length).padStart(2, "0")}`
+              : `Choose one of ${images.length} card faces`}
+          </p>
+        </div>
+        <button type="button" onClick={activeImage ? () => setSelectedFace(null) : onClose}>
+          {activeImage ? "Back to deck" : "Close"}
+        </button>
+      </header>
+
+      <AnimatePresence mode="wait">
+        {!activeImage ? (
+          <motion.div
+            className="card-fan-stage"
+            key="fan"
+            initial={{ opacity: 0, y: 70, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 40, scale: 0.94 }}
+            transition={{ duration: 0.7, ease: MOTION.ease }}
+          >
+            <div className="card-fan-orbit" aria-hidden="true" />
+            {images.length > 3 && (
+              <button
+                type="button"
+                className="card-fan-nav is-previous"
+                onClick={() => scrollDeck(-1)}
+                aria-label="Scroll deck left"
+              >
+                ‹
+              </button>
+            )}
+            <div
+              ref={fanRef}
+              className={["card-fan", images.length <= 3 ? "is-short" : ""].join(" ")}
+              style={{ "--deck-count": images.length }}
+            >
+              {images.map((src, index) => {
+                const center = (images.length - 1) / 2;
+                const distance = index - center;
+                const rotation = Math.max(-5, Math.min(5, distance * 1.25));
+                return (
+                  <motion.button
+                    type="button"
+                    className="deck-card"
+                    key={src}
+                    style={{
+                      "--deck-index": index,
+                      "--deck-rotation": `${rotation}deg`,
+                      "--deck-tilt": `${rotation * -0.7}deg`,
+                      "--deck-rise": `${Math.min(18, Math.abs(distance) * 2.8)}px`
+                    }}
+                    title={`Open face ${index + 1}`}
+                    aria-label={`Open ${deck.title}, face ${index + 1} of ${images.length}`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.12 + index * 0.035, duration: 0.55, ease: MOTION.ease }}
+                    onClick={() => setSelectedFace(index)}
+                  >
+                    <span className="deck-card-edge" aria-hidden="true" />
+                    <img
+                      src={src}
+                      alt={`${deck.title}, face ${index + 1}`}
+                      draggable="false"
+                      decoding="async"
+                      onLoad={applyCardOrientation}
+                    />
+                    <span className="deck-card-number">{String(index + 1).padStart(2, "0")}</span>
+                  </motion.button>
+                );
+              })}
+            </div>
+            {images.length > 3 && (
+              <button
+                type="button"
+                className="card-fan-nav is-next"
+                onClick={() => scrollDeck(1)}
+                aria-label="Scroll deck right"
+              >
+                ›
+              </button>
+            )}
+            <p className="card-fan-instruction">Hover to inspect · Select a card to focus</p>
+          </motion.div>
+        ) : (
+          <motion.div
+            className="card-reader"
+            key="reader"
+            initial={{ opacity: 0, scale: 0.76, rotateY: -18, y: 36 }}
+            animate={{ opacity: 1, scale: 1, rotateY: 0, y: 0 }}
+            exit={{ opacity: 0, scale: 0.82, rotateY: 14, y: 24 }}
+            transition={{ duration: 0.62, ease: MOTION.ease }}
+          >
+            <button
+              type="button"
+              className="card-reader-nav is-previous"
+              onClick={() => setSelectedFace((selectedFace - 1 + images.length) % images.length)}
+              aria-label="Previous card face"
+            >
+              ‹
+            </button>
+            <div className="card-reader-image-shell">
+              <motion.img
+                key={activeImage}
+                src={activeImage}
+                alt={`${deck.title}, face ${selectedFace + 1}`}
+                onLoad={applyCardOrientation}
+                initial={{ opacity: 0, x: 28, filter: "blur(8px)" }}
+                animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                transition={{ duration: 0.36, ease: MOTION.ease }}
+              />
+              <span className="card-reader-scan" aria-hidden="true" />
+            </div>
+            <button
+              type="button"
+              className="card-reader-nav is-next"
+              onClick={() => setSelectedFace((selectedFace + 1) % images.length)}
+              aria-label="Next card face"
+            >
+              ›
+            </button>
+            <div className="card-reader-progress" aria-label="Card face navigation">
+              {images.map((src, index) => (
+                <button
+                  type="button"
+                  key={src}
+                  className={index === selectedFace ? "is-active" : ""}
+                  onClick={() => setSelectedFace(index)}
+                  aria-label={`Go to face ${index + 1}`}
+                  aria-current={index === selectedFace ? "true" : undefined}
+                />
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
+}
+
 function SystemReveal({ node, activeIndex, zoomIntensity, isOpening, isOpened, onLayerTransition }) {
   const [selectedTopic, setSelectedTopic] = useState(null);
+  const [selectedDeck, setSelectedDeck] = useState(null);
   const [hasOpenedOnce, setHasOpenedOnce] = useState(false);
   const revealRef = useRef(null);
   const layerTweenRef = useRef(null);
@@ -868,6 +1088,7 @@ function SystemReveal({ node, activeIndex, zoomIntensity, isOpening, isOpened, o
 
   useEffect(() => {
     setSelectedTopic(null);
+    setSelectedDeck(null);
     setHasOpenedOnce(false);
   }, [node.id]);
 
@@ -894,14 +1115,14 @@ function SystemReveal({ node, activeIndex, zoomIntensity, isOpening, isOpened, o
     if (!selectedTopic) return undefined;
 
     const closeOnEscape = (event) => {
-      if (event.key === "Escape") {
+      if (event.key === "Escape" && !selectedDeck) {
         setSelectedTopic(null);
       }
     };
 
     window.addEventListener("keydown", closeOnEscape);
     return () => window.removeEventListener("keydown", closeOnEscape);
-  }, [selectedTopic]);
+  }, [selectedDeck, selectedTopic]);
 
   useEffect(() => {
     if (!isOpened || node.isIntro || !revealRef.current) return undefined;
@@ -989,7 +1210,7 @@ function SystemReveal({ node, activeIndex, zoomIntensity, isOpening, isOpened, o
     return null;
   }
 
-  const topics = (node.system.topics || []).slice(0, 7);
+  const topics = node.system.topics || [];
   const selectedItems = selectedTopic?.cards || selectedTopic?.subtopics || [];
   const selectedIndex = selectedTopic ? topics.findIndex((topic) => topic.id === selectedTopic.id) : -1;
   const isLayer04Open = selectedIndex >= 0;
@@ -998,35 +1219,41 @@ function SystemReveal({ node, activeIndex, zoomIntensity, isOpening, isOpened, o
     ? (node.detailLayerLabel || "Layer 04")
     : (node.readoutLabel || "System Atlas");
   const readoutTitle = selectedTopic?.title || node.id;
+  const selectedFaces = selectedItems.reduce((sum, item) => sum + (Number(item.faces) || 0), 0);
   const readoutMeta = selectedTopic
-    ? `${selectedItems.length || 0} subtopic${selectedItems.length === 1 ? "" : "s"}`
+    ? `${selectedItems.length || 0} card${selectedItems.length === 1 ? "" : "s"}${selectedFaces ? ` / ${selectedFaces} faces` : ""}`
     : `${topics.length} Topics Ready`;
   const readoutMode = isLayer04Open ? "lite" : "type";
   const headerMode = isLayer04Open ? "lite" : "type";
+  const topicDensity = topics.length >= 6 ? "is-topic-dense" : topics.length >= 5 ? "is-topic-compact" : "";
   const sectionClassName = [
     "system-reveal",
     isOpening ? "is-opening" : "",
     isOpened ? "is-subject-open is-motion-owned" : "",
     isLayer04Open ? "is-layer04-open" : "",
-    hasOpenedOnce ? "is-revealed" : ""
+    hasOpenedOnce ? "is-revealed" : "",
+    topicDensity
   ].join(" ");
 
   const toggleTopic = (topic) => {
+    setSelectedDeck(null);
     setSelectedTopic((current) => (current?.id === topic.id ? null : topic));
   };
 
   const renderTopicCard = (topic, index) => {
     const isSelected = selectedTopic?.id === topic.id;
+    const cardCount = (topic.cards || topic.subtopics || []).length;
     return (
       <motion.button
         type="button"
         className={[
           "subject-topic-card",
           topic.cards || topic.subtopics ? "has-layer" : "",
+          cardCount >= 5 ? "is-heavy" : "",
           isSelected ? "is-selected" : ""
         ].join(" ")}
         key={topic.id}
-        title={topic.title}
+        title={cardCount ? `${topic.title} (${cardCount} cards)` : topic.title}
         aria-pressed={isSelected}
         style={{ "--topic-delay": `${260 + index * 120}ms` }}
         onClick={() => toggleTopic(topic)}
@@ -1044,7 +1271,10 @@ function SystemReveal({ node, activeIndex, zoomIntensity, isOpening, isOpened, o
         }
       >
         <span>{String(index + 1).padStart(2, "0")}</span>
-        <strong className="topic-title">{topic.title}</strong>
+        <strong className="topic-title">
+          <span className="topic-title-text">{topic.title}</span>
+          {cardCount > 0 && <em className="topic-card-count">{String(cardCount).padStart(2, "0")}</em>}
+        </strong>
         {isSelected && <span className="topic-select-scan" aria-hidden="true" />}
       </motion.button>
     );
@@ -1055,15 +1285,21 @@ function SystemReveal({ node, activeIndex, zoomIntensity, isOpening, isOpened, o
 
     const items = selectedItems.length
       ? selectedItems
-      : [{ id: `${selectedTopic.id}-placeholder`, code: "â€”", title: "Card set not assigned yet", isPlaceholder: true }];
+      : [{ id: `${selectedTopic.id}-placeholder`, code: "—", title: "Card set not assigned yet", isPlaceholder: true }];
+    const itemsDensity = items.length >= 6
+      ? "is-dense is-scroll is-ultra"
+      : items.length >= 5
+        ? "is-dense is-scroll"
+        : items.length >= 4
+          ? "is-dense"
+          : "";
 
     return (
       <motion.aside
         className={[
           "layer04-side-rail",
           items.length === 1 ? "is-single" : "",
-          items.length >= 5 ? "is-dense" : "",
-          items.length >= 6 ? "is-scroll" : ""
+          itemsDensity
         ].join(" ")}
         key={`${selectedTopic.id}-side-rail`}
         initial={{ opacity: 0, x: -24 }}
@@ -1071,17 +1307,20 @@ function SystemReveal({ node, activeIndex, zoomIntensity, isOpening, isOpened, o
         exit={{ opacity: 0, x: -16 }}
         transition={{ duration: MOTION.panel, ease: MOTION.ease }}
         style={{ "--rail-count": items.length }}
-        aria-label={`${selectedTopic.title} subtopics`}
+        aria-label={`${selectedTopic.title} cards`}
       >
         <span className="layer04-side-vignette" aria-hidden="true" />
         <span className="layer04-side-rail-track" aria-hidden="true" />
         <div className="layer04-side-rail-list">
           {items.map((item, index) => (
-            <motion.article
+            <motion.button
+              type="button"
               className={[
                 "inline-subtopic-card",
                 "is-side",
-                item.isPlaceholder ? "is-placeholder" : ""
+                "is-selectable",
+                item.isPlaceholder ? "is-placeholder" : "",
+                Number(item.faces) >= 8 ? "is-face-heavy" : ""
               ].join(" ")}
               key={item.id || item.title}
               initial={{ opacity: 0, x: -18, scale: 0.96 }}
@@ -1093,12 +1332,19 @@ function SystemReveal({ node, activeIndex, zoomIntensity, isOpening, isOpened, o
                 ease: MOTION.ease
               }}
               style={{ "--card-index": index }}
+              disabled={item.isPlaceholder || !item.images?.length}
+              onClick={() => setSelectedDeck(item)}
             >
               <span className="inline-subtopic-node" aria-hidden="true" />
               <span className="inline-subtopic-corners" aria-hidden="true" />
-              <span>{item.isPlaceholder ? "Awaiting Layer 04" : (item.code || `${node.id}-${String(index + 1).padStart(2, "0")}`)}</span>
+              <span>
+                {item.isPlaceholder
+                  ? "Awaiting Layer 04"
+                  : (item.code || `${node.id}-${String(index + 1).padStart(2, "0")}`)}
+                {!item.isPlaceholder && item.faces != null ? ` · ${item.faces}F` : ""}
+              </span>
               <strong>{item.title}</strong>
-            </motion.article>
+            </motion.button>
           ))}
         </div>
       </motion.aside>
@@ -1192,7 +1438,11 @@ function SystemReveal({ node, activeIndex, zoomIntensity, isOpening, isOpened, o
       </div>
       {isOpened ? (
         <div
-          className={["subject-topic-dock", isLayer04Open ? "is-layer04-open" : ""].join(" ")}
+          className={[
+            "subject-topic-dock",
+            isLayer04Open ? "is-layer04-open" : "",
+            topicDensity
+          ].join(" ")}
           aria-label={`${node.system.title} topics`}
         >
           <div className={["subject-topic-header", isLayer04Open ? "is-layer04" : ""].join(" ")}>
@@ -1206,10 +1456,17 @@ function SystemReveal({ node, activeIndex, zoomIntensity, isOpening, isOpened, o
             <em className="topic-header-meta" key={isLayer04Open ? selectedTopic.id : "index"}>
               {isLayer04Open
                 ? `${selectedTopic.title} / ${selectedItems.length || 0} linked`
-                : node.system.title}
+                : `${node.system.title} / ${topics.length} groups`}
             </em>
           </div>
-          <div className={["subject-topic-list", isLayer04Open ? "is-layer04-open" : ""].join(" ")}>
+          <div
+            className={[
+              "subject-topic-list",
+              isLayer04Open ? "is-layer04-open" : "",
+              topicDensity
+            ].join(" ")}
+            style={{ "--topic-count": topics.length }}
+          >
             {topics.map((topic, index) => renderTopicCard(topic, index))}
           </div>
         </div>
@@ -1233,6 +1490,16 @@ function SystemReveal({ node, activeIndex, zoomIntensity, isOpening, isOpened, o
         </div>
       )}
       <span className="reveal-code">{String(activeIndex + 1).padStart(2, "0")} // {node.id}</span>
+      <AnimatePresence>
+        {selectedDeck && (
+          <CardDeckExperience
+            deck={selectedDeck}
+            topic={selectedTopic}
+            system={node.system}
+            onClose={() => setSelectedDeck(null)}
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 }

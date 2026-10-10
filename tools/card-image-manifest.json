@@ -1,0 +1,911 @@
+{
+  "version": "2026",
+  "cards": {
+    "cv-cv-01-hypertension": [
+      "CV01_HTN_01.PNG",
+      "CV01_HTN_02.PNG",
+      "CV01_HTN_03.PNG",
+      "CV01_HTN_04.PNG",
+      "CV01_HTN_05.PNG"
+    ],
+    "cv-cv-02-coronary-artery-disease": [
+      "CV02_CAD_01.PNG",
+      "CV02_CAD_02.PNG",
+      "CV02_CAD_03.PNG"
+    ],
+    "cv-cv-03-congestive-heart-failure": [
+      "CV03_CHF_01.PNG",
+      "CV03_CHF_02.PNG",
+      "CV03_CHF_03.PNG"
+    ],
+    "cv-cv-04-cardiac-arrythmias-ecg": [
+      "CV04_ECG_01.PNG",
+      "CV04_ECG_02.PNG",
+      "CV04_ECG_03.PNG",
+      "CV04_ECG_04.PNG",
+      "CV04_ECG_05.PNG",
+      "CV04_ECG_06.PNG"
+    ],
+    "cv-cv-05-aortic-aneurysm": [
+      "CV05_AA_01.PNG",
+      "CV05_AA_02.PNG"
+    ],
+    "cv-cv-11-peripheral-artery-disease": [
+      "CV06_PAD_01.PNG",
+      "CV06_PAD_02.PNG",
+      "CV06_PAD_03.PNG",
+      "CV06_PAD_04.PNG"
+    ],
+    "cv-cv-07-peripheral-venous-disease": [
+      "CV07_PVD_01.PNG",
+      "CV07_PVD_02.PNG",
+      "CV07_PVD_03.PNG",
+      "CV07_PVD_04.PNG",
+      "CV07_PVD_05.PNG"
+    ],
+    "cv-cv-08-cholesterol": [
+      "CV08_CHOL_01.PNG",
+      "CV08_CHOL_02.PNG",
+      "CV08_CHOL_03.PNG"
+    ],
+    "cv-cv-09-etc-cardiac": [
+      "CV09_ETC_01.PNG",
+      "CV09_ETC_02.PNG",
+      "CV09_ETC_03.PNG",
+      "CV09_ETC_04.PNG",
+      "CV09_ETC_05.PNG",
+      "CV09_ETC_06.PNG",
+      "CV09_ETC_07.PNG"
+    ],
+    "rs-rs-01-asthma": [
+      "RS01_ASTH_01.PNG",
+      "RS01_ASTH_02.PNG",
+      "RS01_ASTH_03.PNG",
+      "RS01_ASTH_04.PNG",
+      "RS01_ASTH_05.PNG"
+    ],
+    "rs-rs-02-obstructive-pulmonary-disease": [
+      "RS02_COPD_01.PNG",
+      "RS02_COPD_02.PNG",
+      "RS02_COPD_03.PNG"
+    ],
+    "rs-rs-03-acute-respiratory-distress": [
+      "RS03_ARDS_01.PNG",
+      "RS03_ARDS_02.PNG"
+    ],
+    "rs-rs-04-pleural-effusion": [
+      "RS04_PLE_01.PNG",
+      "RS04_PLE_02.PNG",
+      "RS04_PLE_03.PNG",
+      "RS04_PLE_04.PNG"
+    ],
+    "rs-rs-05-pulmonary-embolism": [
+      "RS05_PE_01.PNG",
+      "RS05_PE_02.PNG",
+      "RS05_PE_03.PNG"
+    ],
+    "rs-rs-06-acid-base-respiration": [
+      "RS06_ABASE_01.PNG",
+      "RS06_ABASE_02.PNG",
+      "RS06_ABASE_03.PNG",
+      "RS06_ABASE_04.PNG",
+      "RS06_ABASE_05.PNG",
+      "RS06_ABASE_06.PNG",
+      "RS06_ABASE_07.PNG",
+      "RS06_ABASE_08.PNG"
+    ],
+    "rs-etc-etc-respiratory": [
+      "RS07_ETC_01.PNG",
+      "RS07_ETC_02.PNG",
+      "RS07_ETC_03.PNG"
+    ],
+    "gi-gi-01-gi-bleeding": [
+      "GI01_GIB_01.PNG",
+      "GI01_GIB_02.PNG",
+      "GI01_GIB_03.PNG",
+      "GI01_GIB_04.PNG",
+      "GI01_GIB_05.PNG"
+    ],
+    "gi-gi-02-reflux-disease": [
+      "GI02_GERD_01.PNG",
+      "GI02_GERD_02.PNG"
+    ],
+    "gi-gi-03-peptic-ulcer": [
+      "GI03_PUD_01.PNG",
+      "GI03_PUD_02.PNG",
+      "GI03_PUD_03.PNG"
+    ],
+    "gi-gi-04-gallbladder-issues": [
+      "GI04_GB_01.PNG",
+      "GI04_GB_02.PNG",
+      "GI04_GB_03.PNG",
+      "GI04_GB_04.PNG",
+      "GI04_GB_05.PNG"
+    ],
+    "gi-gi-05-pancreatitis": [
+      "GI05_PANC_01.PNG",
+      "GI05_PANC_02.PNG",
+      "GI05_PANC_03.PNG"
+    ],
+    "gi-gi-06-hepatitis": [
+      "GI06_HEP_01.PNG",
+      "GI06_HEP_02.PNG",
+      "GI06_HEP_03.PNG",
+      "GI06_HEP_04.PNG"
+    ],
+    "gi-gi-07-cirrhosis": [
+      "GI07_CIRR_01.PNG",
+      "GI07_CIRR_02.PNG",
+      "GI07_CIRR_03.PNG",
+      "GI07_CIRR_04.PNG"
+    ],
+    "gi-gi-08-appendicitis": [
+      "GI08_APPY_01.PNG",
+      "GI08_APPY_02.PNG",
+      "GI08_APPY_03.PNG"
+    ],
+    "gi-gi-09-diverticular-diseases": [
+      "GI09_DIV_01.PNG",
+      "GI09_DIV_02.PNG"
+    ],
+    "gi-gi-10-irritable-bowel": [
+      "GI10_IBD_01.PNG",
+      "GI10_IBD_02.PNG",
+      "GI10_IBD_03.PNG",
+      "GI10_IBD_04.PNG"
+    ],
+    "gi-gi-11-etc-gastro": [
+      "GI11_ETC_01.PNG",
+      "GI11_ETC_02.PNG",
+      "GI11_ETC_03.PNG",
+      "GI11_ETC_04.PNG",
+      "GI11_ETC_05.PNG",
+      "GI11_ETC_06.PNG"
+    ],
+    "nph-nph-01-chronic-kidney-disease": [
+      "RN01_CKD_01.PNG",
+      "RN01_CKD_02.PNG",
+      "RN01_CKD_03.PNG"
+    ],
+    "nph-nph-02-acute-kidney-injury": [
+      "RN02_AKI_01.PNG",
+      "RN02_AKI_02.PNG",
+      "RN02_AKI_03.PNG",
+      "RN02_AKI_04.PNG"
+    ],
+    "nph-nph-03-kidney-stones": [
+      "RN03_STONE_01.PNG",
+      "RN03_STONE_02.PNG"
+    ],
+    "nph-nph-04-benign-prostatic-hyperplasia": [
+      "RN04_BPH_01.PNG",
+      "RN04_BPH_02.PNG"
+    ],
+    "nph-nph-05-acid-base-issues": [
+      "RN05_AB_01.PNG",
+      "RN05_AB_02.PNG",
+      "RN05_AB_03.PNG",
+      "RN05_AB_04.PNG",
+      "RN05_AB_05.PNG",
+      "RN05_AB_06.PNG",
+      "RN05_AB_07.PNG",
+      "RN05_AB_08.PNG"
+    ],
+    "nph-nph-06-electrolyte-issues": [
+      "RN06_ELEC_01.PNG",
+      "RN06_ELEC_02.PNG",
+      "RN06_ELEC_03.PNG",
+      "RN06_ELEC_04.PNG",
+      "RN06_ELEC_05.PNG",
+      "RN06_ELEC_06.PNG",
+      "RN06_ELEC_07.PNG",
+      "RN06_ELEC_08.PNG"
+    ],
+    "nph-nph-07-etc-renal-urinary": [
+      "RN07_ETC_01.PNG",
+      "RN07_ETC_02.PNG",
+      "RN07_ETC_03.PNG",
+      "RN07_ETC_04.PNG",
+      "RN07_ETC_05.PNG",
+      "RN07_ETC_06.PNG",
+      "RN07_ETC_07.PNG",
+      "RN07_ETC_08.PNG"
+    ],
+    "hm-hm-01-anemia": [
+      "HM01_ANEM_01.PNG",
+      "HM01_ANEM_02.PNG",
+      "HM01_ANEM_03.PNG",
+      "HM01_ANEM_04.PNG",
+      "HM01_ANEM_05.PNG",
+      "HM01_ANEM_06.PNG"
+    ],
+    "hm-hm-02-hemostasis": [
+      "HM02_HEMO_01.PNG",
+      "HM02_HEMO_02.PNG",
+      "HM02_HEMO_03.PNG",
+      "HM02_HEMO_04.PNG"
+    ],
+    "hm-hm-03-thrombocytopenia": [
+      "HM03_TCP_01.PNG",
+      "HM03_TCP_02.PNG",
+      "HM03_TCP_03.PNG"
+    ],
+    "hm-hm-04-polycythemia": [
+      "HM04_POLY_01.PNG",
+      "HM04_POLY_02.PNG"
+    ],
+    "hm-hm-05-etc-hematology": [
+      "HM05_ETC_01.PNG",
+      "HM05_ETC_02.PNG"
+    ],
+    "if-if-01-antibiotics-overview": [
+      "IX01_ABX_01.PNG",
+      "IX01_ABX_02.PNG",
+      "IX01_ABX_03.PNG",
+      "IX01_ABX_04.PNG",
+      "IX01_ABX_05.PNG",
+      "IX01_ABX_06.PNG"
+    ],
+    "if-if-02-immunizations": [
+      "IX02_IMM_01.PNG",
+      "IX02_IMM_02.PNG",
+      "IX02_IMM_03.PNG"
+    ],
+    "if-if-03-brain-infections": [
+      "IX03_CNS_01.PNG",
+      "IX03_CNS_02.PNG",
+      "IX03_CNS_03.PNG"
+    ],
+    "if-if-04-ear-nose-throat": [
+      "IX04_ENT_01.PNG",
+      "IX04_ENT_02.PNG",
+      "IX04_ENT_03.PNG"
+    ],
+    "if-if-05-tuberculosis": [
+      "IX05_TB_01.PNG",
+      "IX05_TB_02.PNG",
+      "IX05_TB_03.PNG",
+      "IX05_TB_04.PNG"
+    ],
+    "if-if-06-pneumonia": [
+      "IX06_PNA_01.PNG",
+      "IX06_PNA_02.PNG",
+      "IX06_PNA_03.PNG"
+    ],
+    "if-if-07-hiv-aids": [
+      "IX07_HIV_01.PNG",
+      "IX07_HIV_02.PNG",
+      "IX07_HIV_03.PNG",
+      "IX07_HIV_04.PNG"
+    ],
+    "if-if-08-urinary-infections": [
+      "IX08_UTI_01.PNG",
+      "IX08_UTI_02.PNG",
+      "IX08_UTI_03.PNG"
+    ],
+    "if-if-09-endocarditis": [
+      "IX09_IE_01.PNG",
+      "IX09_IE_02.PNG",
+      "IX09_IE_03.PNG"
+    ],
+    "if-if-10-sars-coronavirus": [
+      "IX10_SARS_01.PNG",
+      "IX10_SARS_02.PNG"
+    ],
+    "if-if-11-genital-infections": [
+      "IX11_GU_01.PNG",
+      "IX11_GU_02.PNG"
+    ],
+    "ne-ne-01-stroke": [
+      "NE01_STROKE_01.PNG",
+      "NE01_STROKE_02.PNG",
+      "NE01_STROKE_03.PNG"
+    ],
+    "ne-ne-02-increased-icp": [
+      "NE02_ICP_01.PNG",
+      "NE02_ICP_02.PNG",
+      "NE02_ICP_03.PNG"
+    ],
+    "ne-ne-03-seizure": [
+      "NE03_SEIZURE_01.PNG",
+      "NE03_SEIZURE_02.PNG",
+      "NE03_SEIZURE_03.PNG"
+    ],
+    "ne-ne-04-cerebral-palsy": [
+      "NE04_CEREBRAL_01.PNG",
+      "NE04_CEREBRAL_02.PNG",
+      "NE04_CEREBRAL_03.PNG",
+      "NE04_CEREBRAL_04.PNG"
+    ],
+    "ne-ne-05-alzheimer-s-and-dementia": [
+      "NE05_DEMENTIA_01.PNG",
+      "NE05_DEMENTIA_02.PNG",
+      "NE05_DEMENTIA_03.PNG"
+    ],
+    "ne-ne-06-myasthenia-gravis": [
+      "NE06_MYASTHEN_01.PNG",
+      "NE06_MYASTHEN_02.PNG",
+      "NE06_MYASTHEN_03.PNG"
+    ],
+    "ne-ne-07-eye-ear-nose-throat": [
+      "NE07_EENT_01.PNG",
+      "NE07_EENT_02.PNG",
+      "NE07_EENT_03.PNG",
+      "NE07_EENT_04.PNG",
+      "NE07_EENT_05.PNG",
+      "NE07_EENT_06.PNG",
+      "NE07_EENT_07.PNG",
+      "NE07_EENT_08.PNG"
+    ],
+    "ne-ne-08-etc-neurological": [
+      "NE08_ETC_01.PNG",
+      "NE08_ETC_02.PNG",
+      "NE08_ETC_03.PNG",
+      "NE08_ETC_04.PNG",
+      "NE08_ETC_05.PNG"
+    ],
+    "en-en-01-pituitary-issues": [
+      "EN01_PITUITAR_01.PNG",
+      "EN01_PITUITAR_02.PNG",
+      "EN01_PITUITAR_03.PNG",
+      "EN01_PITUITAR_04.PNG",
+      "EN01_PITUITAR_05.PNG",
+      "EN01_PITUITAR_06.PNG"
+    ],
+    "en-en-02-thyroid": [
+      "EN02_THYROID_01.PNG",
+      "EN02_THYROID_02.PNG",
+      "EN02_THYROID_03.PNG",
+      "EN02_THYROID_04.PNG",
+      "EN02_THYROID_05.PNG",
+      "EN02_THYROID_06.PNG"
+    ],
+    "en-en-03-adrenals": [
+      "EN03_ADRENAL_01.PNG",
+      "EN03_ADRENAL_02.PNG",
+      "EN03_ADRENAL_03.PNG",
+      "EN03_ADRENAL_04.PNG",
+      "EN03_ADRENAL_05.PNG"
+    ],
+    "en-en-04-diabetes-mellitus": [
+      "EN04_DM_01.PNG",
+      "EN04_DM_02.PNG",
+      "EN04_DM_03.PNG",
+      "EN04_DM_04.PNG",
+      "EN04_DM_05.PNG",
+      "EN04_DM_06.PNG",
+      "EN04_DM_07.PNG",
+      "EN04_DM_08.PNG"
+    ],
+    "en-en-05-etc-endocrine": [
+      "EN05_ETC_01.PNG",
+      "EN05_ETC_02.PNG"
+    ],
+    "mk-mk-01-arthritis": [
+      "MSK01_ARTHRITI_01.PNG",
+      "MSK01_ARTHRITI_02.PNG",
+      "MSK01_ARTHRITI_03.PNG",
+      "MSK01_ARTHRITI_04.PNG",
+      "MSK01_ARTHRITI_05.PNG"
+    ],
+    "mk-mk-02-fractures": [
+      "MSK02_FRACTURE_01.PNG",
+      "MSK02_FRACTURE_02.PNG",
+      "MSK02_FRACTURE_03.PNG",
+      "MSK02_FRACTURE_04.PNG",
+      "MSK02_FRACTURE_05.PNG"
+    ],
+    "mk-mk-03-osteoporosis": [
+      "MSK03_OSTEOPOR_01.PNG",
+      "MSK03_OSTEOPOR_02.PNG"
+    ],
+    "mk-mk-04-osteomyelitis": [
+      "MSK04_RHABDOOS_01.PNG"
+    ],
+    "mk-mk-05-rhabdomyolysis": [
+      "MSK04_RHABDOOS_02.PNG"
+    ],
+    "mk-mk-06-lupus": [
+      "MSK05_SLE_01.PNG",
+      "MSK05_SLE_02.PNG"
+    ],
+    "mk-mk07-etc-musculoskeletal": [
+      "MSK06_ETC_01.PNG",
+      "MSK06_ETC_02.PNG",
+      "MSK06_ETC_03.PNG",
+      "MSK06_ETC_04.PNG"
+    ],
+    "sk-sk-01-burns": [
+      "SK01_BURNS_01.PNG",
+      "SK01_BURNS_02.PNG",
+      "SK01_BURNS_03.PNG",
+      "SK01_BURNS_04.PNG",
+      "SK01_BURNS_05.PNG",
+      "SK01_BURNS_06.PNG"
+    ],
+    "sk-sk-02-pressure-sores": [
+      "SK02_PRESSURE_01.PNG",
+      "SK02_PRESSURE_02.PNG"
+    ],
+    "sk-sk-03-dermatitis": [
+      "SK03_DERMATIT_01.PNG",
+      "SK03_DERMATIT_02.PNG",
+      "SK03_DERMATIT_03.PNG"
+    ],
+    "sk-sk-04-psoriasis": [
+      "SK04_PSORIASI_01.PNG",
+      "SK04_PSORIASI_02.PNG"
+    ],
+    "sk-sk-05-acne": [
+      "SK05_ACNE_01.PNG",
+      "SK05_ACNE_02.PNG"
+    ],
+    "sk-sk-05-skin-infections": [
+      "SK06_SKININFX_01.PNG",
+      "SK06_SKININFX_02.PNG",
+      "SK06_SKININFX_03.PNG",
+      "SK06_SKININFX_04.PNG",
+      "SK06_SKININFX_05.PNG",
+      "SK06_SKININFX_06.PNG",
+      "SK06_SKININFX_07.PNG",
+      "SK06_SKININFX_08.PNG"
+    ],
+    "sk-sk-06-etc-integumentary": [
+      "SK07_ETC_01.PNG",
+      "SK07_ETC_02.PNG",
+      "SK07_ETC_03.PNG",
+      "SK07_ETC_04.PNG"
+    ],
+    "ca-ca-00-cancer-terms": [
+      "ONC01_CANCERTE_01.PNG",
+      "ONC01_CANCERTE_02.PNG",
+      "ONC01_CANCERTE_03.PNG",
+      "ONC01_CANCERTE_04.PNG",
+      "ONC01_CANCERTE_05.PNG",
+      "ONC01_CANCERTE_06.PNG"
+    ],
+    "ca-ca-01-types-overview": [
+      "ONC02_SUMMARY_01.PNG",
+      "ONC02_SUMMARY_02.PNG",
+      "ONC02_SUMMARY_03.PNG"
+    ],
+    "ca-ca-02-brain-tumors": [
+      "ONC03_BRAINTUM_01.PNG",
+      "ONC03_BRAINTUM_02.PNG"
+    ],
+    "ca-ca-03-bone-tumors": [
+      "ONC04_BONETUMO_01.PNG",
+      "ONC04_BONETUMO_02.PNG",
+      "ONC04_BONETUMO_03.PNG",
+      "ONC04_BONETUMO_04.PNG"
+    ],
+    "ca-ca-04-colorectal-cancer": [
+      "ONC05_COLONCAN_01.PNG",
+      "ONC05_COLONCAN_02.PNG"
+    ],
+    "ca-ca-05-hepatic-cancer": [
+      "ONC06_HEPATIC_01.PNG",
+      "ONC06_HEPATIC_02.PNG"
+    ],
+    "ca-ca-06-pancreatic-cancer": [
+      "ONC07_PANCREAT_01.PNG",
+      "ONC07_PANCREAT_02.PNG"
+    ],
+    "ca-ca-07-prostate-cancer": [
+      "ONC08_PROSTATE_01.PNG",
+      "ONC08_PROSTATE_02.PNG"
+    ],
+    "ca-ca-08-lung-cancer": [
+      "ONC09_LUNG_01.PNG",
+      "ONC09_LUNG_02.PNG",
+      "ONC09_LUNG_03.PNG"
+    ],
+    "ca-ca-09-skin-cancer": [
+      "ONC10_SKIN_01.PNG",
+      "ONC10_SKIN_02.PNG",
+      "ONC10_SKIN_03.PNG"
+    ],
+    "ca-ca-10-leukemia": [
+      "ONC11_BLOOD_01.PNG",
+      "ONC11_BLOOD_02.PNG",
+      "ONC11_BLOOD_03.PNG"
+    ],
+    "ca-ca-11-lymphoma": [
+      "ONC12_LYMPH_01.PNG",
+      "ONC12_LYMPH_02.PNG"
+    ],
+    "ca-ca-12-breast-cancer": [
+      "ONC13_BREAST_01.PNG",
+      "ONC13_BREAST_02.PNG",
+      "ONC13_BREAST_03.PNG"
+    ],
+    "ca-ca-13-cervical-cancer": [
+      "ONC14_CERVICAL_01.PNG",
+      "ONC14_CERVICAL_02.PNG",
+      "ONC14_CERVICAL_03.PNG"
+    ],
+    "ca-ca-14-etc-oncology": [
+      "ONC15_ETC_01.PNG",
+      "ONC15_ETC_02.PNG",
+      "ONC15_ETC_03.PNG",
+      "ONC15_ETC_04.PNG"
+    ],
+    "gn-gn-01-menstruation": [
+      "GYN01_MENSTRUA_01.PNG",
+      "GYN01_MENSTRUA_02.PNG",
+      "GYN01_MENSTRUA_03.PNG",
+      "GYN01_MENSTRUA_04.PNG",
+      "GYN01_MENSTRUA_05.PNG"
+    ],
+    "gn-gn-02-menopause": [
+      "GYN02_MENOPAUS_01.PNG"
+    ],
+    "gn-gn-03-contraceptives": [
+      "GYN03_CONTRACE_01.PNG",
+      "GYN03_CONTRACE_02.PNG",
+      "GYN03_CONTRACE_03.PNG",
+      "GYN03_CONTRACE_04.PNG",
+      "GYN03_CONTRACE_05.PNG",
+      "GYN03_CONTRACE_06.PNG"
+    ],
+    "gn-gn-04-etc-gynecology": [
+      "GYN04_ETC_01.PNG"
+    ],
+    "mb-mb-01-pregnancy": [
+      "OB01_PREGNANC_01.PNG",
+      "OB01_PREGNANC_02.PNG",
+      "OB01_PREGNANC_03.PNG",
+      "OB01_PREGNANC_04.PNG",
+      "OB01_PREGNANC_05.PNG",
+      "OB01_PREGNANC_06.PNG",
+      "OB01_PREGNANC_07.PNG",
+      "OB01_PREGNANC_08.PNG"
+    ],
+    "mb-mb-01-labor-and-delivery": [
+      "OB02_LABOR_01.PNG",
+      "OB02_LABOR_02.PNG",
+      "OB02_LABOR_03.PNG",
+      "OB02_LABOR_04.PNG",
+      "OB02_LABOR_05.PNG"
+    ],
+    "mb-mb-02-gestational-issues": [
+      "OB03_GESTATIO_01.PNG",
+      "OB03_GESTATIO_02.PNG"
+    ],
+    "mb-mb-03-fetal-malpositions": [
+      "OB04_FETALMAL_01.PNG",
+      "OB04_FETALMAL_02.PNG"
+    ],
+    "mb-mb-04-c-section": [
+      "OB05_CSECTION_01.PNG"
+    ],
+    "mb-mb-05-post-partum-issues": [
+      "OB06_POSTPART_01.PNG",
+      "OB06_POSTPART_02.PNG"
+    ],
+    "mb-mb-06-premature-birth": [
+      "OB07_PREMATUR_01.PNG"
+    ],
+    "mb-mb-07-hyperbilirubinemia": [
+      "OB08_HYPERBIL_01.PNG"
+    ],
+    "mb-mb-08-hydrocephalus": [
+      "OB09_HYDROCEP_01.PNG"
+    ],
+    "mb-mb-09-congenital-heart-issues": [
+      "OB10_CONGENIT_01.PNG",
+      "OB10_CONGENIT_02.PNG",
+      "OB10_CONGENIT_03.PNG",
+      "OB10_CONGENIT_04.PNG",
+      "OB10_CONGENIT_05.PNG"
+    ],
+    "pd-pd-00-neonate": [
+      "PED01_NEONATE_01.PNG",
+      "PED01_NEONATE_02.PNG",
+      "PED01_NEONATE_03.PNG",
+      "PED01_NEONATE_04.PNG"
+    ],
+    "pd-pd-01-age-development": [
+      "PED02_AGEDEV_01.PNG",
+      "PED02_AGEDEV_02.PNG",
+      "PED02_AGEDEV_03.PNG",
+      "PED02_AGEDEV_04.PNG",
+      "PED02_AGEDEV_05.PNG",
+      "PED02_AGEDEV_06.PNG"
+    ],
+    "pd-pd-02-immunization": [
+      "PED03_IMM_01.PNG",
+      "PED03_IMM_02.PNG",
+      "PED03_IMM_03.PNG"
+    ],
+    "pd-pd-03-respiratory-issues": [
+      "PED04_RESPIRAT_01.PNG",
+      "PED04_RESPIRAT_02.PNG",
+      "PED04_RESPIRAT_03.PNG",
+      "PED04_RESPIRAT_04.PNG",
+      "PED04_RESPIRAT_05.PNG"
+    ],
+    "pd-pd-04-cardiovascular-issues": [
+      "PED05_CARDIOVA_01.PNG",
+      "PED05_CARDIOVA_02.PNG",
+      "PED05_CARDIOVA_03.PNG",
+      "PED05_CARDIOVA_04.PNG",
+      "PED05_CARDIOVA_05.PNG",
+      "PED05_CARDIOVA_06.PNG"
+    ],
+    "pd-pd-05-gi-issues": [
+      "PED06_GIISSUES_01.PNG",
+      "PED06_GIISSUES_02.PNG",
+      "PED06_GIISSUES_03.PNG"
+    ],
+    "pd-pd-06-endocrine-issues": [
+      "PED07_ENDOCRIN_01.PNG",
+      "PED07_ENDOCRIN_02.PNG",
+      "PED07_ENDOCRIN_03.PNG"
+    ],
+    "pd-pd-07-neurological-issues": [
+      "PED08_NEURO_01.PNG",
+      "PED08_NEURO_02.PNG",
+      "PED08_NEURO_03.PNG"
+    ],
+    "pd-pd-08-pediatric-etc": [
+      "PED09_ETC_01.PNG",
+      "PED09_ETC_02.PNG",
+      "PED09_ETC_03.PNG"
+    ],
+    "ms-ms-01-assessment": [
+      "MS01_ASSESSME_01.PNG",
+      "MS01_ASSESSME_02.PNG",
+      "MS01_ASSESSME_03.PNG",
+      "MS01_ASSESSME_04.PNG",
+      "MS01_ASSESSME_05.PNG",
+      "MS01_ASSESSME_06.PNG",
+      "MS01_ASSESSME_07.PNG",
+      "MS01_ASSESSME_08.PNG",
+      "MS01_ASSESSME_09.PNG"
+    ],
+    "ms-ms-02-gait-and-crutches": [
+      "MS02_GAIT_01.PNG",
+      "MS02_GAIT_02.PNG",
+      "MS02_GAIT_03.PNG"
+    ],
+    "ms-ms-03-traction": [
+      "MS03_TRACTION_01.PNG",
+      "MS03_TRACTION_02.PNG"
+    ],
+    "ms-ms-04-pressure-sores": [
+      "MS04_PRESSURE_01.PNG",
+      "MS04_PRESSURE_02.PNG"
+    ],
+    "ms-ms-05-wound-care": [
+      "MS05_WOUNDCAR_01.PNG",
+      "MS05_WOUNDCAR_02.PNG",
+      "MS05_WOUNDCAR_03.PNG",
+      "MS05_WOUNDCAR_04.PNG",
+      "MS05_WOUNDCAR_05.PNG"
+    ],
+    "ms-ms-06-restraints": [
+      "MS06_RESTRAIN_01.PNG",
+      "MS06_RESTRAIN_02.PNG"
+    ],
+    "ms-ms-07-nutrition": [
+      "MS07_NUTRITIO_01.PNG",
+      "MS07_NUTRITIO_02.PNG",
+      "MS07_NUTRITIO_03.PNG",
+      "MS07_NUTRITIO_04.PNG",
+      "MS07_NUTRITIO_05.PNG",
+      "MS07_NUTRITIO_06.PNG",
+      "MS07_NUTRITIO_07.PNG",
+      "MS07_NUTRITIO_08.PNG",
+      "MS07_NUTRITIO_09.PNG",
+      "MS07_NUTRITIO_10.PNG"
+    ],
+    "ms-ms-08-herbal-supplements": [
+      "MS08_HERBALS_01.PNG",
+      "MS08_HERBALS_02.PNG",
+      "MS08_HERBALS_03.PNG",
+      "MS08_HERBALS_04.PNG"
+    ],
+    "ms-ms-09-iv-therapy": [
+      "MS09_IV_01.PNG",
+      "MS09_IV_02.PNG",
+      "MS09_IV_03.PNG"
+    ],
+    "ms-ms-10-clinical-signs": [
+      "MS10_CLINICAL_01.PNG",
+      "MS10_CLINICAL_02.PNG"
+    ],
+    "ms-ms-11-food-drug-interactions": [
+      "MS11_FOODDRUG_01.PNG",
+      "MS11_FOODDRUG_02.PNG"
+    ],
+    "ms-ms-12-medication-administration": [
+      "MS12_MEDADMIN_01.PNG",
+      "MS12_MEDADMIN_02.PNG",
+      "MS12_MEDADMIN_03.PNG",
+      "MS12_MEDADMIN_04.PNG",
+      "MS12_MEDADMIN_05.PNG"
+    ],
+    "ms-ms-13-common-diagnostics": [
+      "MS13_COMMONDX_01.PNG",
+      "MS13_COMMONDX_02.PNG",
+      "MS13_COMMONDX_03.PNG",
+      "MS13_COMMONDX_04.PNG",
+      "MS13_COMMONDX_05.PNG",
+      "MS13_COMMONDX_06.PNG",
+      "MS13_COMMONDX_07.PNG",
+      "MS13_COMMONDX_08.PNG",
+      "MS13_COMMONDX_09.PNG",
+      "MS13_COMMONDX_10.PNG",
+      "MS13_COMMONDX_11.PNG",
+      "MS13_COMMONDX_12.PNG",
+      "MS13_COMMONDX_13.PNG",
+      "MS13_COMMONDX_14.PNG",
+      "MS13_COMMONDX_15.PNG",
+      "MS13_COMMONDX_16.PNG",
+      "MS13_COMMONDX_17.PNG",
+      "MS13_COMMONDX_18.PNG"
+    ],
+    "cc-cc-01-hemodynamics": [
+      "ICU01_HEMODYNA_01.PNG",
+      "ICU01_HEMODYNA_02.PNG",
+      "ICU01_HEMODYNA_03.PNG",
+      "ICU01_HEMODYNA_04.PNG"
+    ],
+    "cc-cc-02-tubes-and-drains": [
+      "ICU02_TUBES_01.PNG",
+      "ICU02_TUBES_02.PNG",
+      "ICU02_TUBES_03.PNG",
+      "ICU02_TUBES_04.PNG",
+      "ICU02_TUBES_05.PNG",
+      "ICU02_TUBES_06.PNG",
+      "ICU02_TUBES_07.PNG",
+      "ICU02_TUBES_08.PNG",
+      "ICU02_TUBES_09.PNG"
+    ],
+    "cc-cc-03-oxygen-and-ventilators": [
+      "ICU03_VENTILAT_01.PNG",
+      "ICU03_VENTILAT_02.PNG",
+      "ICU03_VENTILAT_03.PNG",
+      "ICU03_VENTILAT_04.PNG"
+    ],
+    "cc-cc-04-blood-products": [
+      "ICU04_BLOOD_01.PNG",
+      "ICU04_BLOOD_02.PNG",
+      "ICU04_BLOOD_03.PNG"
+    ],
+    "cc-cc-05-perioperative-care": [
+      "ICU05_PERIOP_01.PNG",
+      "ICU05_PERIOP_02.PNG",
+      "ICU05_PERIOP_03.PNG",
+      "ICU05_PERIOP_04.PNG",
+      "ICU05_PERIOP_05.PNG",
+      "ICU05_PERIOP_06.PNG",
+      "ICU05_PERIOP_07.PNG",
+      "ICU05_PERIOP_08.PNG",
+      "ICU05_PERIOP_09.PNG",
+      "ICU05_PERIOP_10.PNG",
+      "ICU05_PERIOP_11.PNG",
+      "ICU05_PERIOP_12.PNG",
+      "ICU05_PERIOP_13.PNG"
+    ],
+    "er-er-00-er-triage": [
+      "ER01_TRIAGE_01.PNG"
+    ],
+    "er-er-01-cardiac-arrest": [
+      "ER02_CARREST_01.PNG",
+      "ER02_CARREST_02.PNG",
+      "ER02_CARREST_03.PNG"
+    ],
+    "er-er-02-shock": [
+      "ER03_SHOCK_01.PNG",
+      "ER03_SHOCK_02.PNG",
+      "ER03_SHOCK_03.PNG"
+    ],
+    "er-er-03-burns": [
+      "ER04_BURNS_01.PNG",
+      "ER04_BURNS_02.PNG"
+    ],
+    "er-er-04-brain-injuries": [
+      "ER05_HEADINJU_01.PNG",
+      "ER05_HEADINJU_02.PNG"
+    ],
+    "er-er-05-spinal-cord-injury": [
+      "ER06_SPINALCO_01.PNG",
+      "ER06_SPINALCO_02.PNG"
+    ],
+    "er-er-06-respiratory-emergencies": [
+      "ER07_RESPIRAT_01.PNG",
+      "ER07_RESPIRAT_02.PNG",
+      "ER07_RESPIRAT_03.PNG",
+      "ER07_RESPIRAT_04.PNG",
+      "ER07_RESPIRAT_05.PNG"
+    ],
+    "er-er-07-endocrine-emergencies": [
+      "ER08_ENDOCRIN_01.PNG",
+      "ER08_ENDOCRIN_02.PNG",
+      "ER08_ENDOCRIN_03.PNG"
+    ],
+    "er-er-08-ob-emergencies": [
+      "ER09_OBEMERGE_01.PNG",
+      "ER09_OBEMERGE_02.PNG"
+    ],
+    "er-er-09-fractures": [
+      "ER10_FRACTURE_01.PNG",
+      "ER10_FRACTURE_02.PNG"
+    ],
+    "er-er-10-poisoning": [
+      "ER11_POISON_01.PNG",
+      "ER11_POISON_02.PNG"
+    ],
+    "er-er-11-bites-and-stings": [
+      "ER12_BITES_01.PNG",
+      "ER12_BITES_02.PNG",
+      "ER12_BITES_03.PNG"
+    ],
+    "er-er-12-frostbite": [
+      "ER13_FROSTBIT_01.PNG"
+    ],
+    "mh-mh-01-psych-meds": [
+      "PSY01_MEDS_01.PNG",
+      "PSY01_MEDS_02.PNG",
+      "PSY01_MEDS_03.PNG",
+      "PSY01_MEDS_04.PNG"
+    ],
+    "mh-mh-02-therapeutic-communication": [
+      "PSY02_THERAPEU_01.PNG",
+      "PSY02_THERAPEU_02.PNG",
+      "PSY02_THERAPEU_03.PNG",
+      "PSY02_THERAPEU_04.PNG"
+    ],
+    "mh-mh-03-anxiety-disorders": [
+      "PSY03_ANXIETY_01.PNG",
+      "PSY03_ANXIETY_02.PNG"
+    ],
+    "mh-mh-04-mood-disorders": [
+      "PSY04_MOOD_01.PNG",
+      "PSY04_MOOD_02.PNG"
+    ],
+    "mh-mh-05-psychotic-disorders": [
+      "PSY05_PSYCHOTI_01.PNG",
+      "PSY05_PSYCHOTI_02.PNG",
+      "PSY05_PSYCHOTI_03.PNG",
+      "PSY05_PSYCHOTI_04.PNG"
+    ],
+    "mh-mh-06-substance-abuse": [
+      "PSY06_SUBABUSE_01.PNG",
+      "PSY06_SUBABUSE_02.PNG",
+      "PSY06_SUBABUSE_03.PNG"
+    ],
+    "mh-mh-07-attention-deficit-disorder": [
+      "PSY07_ADHD_01.PNG"
+    ],
+    "mh-mh-08-autism-spectrum": [
+      "PSY08_ASD_01.PNG",
+      "PSY08_ASD_02.PNG"
+    ],
+    "ns-ns-01-nursing-ethics": [
+      "NS01_ETHICS_01.PNG",
+      "NS01_ETHICS_02.PNG",
+      "NS01_ETHICS_03.PNG",
+      "NS01_ETHICS_04.PNG"
+    ],
+    "ns-ns-02-nursing-delegation": [
+      "NS02_DELEGATI_01.PNG",
+      "NS02_DELEGATI_02.PNG"
+    ],
+    "ns-ns-03-prioritization": [
+      "NS03_PRIORITI_01.PNG",
+      "NS03_PRIORITI_02.PNG"
+    ],
+    "ns-ns-04-culture": [
+      "NS04_CULTURE_01.PNG",
+      "NS04_CULTURE_02.PNG",
+      "NS04_CULTURE_03.PNG"
+    ],
+    "ns-ns-05-leadership": [
+      "NS05_LEADERSH_01.PNG",
+      "NS05_LEADERSH_02.PNG"
+    ]
+  }
+}

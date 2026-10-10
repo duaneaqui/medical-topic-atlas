@@ -7,51 +7,152 @@ export const patientUnits = [
     image: `${import.meta.env.BASE_URL}assets/patient-units/pu-unit-mb-mother-baby.png`,
     topics: [
       {
-        id: "mb-pregnancy",
-        title: "Pregnancy",
+        id: "mb-pregnancy-and-delivery",
+        title: "Pregnancy and Delivery",
         visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-mb-pregnancy.png`,
         cards: [
-          { id: "mb-mb-00-pregnancy", code: "MB 00", short: "ANTE", title: "Pregnancy", faces: 5 }
-        ]
+          {
+            id: "mb-mb-01-pregnancy",
+            code: "MB 01",
+            short: "PREG",
+            title: "Pregnancy",
+            faces: 8,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/mb/ob01_pregnanc_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mb/ob01_pregnanc_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mb/ob01_pregnanc_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mb/ob01_pregnanc_04.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mb/ob01_pregnanc_05.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mb/ob01_pregnanc_06.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mb/ob01_pregnanc_07.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mb/ob01_pregnanc_08.webp`,
+            ],
+          },
+          {
+            id: "mb-mb-01-labor-and-delivery",
+            code: "MB 01",
+            short: "LND",
+            title: "Labor and Delivery",
+            faces: 5,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/mb/ob02_labor_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mb/ob02_labor_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mb/ob02_labor_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mb/ob02_labor_04.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mb/ob02_labor_05.webp`,
+            ],
+          },
+        ],
       },
       {
-        id: "mb-labor-delivery",
-        title: "L&D",
-        visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-mb-labor-delivery.png`,
-        cards: [
-          { id: "mb-mb-00-labor-delivery", code: "MB 00", short: "L&D", title: "Labor and Delivery", faces: 5 }
-        ]
-      },
-      {
-        id: "mb-obstetrical-issues",
-        title: "Obstetrical Issues",
+        id: "mb-delivery-issues",
+        title: "Delivery Issues",
         visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-mb-obstetrical-issues.png`,
         cards: [
-          { id: "mb-mb-01-gestational-issues", code: "MB 01", short: "GS", title: "Gestational Issues", faces: 2 },
-          { id: "mb-mb-02-fetal-malpositions", code: "MB 02", short: "FET", title: "Fetal Malpositions", faces: 2 },
-          { id: "mb-mb-03-c-section", code: "MB 03", short: "CS", title: "C-Section", faces: 1 }
-        ]
+          {
+            id: "mb-mb-02-gestational-issues",
+            code: "MB 02",
+            short: "GSI",
+            title: "Gestational Issues",
+            faces: 2,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/mb/ob03_gestatio_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mb/ob03_gestatio_02.webp`,
+            ],
+          },
+          {
+            id: "mb-mb-03-fetal-malpositions",
+            code: "MB 03",
+            short: "FETM",
+            title: "Fetal Malpositions",
+            faces: 2,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/mb/ob04_fetalmal_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mb/ob04_fetalmal_02.webp`,
+            ],
+          },
+          {
+            id: "mb-mb-04-c-section",
+            code: "MB 04",
+            short: "CS",
+            title: "C-Section",
+            faces: 1,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/mb/ob05_csection_01.webp`,
+            ],
+          },
+        ],
       },
       {
-        id: "mb-postpartum-issues",
+        id: "mb-post-partum-issues",
         title: "Post-partum Issues",
         visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-mb-postpartum-issues.png`,
         cards: [
-          { id: "mb-mb-04-postpartum-issues", code: "MB 04", short: "PP", title: "Post-partum Issues", faces: 2 },
-          { id: "mb-mb-05-premature-birth", code: "MB 05", short: "PreT", title: "Premature Birth", faces: 1 },
-          { id: "mb-mb-06-hyperbilirubinemia", code: "MB 06", short: "HypB", title: "Hyperbilirubinemia", faces: 1 },
-          { id: "mb-mb-07-hydrocephalus", code: "MB 07", short: "Hydro", title: "Hydrocephalus", faces: 1 }
-        ]
+          {
+            id: "mb-mb-05-post-partum-issues",
+            code: "MB 05",
+            short: "PP",
+            title: "Post-partum Issues",
+            faces: 2,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/mb/ob06_postpart_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mb/ob06_postpart_02.webp`,
+            ],
+          },
+          {
+            id: "mb-mb-06-premature-birth",
+            code: "MB 06",
+            short: "PreT",
+            title: "Premature Birth",
+            faces: 1,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/mb/ob07_prematur_01.webp`,
+            ],
+          },
+          {
+            id: "mb-mb-07-hyperbilirubinemia",
+            code: "MB 07",
+            short: "HypB",
+            title: "Hyperbilirubinemia",
+            faces: 1,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/mb/ob08_hyperbil_01.webp`,
+            ],
+          },
+          {
+            id: "mb-mb-08-hydrocephalus",
+            code: "MB 08",
+            short: "Hydro",
+            title: "Hydrocephalus",
+            faces: 1,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/mb/ob09_hydrocep_01.webp`,
+            ],
+          },
+        ],
       },
       {
-        id: "mb-congenital-heart-issues",
-        title: "Congenital Heart Issues",
+        id: "mb-congenital-heart-diseases",
+        title: "Congenital Heart Diseases",
         visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-mb-congenital-heart-issues.png`,
         cards: [
-          { id: "mb-mb-08-congenital-heart-issues", code: "MB 08", short: "CHD", title: "Congenital Heart Issues", faces: 5 }
-        ]
-      }
-    ]
+          {
+            id: "mb-mb-09-congenital-heart-issues",
+            code: "MB 09",
+            short: "CHD",
+            title: "Congenital Heart Issues",
+            faces: 5,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/mb/ob10_congenit_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mb/ob10_congenit_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mb/ob10_congenit_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mb/ob10_congenit_04.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mb/ob10_congenit_05.webp`,
+            ],
+          },
+        ],
+      },
+    ],
   },
   {
     id: "PD",
@@ -61,135 +162,372 @@ export const patientUnits = [
     image: `${import.meta.env.BASE_URL}assets/patient-units/pu-unit-pd-pediatrics.png`,
     topics: [
       {
-        id: "pd-neonate",
-        title: "Neonate",
+        id: "pd-from-birth",
+        title: "From birth",
         visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-pd-neonate.png`,
         cards: [
-          { id: "pd-pd-00-neonate", code: "PD 00", short: "NEO", title: "Neonate", faces: 3 }
-        ]
+          {
+            id: "pd-pd-00-neonate",
+            code: "PD 00",
+            short: "Neo",
+            title: "Neonate",
+            faces: 4,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/pd/ped01_neonate_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/pd/ped01_neonate_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/pd/ped01_neonate_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/pd/ped01_neonate_04.webp`,
+            ],
+          },
+          {
+            id: "pd-pd-01-age-development",
+            code: "PD 01",
+            short: "ADev",
+            title: "Age Development",
+            faces: 6,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/pd/ped02_agedev_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/pd/ped02_agedev_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/pd/ped02_agedev_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/pd/ped02_agedev_04.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/pd/ped02_agedev_05.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/pd/ped02_agedev_06.webp`,
+            ],
+          },
+          {
+            id: "pd-pd-02-immunization",
+            code: "PD 02",
+            short: "IMZ",
+            title: "Immunization",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/pd/ped03_imm_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/pd/ped03_imm_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/pd/ped03_imm_03.webp`,
+            ],
+          },
+        ],
       },
       {
-        id: "pd-age-development",
-        title: "Age Development",
-        visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-pd-age-development.png`,
-        cards: [
-          { id: "pd-pd-01-age-development", code: "PD 01", short: "Dev", title: "Age Development", faces: 4 },
-          { id: "pd-pd-02-immunization", code: "PD 02", short: "IMZ", title: "Immunization", faces: 3 }
-        ]
-      },
-      {
-        id: "pd-body-systems-1",
-        title: "Body Systems 1",
+        id: "pd-common-issues-by-system",
+        title: "Common Issues by System",
         visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-pd-body-systems-1.png`,
         cards: [
-          { id: "pd-pd-03-respiratory-issues", code: "PD 03", short: "Respi", title: "Respiratory Issues", faces: 3 },
-          { id: "pd-pd-04-cardiovascular-issues", code: "PD 04", short: "Cardio", title: "Cardiovascular Issues", faces: 4 }
-        ]
-      },
-      {
-        id: "pd-body-systems-2",
-        title: "Body Systems 2",
-        visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-pd-body-systems-2.png`,
-        cards: [
-          { id: "pd-pd-05-gi-issues", code: "PD 05", short: "GI", title: "GI Issues", faces: 2 },
-          { id: "pd-pd-06-endocrine-issues", code: "PD 06", short: "Endo", title: "Endocrine Issues", faces: 3 }
-        ]
-      },
-      {
-        id: "pd-neuro-issues",
-        title: "Neuro Issues",
-        visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-pd-neuro-issues.png`,
-        cards: [
-          { id: "pd-pd-07-neurological-issues", code: "PD 07", short: "Neuro", title: "Neurological Issues", faces: 3 }
-        ]
+          {
+            id: "pd-pd-03-respiratory-issues",
+            code: "PD 03",
+            short: "Respi",
+            title: "Respiratory Issues",
+            faces: 5,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/pd/ped04_respirat_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/pd/ped04_respirat_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/pd/ped04_respirat_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/pd/ped04_respirat_04.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/pd/ped04_respirat_05.webp`,
+            ],
+          },
+          {
+            id: "pd-pd-04-cardiovascular-issues",
+            code: "PD 04",
+            short: "Cardio",
+            title: "Cardiovascular Issues",
+            faces: 6,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/pd/ped05_cardiova_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/pd/ped05_cardiova_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/pd/ped05_cardiova_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/pd/ped05_cardiova_04.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/pd/ped05_cardiova_05.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/pd/ped05_cardiova_06.webp`,
+            ],
+          },
+          {
+            id: "pd-pd-05-gi-issues",
+            code: "PD 05",
+            short: "GI",
+            title: "GI Issues",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/pd/ped06_giissues_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/pd/ped06_giissues_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/pd/ped06_giissues_03.webp`,
+            ],
+          },
+          {
+            id: "pd-pd-06-endocrine-issues",
+            code: "PD 06",
+            short: "Endo",
+            title: "Endocrine Issues",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/pd/ped07_endocrin_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/pd/ped07_endocrin_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/pd/ped07_endocrin_03.webp`,
+            ],
+          },
+          {
+            id: "pd-pd-07-neurological-issues",
+            code: "PD 07",
+            short: "Neuro",
+            title: "Neurological Issues",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/pd/ped08_neuro_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/pd/ped08_neuro_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/pd/ped08_neuro_03.webp`,
+            ],
+          },
+        ],
       },
       {
         id: "pd-other-topics",
         title: "Other Topics",
         visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-pd-other-topics.png`,
         cards: [
-          { id: "pd-etc-pediatric-issues", code: "ETC", short: "ETC", title: "Pediatric Issues", faces: 3 }
-        ]
-      }
-    ]
+          {
+            id: "pd-pd-08-pediatric-etc",
+            code: "PD 08",
+            short: "ETC",
+            title: "Pediatric ETC",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/pd/ped09_etc_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/pd/ped09_etc_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/pd/ped09_etc_03.webp`,
+            ],
+          },
+        ],
+      },
+    ],
   },
   {
     id: "MS",
     index: "15",
-    title: "Med Surg",
+    title: "Med-Surg",
     unit: "Ward / Fundamentals",
     image: `${import.meta.env.BASE_URL}assets/patient-units/pu-unit-ms-med-surg.png`,
     topics: [
       {
-        id: "ms-physical-assessment",
-        title: "Physical Assessment",
+        id: "ms-assessment",
+        title: "Assessment",
         visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-ms-physical-assessment.png`,
         cards: [
-          { id: "ms-ms-01-assessment", code: "MS 01", short: "ASM", title: "Assessment", faces: 8 }
-        ]
+          {
+            id: "ms-ms-01-assessment",
+            code: "MS 01",
+            short: "ASM",
+            title: "Assessment",
+            faces: 9,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms01_assessme_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms01_assessme_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms01_assessme_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms01_assessme_04.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms01_assessme_05.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms01_assessme_06.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms01_assessme_07.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms01_assessme_08.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms01_assessme_09.webp`,
+            ],
+          },
+        ],
       },
       {
-        id: "ms-gait-and-traction",
-        title: "Gait and Traction",
+        id: "ms-med-surg-concerns-1",
+        title: "Med-surg concerns 1",
         visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-ms-gait-and-traction.png`,
         cards: [
-          { id: "ms-ms-02-gait-and-crutches", code: "MS 02", short: "ASW", title: "Gait and Crutches", faces: 3 },
-          { id: "ms-ms-03-traction", code: "MS 03", short: "Trac", title: "Traction", faces: 2 }
-        ]
+          {
+            id: "ms-ms-02-gait-and-crutches",
+            code: "MS 02",
+            short: "ASW",
+            title: "Gait and Crutches",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms02_gait_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms02_gait_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms02_gait_03.webp`,
+            ],
+          },
+          {
+            id: "ms-ms-03-traction",
+            code: "MS 03",
+            short: "Trac",
+            title: "Traction",
+            faces: 2,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms03_traction_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms03_traction_02.webp`,
+            ],
+          },
+          {
+            id: "ms-ms-04-pressure-sores",
+            code: "MS 04",
+            short: "Ulcer",
+            title: "Pressure Sores",
+            faces: 2,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms04_pressure_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms04_pressure_02.webp`,
+            ],
+          },
+          {
+            id: "ms-ms-05-wound-care",
+            code: "MS 05",
+            short: "WC",
+            title: "Wound Care",
+            faces: 5,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms05_woundcar_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms05_woundcar_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms05_woundcar_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms05_woundcar_04.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms05_woundcar_05.webp`,
+            ],
+          },
+          {
+            id: "ms-ms-06-restraints",
+            code: "MS 06",
+            short: "Res",
+            title: "Restraints",
+            faces: 2,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms06_restrain_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms06_restrain_02.webp`,
+            ],
+          },
+        ],
       },
       {
-        id: "ms-wounds-and-restraints",
-        title: "Wounds and Restraints",
-        visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-ms-wounds-and-restraints.png`,
-        cards: [
-          { id: "ms-ms-04-pressure-sores", code: "MS 04", short: "Ulcer", title: "Pressure Sores", faces: 2 },
-          { id: "ms-ms-05-wound-care", code: "MS 05", short: "WC", title: "Wound Care", faces: 5 },
-          { id: "ms-ms-06-restraints", code: "MS 06", short: "Res", title: "Restraints", faces: 2 }
-        ]
-      },
-      {
-        id: "ms-food",
-        title: "Food",
+        id: "ms-diets-and-herbs",
+        title: "Diets and Herbs",
         visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-ms-food.png`,
         cards: [
-          { id: "ms-ms-07-nutrition", code: "MS 07", short: "Food", title: "Nutrition", faces: 10 },
-          { id: "ms-ms-08-herbal-supplements", code: "MS 08", short: "Herb", title: "Herbal Supplements", faces: 4 }
-        ]
+          {
+            id: "ms-ms-07-nutrition",
+            code: "MS 07",
+            short: "Food",
+            title: "Nutrition",
+            faces: 10,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms07_nutritio_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms07_nutritio_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms07_nutritio_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms07_nutritio_04.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms07_nutritio_05.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms07_nutritio_06.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms07_nutritio_07.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms07_nutritio_08.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms07_nutritio_09.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms07_nutritio_10.webp`,
+            ],
+          },
+          {
+            id: "ms-ms-08-herbal-supplements",
+            code: "MS 08",
+            short: "Herb",
+            title: "Herbal Supplements",
+            faces: 4,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms08_herbals_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms08_herbals_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms08_herbals_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms08_herbals_04.webp`,
+            ],
+          },
+        ],
       },
       {
-        id: "ms-iv-therapy",
-        title: "IV Therapy",
-        visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-ms-iv-therapy.png`,
-        cards: [
-          { id: "ms-ms-09-iv-therapy", code: "MS 09", short: "IV", title: "IV Therapy", faces: 3 }
-        ]
-      },
-      {
-        id: "ms-clinical-signs",
-        title: "Clinical Signs",
-        visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-ms-clinical-signs.png`,
-        cards: [
-          { id: "ms-ms-10-clinical-signs", code: "MS 10", short: "Abrv", title: "Clinical Signs", faces: 2 }
-        ]
-      },
-      {
-        id: "ms-medications",
-        title: "Medications",
+        id: "ms-med-surg-concerns-2",
+        title: "Med-surg concerns 2",
         visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-ms-medications.png`,
         cards: [
-          { id: "ms-ms-11-food-drug-interactions", code: "MS 11", short: "FDI", title: "Food-Drug Interactions", faces: 2 },
-          { id: "ms-ms-12-medication-administration", code: "MS 12", short: "Rx", title: "Medication Administration", faces: 5 }
-        ]
+          {
+            id: "ms-ms-09-iv-therapy",
+            code: "MS 09",
+            short: "IV",
+            title: "IV Therapy",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms09_iv_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms09_iv_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms09_iv_03.webp`,
+            ],
+          },
+          {
+            id: "ms-ms-10-clinical-signs",
+            code: "MS 10",
+            short: "Abrv",
+            title: "Clinical Signs",
+            faces: 2,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms10_clinical_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms10_clinical_02.webp`,
+            ],
+          },
+          {
+            id: "ms-ms-11-food-drug-interactions",
+            code: "MS 11",
+            short: "FDI",
+            title: "Food-Drug Interactions",
+            faces: 2,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms11_fooddrug_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms11_fooddrug_02.webp`,
+            ],
+          },
+          {
+            id: "ms-ms-12-medication-administration",
+            code: "MS 12",
+            short: "Rx",
+            title: "Medication Administration",
+            faces: 5,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms12_medadmin_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms12_medadmin_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms12_medadmin_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms12_medadmin_04.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms12_medadmin_05.webp`,
+            ],
+          },
+        ],
       },
       {
-        id: "ms-diagnostics",
-        title: "Diagnostics",
+        id: "ms-diagnostic-procedures",
+        title: "Diagnostic Procedures",
         visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-ms-diagnostics.png`,
         cards: [
-          { id: "ms-ms-13-common-diagnostics", code: "MS 13", short: "Dx", title: "Common Diagnostics", faces: 18 }
-        ]
-      }
-    ]
+          {
+            id: "ms-ms-13-common-diagnostics",
+            code: "MS 13",
+            short: "Dx",
+            title: "Common Diagnostics",
+            faces: 18,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms13_commondx_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms13_commondx_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms13_commondx_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms13_commondx_04.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms13_commondx_05.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms13_commondx_06.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms13_commondx_07.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms13_commondx_08.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms13_commondx_09.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms13_commondx_10.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms13_commondx_11.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms13_commondx_12.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms13_commondx_13.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms13_commondx_14.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms13_commondx_15.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms13_commondx_16.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms13_commondx_17.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ms/ms13_commondx_18.webp`,
+            ],
+          },
+        ],
+      },
+    ],
   },
   {
     id: "CC",
@@ -199,118 +537,304 @@ export const patientUnits = [
     image: `${import.meta.env.BASE_URL}assets/patient-units/pu-unit-cc-critical-care.png`,
     topics: [
       {
-        id: "cc-hemodynamics",
-        title: "Hemodynamics",
+        id: "cc-hemodynamics-concepts",
+        title: "Hemodynamics Concepts",
         visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-cc-hemodynamics.png`,
         cards: [
-          { id: "cc-cc-01-hemodynamics", code: "CC 01", short: "HDM", title: "Hemodynamics", faces: 3 }
-        ]
+          {
+            id: "cc-cc-01-hemodynamics",
+            code: "CC 01",
+            short: "HDM",
+            title: "Hemodynamics",
+            faces: 4,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/cc/icu01_hemodyna_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cc/icu01_hemodyna_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cc/icu01_hemodyna_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cc/icu01_hemodyna_04.webp`,
+            ],
+          },
+        ],
       },
       {
         id: "cc-tubes-and-drains",
         title: "Tubes and Drains",
         visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-cc-tubes-and-drains.png`,
         cards: [
-          { id: "cc-cc-02-tubes-and-drains", code: "CC 02", short: "TDr", title: "Tubes and Drains", faces: 7 }
-        ]
+          {
+            id: "cc-cc-02-tubes-and-drains",
+            code: "CC 02",
+            short: "TDr",
+            title: "Tubes and Drains",
+            faces: 9,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/cc/icu02_tubes_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cc/icu02_tubes_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cc/icu02_tubes_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cc/icu02_tubes_04.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cc/icu02_tubes_05.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cc/icu02_tubes_06.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cc/icu02_tubes_07.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cc/icu02_tubes_08.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cc/icu02_tubes_09.webp`,
+            ],
+          },
+        ],
       },
       {
-        id: "cc-oxygen",
-        title: "Oxygen",
+        id: "cc-oxygen-and-ventilators",
+        title: "Oxygen and Ventilators",
         visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-cc-oxygen.png`,
         cards: [
-          { id: "cc-cc-03-oxygen-and-ventilators", code: "CC 03", short: "Vent", title: "Oxygen and Ventilators", faces: 2 }
-        ]
-      },
-      {
-        id: "cc-periop-care",
-        title: "Periop Care",
-        visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-cc-periop-care.png`,
-        cards: [
-          { id: "cc-cc-04-perioperative-care", code: "CC 04", short: "Ops", title: "Perioperative Care", faces: 13 }
-        ]
+          {
+            id: "cc-cc-03-oxygen-and-ventilators",
+            code: "CC 03",
+            short: "Vent",
+            title: "Oxygen and Ventilators",
+            faces: 4,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/cc/icu03_ventilat_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cc/icu03_ventilat_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cc/icu03_ventilat_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cc/icu03_ventilat_04.webp`,
+            ],
+          },
+        ],
       },
       {
         id: "cc-blood-products",
         title: "Blood Products",
         visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-cc-blood-products.png`,
         cards: [
-          { id: "cc-cc-05-blood-products", code: "CC 05", short: "Blood", title: "Blood Products", faces: 3 }
-        ]
-      }
-    ]
+          {
+            id: "cc-cc-04-blood-products",
+            code: "CC 04",
+            short: "Blood",
+            title: "Blood Products",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/cc/icu04_blood_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cc/icu04_blood_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cc/icu04_blood_03.webp`,
+            ],
+          },
+        ],
+      },
+      {
+        id: "cc-perioperative-care",
+        title: "Perioperative Care",
+        visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-cc-periop-care.png`,
+        cards: [
+          {
+            id: "cc-cc-05-perioperative-care",
+            code: "CC 05",
+            short: "Ops",
+            title: "Perioperative Care",
+            faces: 13,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/cc/icu05_periop_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cc/icu05_periop_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cc/icu05_periop_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cc/icu05_periop_04.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cc/icu05_periop_05.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cc/icu05_periop_06.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cc/icu05_periop_07.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cc/icu05_periop_08.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cc/icu05_periop_09.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cc/icu05_periop_10.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cc/icu05_periop_11.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cc/icu05_periop_12.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cc/icu05_periop_13.webp`,
+            ],
+          },
+        ],
+      },
+    ],
   },
   {
     id: "ER",
     index: "17",
-    title: "Emergency Department",
+    title: "Emergency",
     unit: "Triage / Resuscitation",
     image: `${import.meta.env.BASE_URL}assets/patient-units/pu-unit-er-emergency.png`,
     topics: [
       {
-        id: "er-cardiac-arrest",
-        title: "Cardiac Arrest",
+        id: "er-priority-triage",
+        title: "Priority (Triage)",
         visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-er-cardiac-arrest.png`,
         cards: [
-          { id: "er-er-01-cardiac-arrest", code: "ER 01", short: "CArr", title: "Cardiac Arrest", faces: 3 }
-        ]
+          {
+            id: "er-er-00-er-triage",
+            code: "ER 00",
+            short: "TRI",
+            title: "ER Triage",
+            faces: 1,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/er/er01_triage_01.webp`,
+            ],
+          },
+        ],
       },
       {
-        id: "er-shock-and-syncope",
-        title: "Shock and Syncope",
+        id: "er-heart-and-circulation",
+        title: "Heart and Circulation",
         visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-er-shock-and-syncope.png`,
         cards: [
-          { id: "er-er-02-shock", code: "ER 02", short: "SHK", title: "Shock", faces: 2 },
-          { id: "er-er-03-syncope", code: "ER 03", short: "Sync", title: "Syncope", faces: 1 }
-        ]
+          {
+            id: "er-er-01-cardiac-arrest",
+            code: "ER 01",
+            short: "CArr",
+            title: "Cardiac Arrest",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/er/er02_carrest_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/er/er02_carrest_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/er/er02_carrest_03.webp`,
+            ],
+          },
+          {
+            id: "er-er-02-shock",
+            code: "ER 02",
+            short: "Shock",
+            title: "Shock",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/er/er03_shock_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/er/er03_shock_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/er/er03_shock_03.webp`,
+            ],
+          },
+          {
+            id: "er-er-03-burns",
+            code: "ER 03",
+            short: "Burn",
+            title: "Burns",
+            faces: 2,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/er/er04_burns_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/er/er04_burns_02.webp`,
+            ],
+          },
+        ],
       },
       {
-        id: "er-skin-emergencies",
-        title: "Skin Emergencies",
-        visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-er-skin-emergencies.png`,
-        cards: [
-          { id: "er-er-04-burns", code: "ER 04", short: "Burn", title: "Burns", faces: 2 },
-          { id: "er-er-05-bites-and-stings", code: "ER 05", short: "Bite", title: "Bites and Stings", faces: 2 },
-          { id: "er-er-06-frostbite", code: "ER 06", short: "Frost", title: "Frostbite", faces: 1 }
-        ]
-      },
-      {
-        id: "er-nervous-system-issues",
-        title: "Nervous System Issues",
+        id: "er-er-issues-by-system",
+        title: "ER Issues by System",
         visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-er-nervous-system-issues.png`,
         cards: [
-          { id: "er-er-07-brain-injuries", code: "ER 07", short: "Brain", title: "Brain Injuries", faces: 2 },
-          { id: "er-er-08-spinal-cord-injury", code: "ER 08", short: "Spine", title: "Spinal Cord Injury", faces: 1 }
-        ]
+          {
+            id: "er-er-04-brain-injuries",
+            code: "ER 04",
+            short: "Brain",
+            title: "Brain Injuries",
+            faces: 2,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/er/er05_headinju_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/er/er05_headinju_02.webp`,
+            ],
+          },
+          {
+            id: "er-er-05-spinal-cord-injury",
+            code: "ER 05",
+            short: "Spine",
+            title: "Spinal Cord Injury",
+            faces: 2,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/er/er06_spinalco_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/er/er06_spinalco_02.webp`,
+            ],
+          },
+          {
+            id: "er-er-06-respiratory-emergencies",
+            code: "ER 06",
+            short: "Respi",
+            title: "Respiratory Emergencies",
+            faces: 5,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/er/er07_respirat_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/er/er07_respirat_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/er/er07_respirat_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/er/er07_respirat_04.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/er/er07_respirat_05.webp`,
+            ],
+          },
+          {
+            id: "er-er-07-endocrine-emergencies",
+            code: "ER 07",
+            short: "Endo",
+            title: "Endocrine Emergencies",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/er/er08_endocrin_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/er/er08_endocrin_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/er/er08_endocrin_03.webp`,
+            ],
+          },
+          {
+            id: "er-er-08-ob-emergencies",
+            code: "ER 08",
+            short: "OB-E",
+            title: "OB Emergencies",
+            faces: 2,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/er/er09_obemerge_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/er/er09_obemerge_02.webp`,
+            ],
+          },
+        ],
       },
       {
-        id: "er-bone-issue",
-        title: "Bone Issue",
-        visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-er-bone-issue.png`,
-        cards: [
-          { id: "er-er-09-fractures", code: "ER 09", short: "Frac", title: "Fractures", faces: 2 }
-        ]
-      },
-      {
-        id: "er-endocrine-emergencies",
-        title: "Endocrine Emergencies",
-        visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-er-endocrine-emergencies.png`,
-        cards: [
-          { id: "er-er-10-diabetic-emergencies", code: "ER 10", short: "DM-E", title: "Diabetic Emergencies", faces: 2 },
-          { id: "er-er-11-endocrine-emergencies", code: "ER 11", short: "Endo", title: "Endocrine Emergencies", faces: 1 }
-        ]
-      },
-      {
-        id: "er-other-emergencies",
-        title: "Other Emergencies",
+        id: "er-other-er-issues",
+        title: "Other ER Issues",
         visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-er-other-emergencies.png`,
         cards: [
-          { id: "er-er-12-respiratory-emergencies", code: "ER 12", short: "Resp", title: "Respiratory Emergencies", faces: 2 },
-          { id: "er-er-13-poisoning", code: "ER 13", short: "PSN", title: "Poisoning", faces: 1 },
-          { id: "er-er-14-ob-emergencies", code: "ER 14", short: "OB-E", title: "OB Emergencies", faces: 2 }
-        ]
-      }
-    ]
+          {
+            id: "er-er-09-fractures",
+            code: "ER 09",
+            short: "Frac",
+            title: "Fractures",
+            faces: 2,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/er/er10_fracture_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/er/er10_fracture_02.webp`,
+            ],
+          },
+          {
+            id: "er-er-10-poisoning",
+            code: "ER 10",
+            short: "PSN",
+            title: "Poisoning",
+            faces: 2,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/er/er11_poison_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/er/er11_poison_02.webp`,
+            ],
+          },
+          {
+            id: "er-er-11-bites-and-stings",
+            code: "ER 11",
+            short: "Bite",
+            title: "Bites and Stings",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/er/er12_bites_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/er/er12_bites_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/er/er12_bites_03.webp`,
+            ],
+          },
+          {
+            id: "er-er-12-frostbite",
+            code: "ER 12",
+            short: "Frost",
+            title: "Frostbite",
+            faces: 1,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/er/er13_frostbit_01.webp`,
+            ],
+          },
+        ],
+      },
+    ],
   },
   {
     id: "MH",
@@ -320,57 +844,135 @@ export const patientUnits = [
     image: `${import.meta.env.BASE_URL}assets/patient-units/pu-unit-mh-mental-health.png`,
     topics: [
       {
-        id: "mh-communication",
-        title: "Communication",
-        visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-mh-communication.png`,
-        cards: [
-          { id: "mh-mh-01-therapeutic-communication", code: "MH 01", short: "TC", title: "Therapeutic Communication", faces: 4 }
-        ]
-      },
-      {
-        id: "mh-anxiety-and-mood",
-        title: "Anxiety and Mood",
-        visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-mh-anxiety-and-mood.png`,
-        cards: [
-          { id: "mh-mh-02-anxiety-disorders", code: "MH 02", short: "AD", title: "Anxiety Disorders", faces: 2 },
-          { id: "mh-mh-03-mood-disorders", code: "MH 03", short: "MD", title: "Mood Disorders", faces: 2 }
-        ]
-      },
-      {
-        id: "mh-psych-and-personality",
-        title: "Psych and Personality",
-        visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-mh-psych-and-personality.png`,
-        cards: [
-          { id: "mh-mh-04-psychotic-disorders", code: "MH 04", short: "Psy", title: "Psychotic Disorders", faces: 3 },
-          { id: "mh-mh-05-personality-disorders", code: "MH 05", short: "Pers", title: "Personality Disorders", faces: 2 }
-        ]
-      },
-      {
-        id: "mh-add-and-asd",
-        title: "ADD and ASD",
-        visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-mh-add-and-asd.png`,
-        cards: [
-          { id: "mh-mh-06-attention-deficit-disorder", code: "MH 06", short: "ADHD", title: "Attention-deficit Disorder", faces: 1 },
-          { id: "mh-mh-07-autism-spectrum", code: "MH 07", short: "ASD", title: "Autism Spectrum", faces: 2 }
-        ]
-      },
-      {
-        id: "mh-substance-abuse",
-        title: "Substance Abuse",
-        visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-mh-substance-abuse.png`,
-        cards: [
-          { id: "mh-mh-08-substance-abuse", code: "MH 08", short: "Subst", title: "Substance Abuse", faces: 2 }
-        ]
-      },
-      {
-        id: "mh-psych-meds",
-        title: "Psych Meds",
+        id: "mh-psych-medications",
+        title: "Psych Medications",
         visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-mh-psych-meds.png`,
         cards: [
-          { id: "mh-etc-medications", code: "ETC", short: "ETC", title: "Medications", faces: 4 }
-        ]
-      }
-    ]
+          {
+            id: "mh-mh-01-psych-meds",
+            code: "MH 01",
+            short: "MEDS",
+            title: "Psych Meds",
+            faces: 4,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/mh/psy01_meds_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mh/psy01_meds_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mh/psy01_meds_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mh/psy01_meds_04.webp`,
+            ],
+          },
+        ],
+      },
+      {
+        id: "mh-therapeutic-communication",
+        title: "Therapeutic Communication",
+        visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-mh-communication.png`,
+        cards: [
+          {
+            id: "mh-mh-02-therapeutic-communication",
+            code: "MH 02",
+            short: "TC",
+            title: "Therapeutic Communication",
+            faces: 4,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/mh/psy02_therapeu_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mh/psy02_therapeu_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mh/psy02_therapeu_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mh/psy02_therapeu_04.webp`,
+            ],
+          },
+        ],
+      },
+      {
+        id: "mh-mental-health-issues",
+        title: "Mental Health Issues",
+        visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-mh-anxiety-and-mood.png`,
+        cards: [
+          {
+            id: "mh-mh-03-anxiety-disorders",
+            code: "MH 03",
+            short: "AD",
+            title: "Anxiety Disorders",
+            faces: 2,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/mh/psy03_anxiety_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mh/psy03_anxiety_02.webp`,
+            ],
+          },
+          {
+            id: "mh-mh-04-mood-disorders",
+            code: "MH 04",
+            short: "MOOD",
+            title: "Mood Disorders",
+            faces: 2,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/mh/psy04_mood_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mh/psy04_mood_02.webp`,
+            ],
+          },
+          {
+            id: "mh-mh-05-psychotic-disorders",
+            code: "MH 05",
+            short: "Psy",
+            title: "Psychotic Disorders",
+            faces: 4,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/mh/psy05_psychoti_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mh/psy05_psychoti_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mh/psy05_psychoti_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mh/psy05_psychoti_04.webp`,
+            ],
+          },
+        ],
+      },
+      {
+        id: "mh-substance-use-and-abuse",
+        title: "Substance Use and Abuse",
+        visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-mh-substance-abuse.png`,
+        cards: [
+          {
+            id: "mh-mh-06-substance-abuse",
+            code: "MH 06",
+            short: "Subst",
+            title: "Substance Abuse",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/mh/psy06_subabuse_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mh/psy06_subabuse_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mh/psy06_subabuse_03.webp`,
+            ],
+          },
+        ],
+      },
+      {
+        id: "mh-other-mental-health-issues",
+        title: "Other Mental Health Issues",
+        visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-mh-add-and-asd.png`,
+        cards: [
+          {
+            id: "mh-mh-07-attention-deficit-disorder",
+            code: "MH 07",
+            short: "ADHD",
+            title: "Attention-deficit Disorder",
+            faces: 1,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/mh/psy07_adhd_01.webp`,
+            ],
+          },
+          {
+            id: "mh-mh-08-autism-spectrum",
+            code: "MH 08",
+            short: "ASD",
+            title: "Autism Spectrum",
+            faces: 2,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/mh/psy08_asd_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mh/psy08_asd_02.webp`,
+            ],
+          },
+        ],
+      },
+    ],
   },
   {
     id: "NS",
@@ -380,40 +982,86 @@ export const patientUnits = [
     image: `${import.meta.env.BASE_URL}assets/patient-units/pu-unit-ns-nurse-station.png`,
     topics: [
       {
-        id: "ns-nurse-ethics",
-        title: "Nurse Ethics",
+        id: "ns-ethics-and-legal",
+        title: "Ethics and Legal",
         visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-ns-nurse-ethics.png`,
         cards: [
-          { id: "ns-ns-01-nursing-ethics", code: "NS 01", short: "NE", title: "Nursing Ethics", faces: 4 }
-        ]
+          {
+            id: "ns-ns-01-nursing-ethics",
+            code: "NS 01",
+            short: "ETHICS",
+            title: "Nursing Ethics",
+            faces: 4,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/ns/ns01_ethics_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ns/ns01_ethics_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ns/ns01_ethics_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ns/ns01_ethics_04.webp`,
+            ],
+          },
+        ],
       },
       {
-        id: "ns-delegation",
-        title: "Delegation",
+        id: "ns-prioritization-and-delegation",
+        title: "Prioritization and Delegation",
         visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-ns-delegation.png`,
         cards: [
-          { id: "ns-ns-02-nursing-delegation", code: "NS 02", short: "Deleg", title: "Nursing Delegation", faces: 2 }
-        ]
-      },
-      {
-        id: "ns-prioritization",
-        title: "Prioritization",
-        visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-ns-prioritization.png`,
-        cards: [
-          { id: "ns-ns-03-prioritization", code: "NS 03", short: "Pri", title: "Prioritization", faces: 2 }
-        ]
+          {
+            id: "ns-ns-02-nursing-delegation",
+            code: "NS 02",
+            short: "DELEG",
+            title: "Nursing Delegation",
+            faces: 2,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/ns/ns02_delegati_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ns/ns02_delegati_02.webp`,
+            ],
+          },
+          {
+            id: "ns-ns-03-prioritization",
+            code: "NS 03",
+            short: "PRIO",
+            title: "Prioritization",
+            faces: 2,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/ns/ns03_prioriti_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ns/ns03_prioriti_02.webp`,
+            ],
+          },
+        ],
       },
       {
         id: "ns-culture-and-leadership",
         title: "Culture and Leadership",
         visual: `${import.meta.env.BASE_URL}assets/patient-topic-visuals-wide/pu-ns-culture-and-leadership.png`,
         cards: [
-          { id: "ns-ns-04-culture", code: "NS 04", short: "Cltr", title: "Culture", faces: 3 },
-          { id: "ns-ns-05-leadership", code: "NS 05", short: "Lead", title: "Leadership", faces: 2 }
-        ]
-      }
-    ]
-  }
+          {
+            id: "ns-ns-04-culture",
+            code: "NS 04",
+            short: "CLTR",
+            title: "Culture",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/ns/ns04_culture_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ns/ns04_culture_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ns/ns04_culture_03.webp`,
+            ],
+          },
+          {
+            id: "ns-ns-05-leadership",
+            code: "NS 05",
+            short: "LEAD",
+            title: "Leadership",
+            faces: 2,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/ns/ns05_leadersh_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ns/ns05_leadersh_02.webp`,
+            ],
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 export const getPatientUnitById = (id) => patientUnits.find((unit) => unit.id === id);

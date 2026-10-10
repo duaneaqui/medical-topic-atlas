@@ -10,56 +10,149 @@ export const bodySystems = [
         title: "Hypertension",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/cv-hypertension.png`,
         cards: [
-          { id: "cv-cv-01-hypertension", code: "CV 01", short: "HTN", title: "Hypertension", faces: 4 }
-        ]
-      },
-      {
-        id: "cv-cad",
-        title: "CAD",
-        visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/cv-cad.png`,
-        cards: [
-          { id: "cv-cv-02-coronary-artery-disease", code: "CV 02", short: "CAD", title: "Coronary Artery Disease", faces: 3 }
-        ]
+          {
+            id: "cv-cv-01-hypertension",
+            code: "CV 01",
+            short: "HTN",
+            title: "Hypertension",
+            faces: 5,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/cv/cv01_htn_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cv/cv01_htn_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cv/cv01_htn_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cv/cv01_htn_04.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cv/cv01_htn_05.webp`,
+            ],
+          },
+        ],
       },
       {
         id: "cv-heart-related-issues",
-        title: "Heart-related Issues",
+        title: "Heart-related issues",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/cv-heart-related-issues.png`,
         cards: [
-          { id: "cv-cv-03-congestive-heart-failure", code: "CV 03", short: "CHF", title: "Congestive Heart Failure", faces: 2 },
-          { id: "cv-cv-04-valvular-diseases", code: "CV 04", short: "Valve", title: "Valvular Diseases", faces: 3 },
-          { id: "cv-cv-05-cardiomyopathy", code: "CV 05", short: "CMPY", title: "Cardiomyopathy", faces: 2 },
-          { id: "cv-cv-06-pericardial-diseases", code: "CV 06", short: "Peri", title: "Pericardial Diseases", faces: 2 }
-        ]
+          {
+            id: "cv-cv-02-coronary-artery-disease",
+            code: "CV 02",
+            short: "CAD",
+            title: "Coronary Artery Disease",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/cv/cv02_cad_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cv/cv02_cad_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cv/cv02_cad_03.webp`,
+            ],
+          },
+          {
+            id: "cv-cv-03-congestive-heart-failure",
+            code: "CV 03",
+            short: "CHF",
+            title: "Congestive Heart Failure",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/cv/cv03_chf_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cv/cv03_chf_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cv/cv03_chf_03.webp`,
+            ],
+          },
+          {
+            id: "cv-cv-04-cardiac-arrythmias-ecg",
+            code: "CV 04",
+            short: "ECG",
+            title: "Cardiac Arrythmias (ECG)",
+            faces: 6,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/cv/cv04_ecg_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cv/cv04_ecg_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cv/cv04_ecg_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cv/cv04_ecg_04.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cv/cv04_ecg_05.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cv/cv04_ecg_06.webp`,
+            ],
+          },
+        ],
       },
       {
-        id: "cv-peripheral-vascular",
-        title: "Peripheral Vascular",
+        id: "cv-vascular-issues",
+        title: "Vascular issues",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/cv-peripheral-vascular.png`,
         cards: [
-          { id: "cv-cv-07-aortic-aneurysm", code: "CV 07", short: "AA", title: "Aortic Aneurysm", faces: 2 },
-          { id: "cv-cv-08-peripheral-artery-disease", code: "CV 08", short: "PAD", title: "Peripheral Artery Disease", faces: 3 },
-          { id: "cv-cv-09-peripheral-venous-disease", code: "CV 09", short: "PVD", title: "Peripheral Venous Disease", faces: 3 },
-          { id: "cv-cv-10-cholesterol", code: "CV 10", short: "Chol", title: "Cholesterol", faces: 2 }
-        ]
+          {
+            id: "cv-cv-05-aortic-aneurysm",
+            code: "CV 05",
+            short: "AA",
+            title: "Aortic Aneurysm",
+            faces: 2,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/cv/cv05_aa_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cv/cv05_aa_02.webp`,
+            ],
+          },
+          {
+            id: "cv-cv-11-peripheral-artery-disease",
+            code: "CV 11",
+            short: "PAD",
+            title: "Peripheral Artery Disease",
+            faces: 4,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/cv/cv06_pad_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cv/cv06_pad_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cv/cv06_pad_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cv/cv06_pad_04.webp`,
+            ],
+          },
+          {
+            id: "cv-cv-07-peripheral-venous-disease",
+            code: "CV 07",
+            short: "PVD",
+            title: "Peripheral Venous Disease",
+            faces: 5,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/cv/cv07_pvd_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cv/cv07_pvd_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cv/cv07_pvd_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cv/cv07_pvd_04.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cv/cv07_pvd_05.webp`,
+            ],
+          },
+          {
+            id: "cv-cv-08-cholesterol",
+            code: "CV 08",
+            short: "Chol",
+            title: "Cholesterol",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/cv/cv08_chol_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cv/cv08_chol_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cv/cv08_chol_03.webp`,
+            ],
+          },
+        ],
       },
       {
-        id: "cv-ecg",
-        title: "ECG",
-        visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/cv-ecg.png`,
-        cards: [
-          { id: "cv-cv-11-cardiac-arrythmias-ecg", code: "CV 11", short: "ECG", title: "Cardiac Arrythmias (ECG)", faces: 5 }
-        ]
-      },
-      {
-        id: "cv-other-topics",
-        title: "Other Topics",
+        id: "cv-other-issues",
+        title: "Other Issues",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/cv-other-topics.png`,
         cards: [
-          { id: "cv-etc-etc-cardiac", code: "ETC", short: "ETC", title: "ETC Cardiac", faces: 6 }
-        ]
-      }
-    ]
+          {
+            id: "cv-cv-09-etc-cardiac",
+            code: "CV 09",
+            short: "ETC",
+            title: "ETC Cardiac",
+            faces: 7,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/cv/cv09_etc_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cv/cv09_etc_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cv/cv09_etc_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cv/cv09_etc_04.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cv/cv09_etc_05.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cv/cv09_etc_06.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/cv/cv09_etc_07.webp`,
+            ],
+          },
+        ],
+      },
+    ],
   },
   {
     id: "RS",
@@ -72,44 +165,128 @@ export const bodySystems = [
         title: "Obstructive Diseases",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/rs-obstructive-diseases.png`,
         cards: [
-          { id: "rs-rs-01-asthma", code: "RS 01", short: "ASTH", title: "Asthma", faces: 3 },
-          { id: "rs-rs-02-obstructive-pulmonary-disease", code: "RS 02", short: "COPD", title: "Obstructive Pulmonary Disease", faces: 3 }
-        ]
+          {
+            id: "rs-rs-01-asthma",
+            code: "RS 01",
+            short: "ASTH",
+            title: "Asthma",
+            faces: 5,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/rs/rs01_asth_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/rs/rs01_asth_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/rs/rs01_asth_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/rs/rs01_asth_04.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/rs/rs01_asth_05.webp`,
+            ],
+          },
+          {
+            id: "rs-rs-02-obstructive-pulmonary-disease",
+            code: "RS 02",
+            short: "COPD",
+            title: "Obstructive Pulmonary Disease",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/rs/rs02_copd_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/rs/rs02_copd_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/rs/rs02_copd_03.webp`,
+            ],
+          },
+          {
+            id: "rs-rs-03-acute-respiratory-distress",
+            code: "RS 03",
+            short: "ARDS",
+            title: "Acute Respiratory Distress",
+            faces: 2,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/rs/rs03_ards_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/rs/rs03_ards_02.webp`,
+            ],
+          },
+        ],
       },
       {
         id: "rs-fluid-related",
-        title: "Fluid-Related",
+        title: "Fluid-related",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/rs-fluid-related.png`,
         cards: [
-          { id: "rs-rs-03-acute-respiratory-distress", code: "RS 03", short: "ARDS", title: "Acute Respiratory Distress", faces: 2 },
-          { id: "rs-rs-04-pleural-effusion", code: "RS 04", short: "PEff", title: "Pleural Effusion", faces: 3 }
-        ]
+          {
+            id: "rs-rs-04-pleural-effusion",
+            code: "RS 04",
+            short: "PEff",
+            title: "Pleural Effusion",
+            faces: 4,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/rs/rs04_ple_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/rs/rs04_ple_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/rs/rs04_ple_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/rs/rs04_ple_04.webp`,
+            ],
+          },
+        ],
       },
       {
-        id: "rs-pulmo-embolism",
-        title: "Pulmo-Embolism",
+        id: "rs-pulmonary-embolism",
+        title: "Pulmonary Embolism",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/rs-pulmo-embolism.png`,
         cards: [
-          { id: "rs-rs-05-pulmonary-embolism", code: "RS 05", short: "PE", title: "Pulmonary Embolism", faces: 2 }
-        ]
+          {
+            id: "rs-rs-05-pulmonary-embolism",
+            code: "RS 05",
+            short: "PE",
+            title: "Pulmonary Embolism",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/rs/rs05_pe_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/rs/rs05_pe_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/rs/rs05_pe_03.webp`,
+            ],
+          },
+        ],
       },
       {
-        id: "rs-acid-base",
-        title: "Acid-Base",
+        id: "rs-acid-base-imbalance",
+        title: "Acid-Base Imbalance",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/rs-acid-base.png`,
         cards: [
-          { id: "rs-rs-06-acid-base-respiration", code: "RS 06", short: "A/B", title: "Acid-Base (Respiration)", faces: 5 }
-        ]
+          {
+            id: "rs-rs-06-acid-base-respiration",
+            code: "RS 06",
+            short: "A/B",
+            title: "Acid-Base (Respiration)",
+            faces: 8,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/rs/rs06_abase_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/rs/rs06_abase_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/rs/rs06_abase_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/rs/rs06_abase_04.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/rs/rs06_abase_05.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/rs/rs06_abase_06.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/rs/rs06_abase_07.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/rs/rs06_abase_08.webp`,
+            ],
+          },
+        ],
       },
       {
         id: "rs-other-topics",
         title: "Other Topics",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/rs-other-topics.png`,
         cards: [
-          { id: "rs-etc-etc-respiratory", code: "ETC", short: "ETC", title: "ETC Respiratory", faces: 3 }
-        ]
-      }
-    ]
+          {
+            id: "rs-etc-etc-respiratory",
+            code: "ETC",
+            short: "ETC",
+            title: "ETC Respiratory",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/rs/rs07_etc_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/rs/rs07_etc_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/rs/rs07_etc_03.webp`,
+            ],
+          },
+        ],
+      },
+    ],
   },
   {
     id: "GI",
@@ -118,54 +295,188 @@ export const bodySystems = [
     image: `${import.meta.env.BASE_URL}assets/systems/gi-gastrointestinal.png`,
     topics: [
       {
-        id: "gi-upper-gi-issues",
-        title: "Upper GI issues",
-        visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/gi-upper-gi-issues.png`,
+        id: "gi-gi-tract-bleeding",
+        title: "GI Tract Bleeding",
+        visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/gi-intestinal-issues.png`,
         cards: [
-          { id: "gi-gi-01-esophagitis", code: "GI 01", short: "Eso", title: "Esophagitis", faces: 2 },
-          { id: "gi-gi-02-reflux-disease", code: "GI 02", short: "GERD", title: "Reflux Disease", faces: 2 },
-          { id: "gi-gi-03-peptic-ulcer", code: "GI 03", short: "PUD", title: "Peptic Ulcer", faces: 3 }
-        ]
+          {
+            id: "gi-gi-01-gi-bleeding",
+            code: "GI 01",
+            short: "GI Bleed",
+            title: "GI Bleeding",
+            faces: 5,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/gi/gi01_gib_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/gi/gi01_gib_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/gi/gi01_gib_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/gi/gi01_gib_04.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/gi/gi01_gib_05.webp`,
+            ],
+          },
+        ],
       },
       {
-        id: "gi-abdominal",
-        title: "Abdominal",
+        id: "gi-upper-gi",
+        title: "Upper GI",
+        visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/gi-upper-gi-issues.png`,
+        cards: [
+          {
+            id: "gi-gi-02-reflux-disease",
+            code: "GI 02",
+            short: "GERD",
+            title: "Reflux Disease",
+            faces: 2,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/gi/gi02_gerd_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/gi/gi02_gerd_02.webp`,
+            ],
+          },
+          {
+            id: "gi-gi-03-peptic-ulcer",
+            code: "GI 03",
+            short: "PUD",
+            title: "Peptic Ulcer",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/gi/gi03_pud_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/gi/gi03_pud_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/gi/gi03_pud_03.webp`,
+            ],
+          },
+        ],
+      },
+      {
+        id: "gi-lower-gi",
+        title: "Lower GI",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/gi-abdominal.png`,
         cards: [
-          { id: "gi-gi-04-gallbladder-issues", code: "GI 04", short: "Chole", title: "Gallbladder Issues", faces: 3 },
-          { id: "gi-gi-05-pancreatitis", code: "GI 05", short: "PCTS", title: "Pancreatitis", faces: 2 }
-        ]
+          {
+            id: "gi-gi-04-gallbladder-issues",
+            code: "GI 04",
+            short: "Chole",
+            title: "Gallbladder Issues",
+            faces: 5,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/gi/gi04_gb_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/gi/gi04_gb_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/gi/gi04_gb_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/gi/gi04_gb_04.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/gi/gi04_gb_05.webp`,
+            ],
+          },
+          {
+            id: "gi-gi-05-pancreatitis",
+            code: "GI 05",
+            short: "PCTS",
+            title: "Pancreatitis",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/gi/gi05_panc_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/gi/gi05_panc_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/gi/gi05_panc_03.webp`,
+            ],
+          },
+        ],
       },
       {
         id: "gi-liver-issues",
         title: "Liver Issues",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/gi-liver-issues.png`,
         cards: [
-          { id: "gi-gi-06-hepatitis", code: "GI 06", short: "Hepa", title: "Hepatitis", faces: 3 },
-          { id: "gi-gi-07-cirrhosis", code: "GI 07", short: "Cirr", title: "Cirrhosis", faces: 4 }
-        ]
+          {
+            id: "gi-gi-06-hepatitis",
+            code: "GI 06",
+            short: "Hepa",
+            title: "Hepatitis",
+            faces: 4,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/gi/gi06_hep_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/gi/gi06_hep_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/gi/gi06_hep_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/gi/gi06_hep_04.webp`,
+            ],
+          },
+          {
+            id: "gi-gi-07-cirrhosis",
+            code: "GI 07",
+            short: "Cirr",
+            title: "Cirrhosis",
+            faces: 4,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/gi/gi07_cirr_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/gi/gi07_cirr_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/gi/gi07_cirr_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/gi/gi07_cirr_04.webp`,
+            ],
+          },
+        ],
       },
       {
-        id: "gi-intestinal-issues",
-        title: "Intestinal Issues",
+        id: "gi-other-gi-issues",
+        title: "Other GI Issues",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/gi-intestinal-issues.png`,
         cards: [
-          { id: "gi-gi-08-appendicitis", code: "GI 08", short: "App", title: "Appendicitis", faces: 2 },
-          { id: "gi-gi-09-gi-bleeding", code: "GI 09", short: "GI Bleed", title: "GI Bleeding", faces: 2 },
-          { id: "gi-gi-10-diverticular-diseases", code: "GI 10", short: "DVRT", title: "Diverticular Diseases", faces: 2 },
-          { id: "gi-gi-11-irritable-bowel", code: "GI 11", short: "IBD", title: "Irritable Bowel", faces: 2 }
-        ]
+          {
+            id: "gi-gi-08-appendicitis",
+            code: "GI 08",
+            short: "App",
+            title: "Appendicitis",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/gi/gi08_appy_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/gi/gi08_appy_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/gi/gi08_appy_03.webp`,
+            ],
+          },
+          {
+            id: "gi-gi-09-diverticular-diseases",
+            code: "GI 09",
+            short: "DVRT",
+            title: "Diverticular Diseases",
+            faces: 2,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/gi/gi09_div_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/gi/gi09_div_02.webp`,
+            ],
+          },
+          {
+            id: "gi-gi-10-irritable-bowel",
+            code: "GI 10",
+            short: "IBD",
+            title: "Irritable Bowel",
+            faces: 4,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/gi/gi10_ibd_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/gi/gi10_ibd_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/gi/gi10_ibd_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/gi/gi10_ibd_04.webp`,
+            ],
+          },
+        ],
       },
       {
         id: "gi-other-topics",
         title: "Other Topics",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/gi-other-topics.png`,
         cards: [
-          { id: "gi-gi-12-motility-issues", code: "GI 12", short: "Mot", title: "Motility Issues", faces: 2 },
-          { id: "gi-etc-etc-gastro", code: "ETC", short: "ETC", title: "ETC Gastro", faces: 5 }
-        ]
-      }
-    ]
+          {
+            id: "gi-gi-11-etc-gastro",
+            code: "GI 11",
+            short: "ETC",
+            title: "ETC Gastro",
+            faces: 6,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/gi/gi11_etc_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/gi/gi11_etc_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/gi/gi11_etc_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/gi/gi11_etc_04.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/gi/gi11_etc_05.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/gi/gi11_etc_06.webp`,
+            ],
+          },
+        ],
+      },
+    ],
   },
   {
     id: "NPH",
@@ -174,57 +485,132 @@ export const bodySystems = [
     image: `${import.meta.env.BASE_URL}assets/systems/nph-nephrology.png`,
     topics: [
       {
-        id: "nph-kidney-diseases",
-        title: "Kidney Diseases",
+        id: "nph-kidney-issues",
+        title: "Kidney Issues",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/nph-kidney-diseases.png`,
         cards: [
-          { id: "nph-nph-01-chronic-kidney-disease", code: "NPH 01", short: "CKD", title: "Chronic Kidney Disease", faces: 3 },
-          { id: "nph-nph-02-acute-kidney-disease", code: "NPH 02", short: "AKD", title: "Acute Kidney Disease", faces: 3 }
-        ]
+          {
+            id: "nph-nph-01-chronic-kidney-disease",
+            code: "NPH 01",
+            short: "CKD",
+            title: "Chronic Kidney Disease",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/nph/rn01_ckd_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/nph/rn01_ckd_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/nph/rn01_ckd_03.webp`,
+            ],
+          },
+          {
+            id: "nph-nph-02-acute-kidney-injury",
+            code: "NPH 02",
+            short: "AKI",
+            title: "Acute Kidney Injury",
+            faces: 4,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/nph/rn02_aki_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/nph/rn02_aki_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/nph/rn02_aki_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/nph/rn02_aki_04.webp`,
+            ],
+          },
+          {
+            id: "nph-nph-03-kidney-stones",
+            code: "NPH 03",
+            short: "STN",
+            title: "Kidney Stones",
+            faces: 2,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/nph/rn03_stone_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/nph/rn03_stone_02.webp`,
+            ],
+          },
+        ],
       },
       {
-        id: "nph-stones-and-cysts",
-        title: "Stones and Cysts",
-        visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/nph-stones-and-cysts.png`,
-        cards: [
-          { id: "nph-nph-03-kidney-stones", code: "NPH 03", short: "STN", title: "Kidney Stones", faces: 2 },
-          { id: "nph-nph-04-cysts-and-cancer", code: "NPH 04", short: "C/Ca", title: "Cysts and Cancer", faces: 2 }
-        ]
-      },
-      {
-        id: "nph-adjuncts",
-        title: "Adjuncts",
+        id: "nph-bph",
+        title: "BPH",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/nph-adjuncts.png`,
         cards: [
-          { id: "nph-nph-05-benign-prostatic-hyperplasia", code: "NPH 05", short: "BPH", title: "Benign Prostatic Hyperplasia", faces: 3 },
-          { id: "nph-nph-06-cryptorchidism", code: "NPH 06", short: "Cryp", title: "Cryptorchidism", faces: 2 }
-        ]
+          {
+            id: "nph-nph-04-benign-prostatic-hyperplasia",
+            code: "NPH 04",
+            short: "BPH",
+            title: "Benign Prostatic Hyperplasia",
+            faces: 2,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/nph/rn04_bph_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/nph/rn04_bph_02.webp`,
+            ],
+          },
+        ],
       },
       {
-        id: "nph-acid-base",
-        title: "Acid-Base",
+        id: "nph-acid-base-and-ions",
+        title: "Acid-Base and Ions",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/nph-acid-base.png`,
         cards: [
-          { id: "nph-nph-07-acid-base-issues", code: "NPH 07", short: "A/B", title: "Acid-Base Issues", faces: 5 }
-        ]
-      },
-      {
-        id: "nph-ions-electrolytes",
-        title: "Ions (Electrolytes)",
-        visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/nph-ions-electrolytes.png`,
-        cards: [
-          { id: "nph-nph-08-electrolyte-issues", code: "NPH 08", short: "Ions", title: "Electrolyte Issues", faces: 7 }
-        ]
+          {
+            id: "nph-nph-05-acid-base-issues",
+            code: "NPH 05",
+            short: "A/B",
+            title: "Acid-Base Issues",
+            faces: 8,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/nph/rn05_ab_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/nph/rn05_ab_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/nph/rn05_ab_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/nph/rn05_ab_04.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/nph/rn05_ab_05.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/nph/rn05_ab_06.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/nph/rn05_ab_07.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/nph/rn05_ab_08.webp`,
+            ],
+          },
+          {
+            id: "nph-nph-06-electrolyte-issues",
+            code: "NPH 06",
+            short: "Ions",
+            title: "Electrolyte Issues",
+            faces: 8,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/nph/rn06_elec_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/nph/rn06_elec_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/nph/rn06_elec_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/nph/rn06_elec_04.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/nph/rn06_elec_05.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/nph/rn06_elec_06.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/nph/rn06_elec_07.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/nph/rn06_elec_08.webp`,
+            ],
+          },
+        ],
       },
       {
         id: "nph-other-topics",
         title: "Other Topics",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/nph-other-topics.png`,
         cards: [
-          { id: "nph-etc-etc-renal-urinary", code: "ETC", short: "ETC", title: "ETC Renal/Urinary", faces: 7 }
-        ]
-      }
-    ]
+          {
+            id: "nph-nph-07-etc-renal-urinary",
+            code: "NPH 07",
+            short: "ETC",
+            title: "ETC Renal/Urinary",
+            faces: 8,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/nph/rn07_etc_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/nph/rn07_etc_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/nph/rn07_etc_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/nph/rn07_etc_04.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/nph/rn07_etc_05.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/nph/rn07_etc_06.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/nph/rn07_etc_07.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/nph/rn07_etc_08.webp`,
+            ],
+          },
+        ],
+      },
+    ],
   },
   {
     id: "HM",
@@ -237,38 +623,92 @@ export const bodySystems = [
         title: "Anemia",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/hm-anemia.png`,
         cards: [
-          { id: "hm-hm-01-anemia", code: "HM 01", short: "Anm", title: "Anemia", faces: 6 }
-        ]
+          {
+            id: "hm-hm-01-anemia",
+            code: "HM 01",
+            short: "Anem",
+            title: "Anemia",
+            faces: 6,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/hm/hm01_anem_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/hm/hm01_anem_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/hm/hm01_anem_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/hm/hm01_anem_04.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/hm/hm01_anem_05.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/hm/hm01_anem_06.webp`,
+            ],
+          },
+        ],
       },
       {
-        id: "hm-bleeding",
-        title: "Bleeding",
+        id: "hm-hemostasis",
+        title: "Hemostasis",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/hm-bleeding.png`,
         cards: [
-          { id: "hm-hm-02-bleeding", code: "HM 02", short: "Bld", title: "Bleeding", faces: 3 },
-          { id: "hm-hm-03-thrombocytopenia", code: "HM 03", short: "TCP", title: "Thrombocytopenia", faces: 3 }
-        ]
+          {
+            id: "hm-hm-02-hemostasis",
+            code: "HM 02",
+            short: "HS",
+            title: "Hemostasis",
+            faces: 4,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/hm/hm02_hemo_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/hm/hm02_hemo_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/hm/hm02_hemo_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/hm/hm02_hemo_04.webp`,
+            ],
+          },
+        ],
       },
       {
-        id: "hm-blood-disorders",
-        title: "Blood disorders",
+        id: "hm-blood-cell-issues",
+        title: "Blood Cell Issues",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/hm-blood-disorders.png`,
         cards: [
-          { id: "hm-hm-04-thrombophilia", code: "HM 04", short: "TP", title: "Thrombophilia", faces: 2 },
-          { id: "hm-hm-05-leukemia", code: "HM 05", short: "Leu", title: "Leukemia", faces: 3 },
-          { id: "hm-hm-06-polycythemia", code: "HM 06", short: "PCV", title: "Polycythemia", faces: 2 },
-          { id: "hm-hm-07-lymphoma", code: "HM 07", short: "Lym", title: "Lymphoma", faces: 2 }
-        ]
+          {
+            id: "hm-hm-03-thrombocytopenia",
+            code: "HM 03",
+            short: "TCP",
+            title: "Thrombocytopenia",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/hm/hm03_tcp_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/hm/hm03_tcp_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/hm/hm03_tcp_03.webp`,
+            ],
+          },
+          {
+            id: "hm-hm-04-polycythemia",
+            code: "HM 04",
+            short: "PCV",
+            title: "Polycythemia",
+            faces: 2,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/hm/hm04_poly_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/hm/hm04_poly_02.webp`,
+            ],
+          },
+        ],
       },
       {
         id: "hm-other-topics",
         title: "Other Topics",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/hm-other-topics.png`,
         cards: [
-          { id: "hm-etc-etc-hematology", code: "ETC", short: "ETC", title: "ETC Hematology", faces: 2 }
-        ]
-      }
-    ]
+          {
+            id: "hm-hm-05-etc-hematology",
+            code: "HM 05",
+            short: "ETC",
+            title: "ETC Hematology",
+            faces: 2,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/hm/hm05_etc_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/hm/hm05_etc_02.webp`,
+            ],
+          },
+        ],
+      },
+    ],
   },
   {
     id: "IF",
@@ -277,59 +717,162 @@ export const bodySystems = [
     image: `${import.meta.env.BASE_URL}assets/systems/if-infectious.png`,
     topics: [
       {
-        id: "if-overview",
-        title: "Overview",
+        id: "if-infection-overview",
+        title: "Infection Overview",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/if-overview.png`,
         cards: [
-          { id: "if-if-01-antibiotics-overview", code: "IF 01", short: "OV", title: "Antibiotics Overview", faces: 5 }
-        ]
+          {
+            id: "if-if-01-antibiotics-overview",
+            code: "IF 01",
+            short: "ABx",
+            title: "Antibiotics Overview",
+            faces: 6,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/if/ix01_abx_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/if/ix01_abx_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/if/ix01_abx_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/if/ix01_abx_04.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/if/ix01_abx_05.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/if/ix01_abx_06.webp`,
+            ],
+          },
+          {
+            id: "if-if-02-immunizations",
+            code: "IF 02",
+            short: "IMZ",
+            title: "Immunizations",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/if/ix02_imm_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/if/ix02_imm_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/if/ix02_imm_03.webp`,
+            ],
+          },
+        ],
       },
       {
-        id: "if-immunization",
-        title: "Immunization",
-        visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/if-immunization.png`,
-        cards: [
-          { id: "if-if-02-immunizations", code: "IF 02", short: "IMZ", title: "Immunizations", faces: 3 }
-        ]
-      },
-      {
-        id: "if-head",
-        title: "Head",
+        id: "if-cephalic",
+        title: "Cephalic",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/if-head.png`,
         cards: [
-          { id: "if-if-03-brain-infections", code: "IF 03", short: "BInfx", title: "Brain Infections", faces: 3 },
-          { id: "if-if-04-ear-nose-throat", code: "IF 04", short: "ENT", title: "Ear Nose Throat", faces: 2 }
-        ]
+          {
+            id: "if-if-03-brain-infections",
+            code: "IF 03",
+            short: "BRN",
+            title: "Brain Infections",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/if/ix03_cns_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/if/ix03_cns_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/if/ix03_cns_03.webp`,
+            ],
+          },
+          {
+            id: "if-if-04-ear-nose-throat",
+            code: "IF 04",
+            short: "ENT",
+            title: "Ear Nose Throat",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/if/ix04_ent_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/if/ix04_ent_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/if/ix04_ent_03.webp`,
+            ],
+          },
+        ],
       },
       {
-        id: "if-respiratory",
-        title: "Respiratory",
+        id: "if-lungs",
+        title: "Lungs",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/if-respiratory.png`,
         cards: [
-          { id: "if-if-05-tuberculosis", code: "IF 05", short: "TB", title: "Tuberculosis", faces: 3 },
-          { id: "if-if-06-pneumonia", code: "IF 06", short: "PNA", title: "Pneumonia", faces: 2 },
-          { id: "if-if-07-sars-coronavirus", code: "IF 07", short: "SARS", title: "SARS Coronavirus", faces: 2 }
-        ]
+          {
+            id: "if-if-05-tuberculosis",
+            code: "IF 05",
+            short: "TB",
+            title: "Tuberculosis",
+            faces: 4,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/if/ix05_tb_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/if/ix05_tb_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/if/ix05_tb_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/if/ix05_tb_04.webp`,
+            ],
+          },
+          {
+            id: "if-if-06-pneumonia",
+            code: "IF 06",
+            short: "PNA",
+            title: "Pneumonia",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/if/ix06_pna_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/if/ix06_pna_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/if/ix06_pna_03.webp`,
+            ],
+          },
+          {
+            id: "if-if-07-hiv-aids",
+            code: "IF 07",
+            short: "HIV",
+            title: "HIV/AIDS",
+            faces: 4,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/if/ix07_hiv_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/if/ix07_hiv_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/if/ix07_hiv_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/if/ix07_hiv_04.webp`,
+            ],
+          },
+          {
+            id: "if-if-08-urinary-infections",
+            code: "IF 08",
+            short: "UTI",
+            title: "Urinary Infections",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/if/ix08_uti_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/if/ix08_uti_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/if/ix08_uti_03.webp`,
+            ],
+          },
+          {
+            id: "if-if-09-endocarditis",
+            code: "IF 09",
+            short: "ENDO",
+            title: "Endocarditis",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/if/ix09_ie_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/if/ix09_ie_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/if/ix09_ie_03.webp`,
+            ],
+          },
+          {
+            id: "if-if-10-sars-coronavirus",
+            code: "IF 10",
+            short: "SARS",
+            title: "SARS Coronavirus",
+            faces: 2,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/if/ix10_sars_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/if/ix10_sars_02.webp`,
+            ],
+          },
+          {
+            id: "if-if-11-genital-infections",
+            code: "IF 11",
+            short: "STD",
+            title: "Genital Infections",
+            faces: 2,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/if/ix11_gu_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/if/ix11_gu_02.webp`,
+            ],
+          },
+        ],
       },
-      {
-        id: "if-heart",
-        title: "Heart",
-        visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/if-heart.png`,
-        cards: [
-          { id: "if-if-08-endocarditis", code: "IF 08", short: "Endo", title: "Endocarditis", faces: 3 }
-        ]
-      },
-      {
-        id: "if-other-infections",
-        title: "Other Infections",
-        visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/if-other-infections.png`,
-        cards: [
-          { id: "if-if-09-hiv-aids", code: "IF 09", short: "HIV", title: "HIV/AIDS", faces: 3 },
-          { id: "if-if-10-genital-infections", code: "IF 10", short: "STD", title: "Genital Infections", faces: 2 },
-          { id: "if-if-11-urinary-infections", code: "IF 11", short: "UTI", title: "Urinary Infections", faces: 3 }
-        ]
-      }
-    ]
+    ],
   },
   {
     id: "NE",
@@ -342,47 +885,141 @@ export const bodySystems = [
         title: "Stroke",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/ne-stroke.png`,
         cards: [
-          { id: "ne-ne-01-stroke", code: "NE 01", short: "CVA", title: "Stroke", faces: 3 }
-        ]
+          {
+            id: "ne-ne-01-stroke",
+            code: "NE 01",
+            short: "CVA",
+            title: "Stroke",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/ne/ne01_stroke_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ne/ne01_stroke_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ne/ne01_stroke_03.webp`,
+            ],
+          },
+        ],
       },
       {
-        id: "ne-brain-issues",
-        title: "Brain Issues",
+        id: "ne-icp",
+        title: "ICP",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/ne-brain-issues.png`,
         cards: [
-          { id: "ne-ne-02-seizure", code: "NE 02", short: "SZ", title: "Seizure", faces: 3 },
-          { id: "ne-ne-03-cerebral-palsy", code: "NE 03", short: "CP", title: "Cerebral Palsy", faces: 2 },
-          { id: "ne-ne-04-alzheimer-s-and-dementia", code: "NE 04", short: "AZD", title: "Alzheimer’s and Dementia", faces: 2 },
-          { id: "ne-ne-05-als-lou-gehrig-s", code: "NE 05", short: "ALS", title: "ALS/Lou Gehrig’s", faces: 2 },
-          { id: "ne-ne-06-parkinson-s-disease", code: "NE 06", short: "PRD", title: "Parkinson’s Disease", faces: 2 }
-        ]
+          {
+            id: "ne-ne-02-increased-icp",
+            code: "NE 02",
+            short: "ICP",
+            title: "Increased ICP",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/ne/ne02_icp_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ne/ne02_icp_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ne/ne02_icp_03.webp`,
+            ],
+          },
+        ],
       },
       {
-        id: "ne-cns-and-pns-issues",
-        title: "CNS and PNS issues",
-        visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/ne-cns-and-pns-issues.png`,
+        id: "ne-neurological-issues",
+        title: "Neurological Issues",
+        visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/ne-brain-issues.png`,
         cards: [
-          { id: "ne-ne-07-demyelination", code: "NE 07", short: "DMY", title: "Demyelination", faces: 2 },
-          { id: "ne-ne-08-myasthenia-gravis", code: "NE 08", short: "MG", title: "Myasthenia Gravis", faces: 3 }
-        ]
+          {
+            id: "ne-ne-03-seizure",
+            code: "NE 03",
+            short: "SZ",
+            title: "Seizure",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/ne/ne03_seizure_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ne/ne03_seizure_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ne/ne03_seizure_03.webp`,
+            ],
+          },
+          {
+            id: "ne-ne-04-cerebral-palsy",
+            code: "NE 04",
+            short: "CP",
+            title: "Cerebral Palsy",
+            faces: 4,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/ne/ne04_cerebral_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ne/ne04_cerebral_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ne/ne04_cerebral_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ne/ne04_cerebral_04.webp`,
+            ],
+          },
+          {
+            id: "ne-ne-05-alzheimer-s-and-dementia",
+            code: "NE 05",
+            short: "AZD",
+            title: "Alzheimer’s and Dementia",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/ne/ne05_dementia_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ne/ne05_dementia_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ne/ne05_dementia_03.webp`,
+            ],
+          },
+          {
+            id: "ne-ne-06-myasthenia-gravis",
+            code: "NE 06",
+            short: "MG",
+            title: "Myasthenia Gravis",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/ne/ne06_myasthen_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ne/ne06_myasthen_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ne/ne06_myasthen_03.webp`,
+            ],
+          },
+        ],
       },
       {
-        id: "ne-ent-issues",
-        title: "ENT issues",
+        id: "ne-eent",
+        title: "EENT",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/ne-ent-issues.png`,
         cards: [
-          { id: "ne-ne-09-eye-ear-nose-throat", code: "NE 09", short: "EENT", title: "Eye Ear Nose Throat", faces: 8 }
-        ]
+          {
+            id: "ne-ne-07-eye-ear-nose-throat",
+            code: "NE 07",
+            short: "EENT",
+            title: "Eye Ear Nose Throat",
+            faces: 8,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/ne/ne07_eent_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ne/ne07_eent_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ne/ne07_eent_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ne/ne07_eent_04.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ne/ne07_eent_05.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ne/ne07_eent_06.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ne/ne07_eent_07.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ne/ne07_eent_08.webp`,
+            ],
+          },
+        ],
       },
       {
         id: "ne-other-topics",
         title: "Other Topics",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/ne-other-topics.png`,
         cards: [
-          { id: "ne-etc-etc-neurological", code: "ETC", short: "ETC", title: "ETC Neurological", faces: 2 }
-        ]
-      }
-    ]
+          {
+            id: "ne-ne-08-etc-neurological",
+            code: "NE 08",
+            short: "ETC",
+            title: "ETC Neurological",
+            faces: 5,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/ne/ne08_etc_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ne/ne08_etc_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ne/ne08_etc_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ne/ne08_etc_04.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ne/ne08_etc_05.webp`,
+            ],
+          },
+        ],
+      },
+    ],
   },
   {
     id: "EN",
@@ -395,43 +1032,109 @@ export const bodySystems = [
         title: "Pituitary Issues",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/en-pituitary-issues.png`,
         cards: [
-          { id: "en-en-01-anterior-pituitary", code: "EN 01", short: "ANT", title: "Anterior Pituitary", faces: 3 },
-          { id: "en-en-02-posterior-pituitary", code: "EN 02", short: "POST", title: "Posterior Pituitary", faces: 3 }
-        ]
+          {
+            id: "en-en-01-pituitary-issues",
+            code: "EN 01",
+            short: "PTI",
+            title: "Pituitary Issues",
+            faces: 6,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/en/en01_pituitar_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/en/en01_pituitar_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/en/en01_pituitar_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/en/en01_pituitar_04.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/en/en01_pituitar_05.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/en/en01_pituitar_06.webp`,
+            ],
+          },
+        ],
       },
       {
-        id: "en-thyroid-issues",
-        title: "Thyroid Issues",
+        id: "en-thyroid",
+        title: "Thyroid",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/en-thyroid-issues.png`,
         cards: [
-          { id: "en-en-03-thyroid", code: "EN 03", short: "THY", title: "Thyroid", faces: 4 }
-        ]
+          {
+            id: "en-en-02-thyroid",
+            code: "EN 02",
+            short: "THY",
+            title: "Thyroid",
+            faces: 6,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/en/en02_thyroid_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/en/en02_thyroid_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/en/en02_thyroid_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/en/en02_thyroid_04.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/en/en02_thyroid_05.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/en/en02_thyroid_06.webp`,
+            ],
+          },
+        ],
       },
       {
-        id: "en-adrenal-issues",
-        title: "Adrenal Issues",
+        id: "en-adrenals",
+        title: "Adrenals",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/en-adrenal-issues.png`,
         cards: [
-          { id: "en-en-04-adrenals", code: "EN 04", short: "ADR", title: "Adrenals", faces: 4 }
-        ]
+          {
+            id: "en-en-03-adrenals",
+            code: "EN 03",
+            short: "ADR",
+            title: "Adrenals",
+            faces: 5,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/en/en03_adrenal_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/en/en03_adrenal_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/en/en03_adrenal_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/en/en03_adrenal_04.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/en/en03_adrenal_05.webp`,
+            ],
+          },
+        ],
       },
       {
         id: "en-diabetes-mellitus",
         title: "Diabetes Mellitus",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/en-diabetes-mellitus.png`,
         cards: [
-          { id: "en-en-05-diabetes-mellitus", code: "EN 05", short: "DM", title: "Diabetes Mellitus", faces: 6 }
-        ]
+          {
+            id: "en-en-04-diabetes-mellitus",
+            code: "EN 04",
+            short: "DM",
+            title: "Diabetes Mellitus",
+            faces: 8,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/en/en04_dm_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/en/en04_dm_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/en/en04_dm_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/en/en04_dm_04.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/en/en04_dm_05.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/en/en04_dm_06.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/en/en04_dm_07.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/en/en04_dm_08.webp`,
+            ],
+          },
+        ],
       },
       {
         id: "en-other-topics",
         title: "Other Topics",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/en-other-topics.png`,
         cards: [
-          { id: "en-etc-etc-endocrine", code: "ETC", short: "ETC", title: "ETC Endocrine", faces: 2 }
-        ]
-      }
-    ]
+          {
+            id: "en-en-05-etc-endocrine",
+            code: "EN 05",
+            short: "ETC",
+            title: "ETC Endocrine",
+            faces: 2,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/en/en05_etc_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/en/en05_etc_02.webp`,
+            ],
+          },
+        ],
+      },
+    ],
   },
   {
     id: "MK",
@@ -440,42 +1143,117 @@ export const bodySystems = [
     image: `${import.meta.env.BASE_URL}assets/systems/mk-musculoskeletal.png`,
     topics: [
       {
-        id: "mk-arthritis-and-sle",
-        title: "Arthritis and SLE",
+        id: "mk-arthritis",
+        title: "Arthritis",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/mk-arthritis-and-sle.png`,
         cards: [
-          { id: "mk-mk-01-arthritis", code: "MK 01", short: "Arth", title: "Arthritis", faces: 3 },
-          { id: "mk-mk-02-lupus", code: "MK 02", short: "SLE", title: "Lupus", faces: 2 }
-        ]
+          {
+            id: "mk-mk-01-arthritis",
+            code: "MK 01",
+            short: "Arth",
+            title: "Arthritis",
+            faces: 5,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/mk/msk01_arthriti_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mk/msk01_arthriti_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mk/msk01_arthriti_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mk/msk01_arthriti_04.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mk/msk01_arthriti_05.webp`,
+            ],
+          },
+        ],
       },
       {
         id: "mk-bone-issues",
-        title: "Bone issues",
+        title: "Bone Issues",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/mk-bone-issues.png`,
         cards: [
-          { id: "mk-mk-03-osteoporosis", code: "MK 03", short: "OPS", title: "Osteoporosis", faces: 2 },
-          { id: "mk-mk-04-fractures", code: "MK 04", short: "Frac", title: "Fractures", faces: 3 },
-          { id: "mk-mk-05-osteomyelitis", code: "MK 05", short: "OSM", title: "Osteomyelitis", faces: 1 }
-        ]
+          {
+            id: "mk-mk-02-fractures",
+            code: "MK 02",
+            short: "Frac",
+            title: "Fractures",
+            faces: 5,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/mk/msk02_fracture_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mk/msk02_fracture_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mk/msk02_fracture_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mk/msk02_fracture_04.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mk/msk02_fracture_05.webp`,
+            ],
+          },
+          {
+            id: "mk-mk-03-osteoporosis",
+            code: "MK 03",
+            short: "OPS",
+            title: "Osteoporosis",
+            faces: 2,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/mk/msk03_osteopor_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mk/msk03_osteopor_02.webp`,
+            ],
+          },
+        ],
       },
       {
-        id: "mk-spine-and-muscle",
-        title: "Spine and Muscle",
+        id: "mk-joints-and-systemic",
+        title: "Joints and Systemic",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/mk-spine-and-muscle.png`,
         cards: [
-          { id: "mk-mk-06-disc-herniation", code: "MK 06", short: "DscH", title: "Disc Herniation", faces: 1 },
-          { id: "mk-mk07-rhabdomyolysis", code: "MK07", short: "Rhab", title: "Rhabdomyolysis", faces: 1 }
-        ]
+          {
+            id: "mk-mk-04-osteomyelitis",
+            code: "MK 04",
+            short: "OSM",
+            title: "Osteomyelitis",
+            faces: 1,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/mk/msk04_rhabdoos_01.webp`,
+            ],
+          },
+          {
+            id: "mk-mk-05-rhabdomyolysis",
+            code: "MK 05",
+            short: "Rhab",
+            title: "Rhabdomyolysis",
+            faces: 1,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/mk/msk04_rhabdoos_02.webp`,
+            ],
+          },
+          {
+            id: "mk-mk-06-lupus",
+            code: "MK 06",
+            short: "SLE",
+            title: "Lupus",
+            faces: 2,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/mk/msk05_sle_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mk/msk05_sle_02.webp`,
+            ],
+          },
+        ],
       },
       {
         id: "mk-other-topics",
         title: "Other Topics",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/mk-other-topics.png`,
         cards: [
-          { id: "mk-etc-etc-musculoskeletal", code: "ETC", short: "ETC", title: "ETC Musculoskeletal", faces: 3 }
-        ]
-      }
-    ]
+          {
+            id: "mk-mk07-etc-musculoskeletal",
+            code: "MK07",
+            short: "ETC",
+            title: "ETC Musculoskeletal",
+            faces: 4,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/mk/msk06_etc_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mk/msk06_etc_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mk/msk06_etc_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/mk/msk06_etc_04.webp`,
+            ],
+          },
+        ],
+      },
+    ],
   },
   {
     id: "SK",
@@ -484,40 +1262,117 @@ export const bodySystems = [
     image: `${import.meta.env.BASE_URL}assets/systems/sk-skin.png`,
     topics: [
       {
-        id: "sk-dermatitis-and-psoriasis",
-        title: "Dermatitis and Psoriasis",
-        visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/sk-dermatitis-and-psoriasis.png`,
-        cards: [
-          { id: "sk-sk-01-dermatitis", code: "SK 01", short: "Drts", title: "Dermatitis", faces: 3 },
-          { id: "sk-sk-02-psoriasis", code: "SK 02", short: "Psr", title: "Psoriasis", faces: 2 }
-        ]
-      },
-      {
-        id: "sk-urticaria-and-acne",
-        title: "Urticaria and Acne",
-        visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/sk-urticaria-and-acne.png`,
-        cards: [
-          { id: "sk-sk-03-urticaria", code: "SK 03", short: "Urt", title: "Urticaria", faces: 1 },
-          { id: "sk-sk-04-acne", code: "SK 04", short: "Acne", title: "Acne", faces: 2 }
-        ]
-      },
-      {
-        id: "sk-skin-infections",
-        title: "Skin Infections",
+        id: "sk-burns-and-sores",
+        title: "Burns and Sores",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/sk-skin-infections.png`,
         cards: [
-          { id: "sk-sk-05-skin-infections", code: "SK 05", short: "Infxn", title: "Skin Infections", faces: 5 }
-        ]
+          {
+            id: "sk-sk-01-burns",
+            code: "SK 01",
+            short: "Burn",
+            title: "Burns",
+            faces: 6,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/sk/sk01_burns_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/sk/sk01_burns_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/sk/sk01_burns_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/sk/sk01_burns_04.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/sk/sk01_burns_05.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/sk/sk01_burns_06.webp`,
+            ],
+          },
+          {
+            id: "sk-sk-02-pressure-sores",
+            code: "SK 02",
+            short: "PS",
+            title: "Pressure Sores",
+            faces: 2,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/sk/sk02_pressure_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/sk/sk02_pressure_02.webp`,
+            ],
+          },
+        ],
+      },
+      {
+        id: "sk-visible-skin-issues",
+        title: "Visible Skin Issues",
+        visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/sk-dermatitis-and-psoriasis.png`,
+        cards: [
+          {
+            id: "sk-sk-03-dermatitis",
+            code: "SK 03",
+            short: "Drts",
+            title: "Dermatitis",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/sk/sk03_dermatit_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/sk/sk03_dermatit_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/sk/sk03_dermatit_03.webp`,
+            ],
+          },
+          {
+            id: "sk-sk-04-psoriasis",
+            code: "SK 04",
+            short: "Psr",
+            title: "Psoriasis",
+            faces: 2,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/sk/sk04_psoriasi_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/sk/sk04_psoriasi_02.webp`,
+            ],
+          },
+          {
+            id: "sk-sk-05-acne",
+            code: "SK 05",
+            short: "Acne",
+            title: "Acne",
+            faces: 2,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/sk/sk05_acne_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/sk/sk05_acne_02.webp`,
+            ],
+          },
+          {
+            id: "sk-sk-05-skin-infections",
+            code: "SK 05",
+            short: "Infxn",
+            title: "Skin Infections",
+            faces: 8,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/sk/sk06_skininfx_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/sk/sk06_skininfx_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/sk/sk06_skininfx_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/sk/sk06_skininfx_04.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/sk/sk06_skininfx_05.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/sk/sk06_skininfx_06.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/sk/sk06_skininfx_07.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/sk/sk06_skininfx_08.webp`,
+            ],
+          },
+        ],
       },
       {
         id: "sk-other-topics",
         title: "Other Topics",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/sk-other-topics.png`,
         cards: [
-          { id: "sk-etc-etc-integumentary", code: "ETC", short: "ETC", title: "ETC Integumentary", faces: 3 }
-        ]
-      }
-    ]
+          {
+            id: "sk-sk-06-etc-integumentary",
+            code: "SK 06",
+            short: "ETC",
+            title: "ETC Integumentary",
+            faces: 4,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/sk/sk07_etc_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/sk/sk07_etc_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/sk/sk07_etc_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/sk/sk07_etc_04.webp`,
+            ],
+          },
+        ],
+      },
+    ],
   },
   {
     id: "CA",
@@ -526,51 +1381,213 @@ export const bodySystems = [
     image: `${import.meta.env.BASE_URL}assets/systems/ca-oncology.png`,
     topics: [
       {
-        id: "ca-terminologies",
-        title: "Terminologies",
+        id: "ca-terms-and-groupings",
+        title: "Terms and Groupings",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/ca-terminologies.png`,
         cards: [
-          { id: "ca-ca-00-types-of-cancers-terminologies", code: "CA 00", short: "Term", title: "Types of Cancers (Terminologies)", faces: null }
-        ]
+          {
+            id: "ca-ca-00-cancer-terms",
+            code: "CA 00",
+            short: "CA",
+            title: "Cancer Terms",
+            faces: 6,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc01_cancerte_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc01_cancerte_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc01_cancerte_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc01_cancerte_04.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc01_cancerte_05.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc01_cancerte_06.webp`,
+            ],
+          },
+          {
+            id: "ca-ca-01-types-overview",
+            code: "CA 01",
+            short: "View",
+            title: "Types Overview",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc02_summary_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc02_summary_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc02_summary_03.webp`,
+            ],
+          },
+        ],
       },
       {
-        id: "ca-brain-and-bone",
-        title: "Brain and Bone",
+        id: "ca-cancers-group-1",
+        title: "Cancers Group 1",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/ca-brain-and-bone.png`,
         cards: [
-          { id: "ca-ca-01-brain-tumors", code: "CA 01", short: "BTm", title: "Brain Tumors", faces: 2 },
-          { id: "ca-ca-02-bone-tumors", code: "CA 02", short: "Bone", title: "Bone Tumors", faces: 4 }
-        ]
+          {
+            id: "ca-ca-02-brain-tumors",
+            code: "CA 02",
+            short: "BTm",
+            title: "Brain Tumors",
+            faces: 2,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc03_braintum_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc03_braintum_02.webp`,
+            ],
+          },
+          {
+            id: "ca-ca-03-bone-tumors",
+            code: "CA 03",
+            short: "Bone",
+            title: "Bone Tumors",
+            faces: 4,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc04_bonetumo_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc04_bonetumo_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc04_bonetumo_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc04_bonetumo_04.webp`,
+            ],
+          },
+          {
+            id: "ca-ca-04-colorectal-cancer",
+            code: "CA 04",
+            short: "Colon",
+            title: "Colorectal Cancer",
+            faces: 2,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc05_coloncan_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc05_coloncan_02.webp`,
+            ],
+          },
+          {
+            id: "ca-ca-05-hepatic-cancer",
+            code: "CA 05",
+            short: "HCC",
+            title: "Hepatic Cancer",
+            faces: 2,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc06_hepatic_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc06_hepatic_02.webp`,
+            ],
+          },
+          {
+            id: "ca-ca-06-pancreatic-cancer",
+            code: "CA 06",
+            short: "PC",
+            title: "Pancreatic Cancer",
+            faces: 2,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc07_pancreat_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc07_pancreat_02.webp`,
+            ],
+          },
+          {
+            id: "ca-ca-07-prostate-cancer",
+            code: "CA 07",
+            short: "PTC",
+            title: "Prostate Cancer",
+            faces: 2,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc08_prostate_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc08_prostate_02.webp`,
+            ],
+          },
+        ],
       },
       {
-        id: "ca-gi-cancers",
-        title: "GI Cancers",
-        visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/ca-gi-cancers.png`,
-        cards: [
-          { id: "ca-ca-03-colon-cancer", code: "CA 03", short: "Colon", title: "Colon Cancer", faces: 2 },
-          { id: "ca-ca-04-hepatic-cancer", code: "CA 04", short: "HCC", title: "Hepatic Cancer", faces: 3 },
-          { id: "ca-ca-05-pancreatic-cancer", code: "CA 05", short: "PC", title: "Pancreatic Cancer", faces: 2 }
-        ]
-      },
-      {
-        id: "ca-other-cancers",
-        title: "Other Cancers",
+        id: "ca-cancers-group-2",
+        title: "Cancers Group 2",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/ca-other-cancers.png`,
         cards: [
-          { id: "ca-ca-06-prostate-cancer", code: "CA 06", short: "PTC", title: "Prostate Cancer", faces: 2 },
-          { id: "ca-ca-07-lung-cancer", code: "CA 07", short: "LC", title: "Lung Cancer", faces: 3 },
-          { id: "ca-ca-08-skin-cancer", code: "CA 08", short: "SC", title: "Skin Cancer", faces: 3 }
-        ]
+          {
+            id: "ca-ca-08-lung-cancer",
+            code: "CA 08",
+            short: "LC",
+            title: "Lung Cancer",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc09_lung_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc09_lung_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc09_lung_03.webp`,
+            ],
+          },
+          {
+            id: "ca-ca-09-skin-cancer",
+            code: "CA 09",
+            short: "SC",
+            title: "Skin Cancer",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc10_skin_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc10_skin_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc10_skin_03.webp`,
+            ],
+          },
+          {
+            id: "ca-ca-10-leukemia",
+            code: "CA 10",
+            short: "Leu",
+            title: "Leukemia",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc11_blood_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc11_blood_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc11_blood_03.webp`,
+            ],
+          },
+          {
+            id: "ca-ca-11-lymphoma",
+            code: "CA 11",
+            short: "Lym",
+            title: "Lymphoma",
+            faces: 2,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc12_lymph_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc12_lymph_02.webp`,
+            ],
+          },
+          {
+            id: "ca-ca-12-breast-cancer",
+            code: "CA 12",
+            short: "BrCA",
+            title: "Breast Cancer",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc13_breast_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc13_breast_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc13_breast_03.webp`,
+            ],
+          },
+          {
+            id: "ca-ca-13-cervical-cancer",
+            code: "CA 13",
+            short: "Cerv",
+            title: "Cervical Cancer",
+            faces: 3,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc14_cervical_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc14_cervical_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc14_cervical_03.webp`,
+            ],
+          },
+        ],
       },
       {
         id: "ca-other-topics",
         title: "Other Topics",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/ca-other-topics.png`,
         cards: [
-          { id: "ca-etc-etc-oncology", code: "ETC", short: "ETC", title: "ETC Oncology", faces: 5 }
-        ]
-      }
-    ]
+          {
+            id: "ca-ca-14-etc-oncology",
+            code: "CA 14",
+            short: "ETC",
+            title: "ETC Oncology",
+            faces: 4,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc15_etc_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc15_etc_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc15_etc_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/ca/onc15_etc_04.webp`,
+            ],
+          },
+        ],
+      },
+    ],
   },
   {
     id: "GN",
@@ -579,34 +1596,77 @@ export const bodySystems = [
     image: `${import.meta.env.BASE_URL}assets/systems/gn-gynecology.png`,
     topics: [
       {
-        id: "gn-gyn-cancers",
-        title: "GYN Cancers",
-        visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/gn-gyn-cancers.png`,
-        cards: [
-          { id: "gn-gn-01-breast-cancer", code: "GN 01", short: "BrCA", title: "Breast Cancer", faces: 3 },
-          { id: "gn-gn-02-ovarian-cancer", code: "GN 02", short: "Ova", title: "Ovarian Cancer", faces: 2 },
-          { id: "gn-gn-03-cervical-cancer", code: "GN 03", short: "Cerv", title: "Cervical Cancer", faces: 3 }
-        ]
-      },
-      {
-        id: "gn-menopause-and-contraceptives",
-        title: "Menopause and Contraceptives",
+        id: "gn-menstruation-and-menopause",
+        title: "Menstruation and Menopause",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/gn-menopause-and-contraceptives.png`,
         cards: [
-          { id: "gn-gn-04-menopause", code: "GN 04", short: "MNP", title: "Menopause", faces: 1 },
-          { id: "gn-gn-05-contraceptives", code: "GN 05", short: "CTR", title: "Contraceptives", faces: 6 }
-        ]
+          {
+            id: "gn-gn-01-menstruation",
+            code: "GN 01",
+            short: "MNS",
+            title: "Menstruation",
+            faces: 5,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/gn/gyn01_menstrua_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/gn/gyn01_menstrua_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/gn/gyn01_menstrua_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/gn/gyn01_menstrua_04.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/gn/gyn01_menstrua_05.webp`,
+            ],
+          },
+          {
+            id: "gn-gn-02-menopause",
+            code: "GN 02",
+            short: "MNP",
+            title: "Menopause",
+            faces: 1,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/gn/gyn02_menopaus_01.webp`,
+            ],
+          },
+        ],
+      },
+      {
+        id: "gn-contraceptives",
+        title: "Contraceptives",
+        visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/gn-menopause-and-contraceptives.png`,
+        cards: [
+          {
+            id: "gn-gn-03-contraceptives",
+            code: "GN 03",
+            short: "CTR",
+            title: "Contraceptives",
+            faces: 6,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/gn/gyn03_contrace_01.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/gn/gyn03_contrace_02.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/gn/gyn03_contrace_03.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/gn/gyn03_contrace_04.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/gn/gyn03_contrace_05.webp`,
+              `${import.meta.env.BASE_URL}assets/cards/gn/gyn03_contrace_06.webp`,
+            ],
+          },
+        ],
       },
       {
         id: "gn-other-topics",
         title: "Other Topics",
         visual: `${import.meta.env.BASE_URL}assets/topic-visuals-wide/gn-other-topics.png`,
         cards: [
-          { id: "gn-etc-etc-gynecology", code: "ETC", short: "ETC", title: "ETC Gynecology", faces: 3 }
-        ]
-      }
-    ]
-  }
+          {
+            id: "gn-gn-04-etc-gynecology",
+            code: "GN 04",
+            short: "ETC",
+            title: "ETC Gynecology",
+            faces: 1,
+            images: [
+              `${import.meta.env.BASE_URL}assets/cards/gn/gyn04_etc_01.webp`,
+            ],
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 export const getSystemById = (id) => bodySystems.find((system) => system.id === id);

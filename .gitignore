@@ -37,3 +37,6 @@ tmp-edge-profile/
 .agents/
 *.tmp
 *.temp
+
+# Original card source artwork (optimized WebP copies are in public/assets/cards)
+VSC Cards 2026 Final/
