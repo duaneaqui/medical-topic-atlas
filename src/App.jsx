@@ -907,6 +907,16 @@ function CardDeckExperience({ deck, topic, system, onClose }) {
     };
   }, [images.length, onClose, selectedFace]);
 
+  const goPrevFace = (event) => {
+    event?.stopPropagation();
+    setSelectedFace((current) => (current - 1 + images.length) % images.length);
+  };
+
+  const goNextFace = (event) => {
+    event?.stopPropagation();
+    setSelectedFace((current) => (current + 1) % images.length);
+  };
+
   return (
     <motion.div
       className={["card-deck-shell", activeImage ? "is-reading" : "is-choosing"].join(" ")}
@@ -917,10 +927,13 @@ function CardDeckExperience({ deck, topic, system, onClose }) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.32, ease: MOTION.ease }}
-      onMouseDown={(event) => {
-        if (event.target === event.currentTarget) onClose();
-      }}
     >
+      <button
+        type="button"
+        className="card-deck-dismiss"
+        aria-label="Close card deck"
+        onClick={onClose}
+      />
       <motion.div
         className="card-deck-backdrop"
         aria-hidden="true"
@@ -963,7 +976,11 @@ function CardDeckExperience({ deck, topic, system, onClose }) {
               <button
                 type="button"
                 className="card-fan-nav is-previous"
-                onClick={() => scrollDeck(-1)}
+                onMouseDown={(event) => event.stopPropagation()}
+                onClick={(event) => {
+                  event.stopPropagation();
+                  scrollDeck(-1);
+                }}
                 aria-label="Scroll deck left"
               >
                 ‹
@@ -1013,7 +1030,11 @@ function CardDeckExperience({ deck, topic, system, onClose }) {
               <button
                 type="button"
                 className="card-fan-nav is-next"
-                onClick={() => scrollDeck(1)}
+                onMouseDown={(event) => event.stopPropagation()}
+                onClick={(event) => {
+                  event.stopPropagation();
+                  scrollDeck(1);
+                }}
                 aria-label="Scroll deck right"
               >
                 ›
@@ -1025,15 +1046,16 @@ function CardDeckExperience({ deck, topic, system, onClose }) {
           <motion.div
             className="card-reader"
             key="reader"
-            initial={{ opacity: 0, scale: 0.76, rotateY: -18, y: 36 }}
-            animate={{ opacity: 1, scale: 1, rotateY: 0, y: 0 }}
-            exit={{ opacity: 0, scale: 0.82, rotateY: 14, y: 24 }}
+            initial={{ opacity: 0, scale: 0.76, y: 36 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.82, y: 24 }}
             transition={{ duration: 0.62, ease: MOTION.ease }}
           >
             <button
               type="button"
               className="card-reader-nav is-previous"
-              onClick={() => setSelectedFace((selectedFace - 1 + images.length) % images.length)}
+              onMouseDown={(event) => event.stopPropagation()}
+              onClick={goPrevFace}
               aria-label="Previous card face"
             >
               ‹
@@ -1044,16 +1066,17 @@ function CardDeckExperience({ deck, topic, system, onClose }) {
                 src={activeImage}
                 alt={`${deck.title}, face ${selectedFace + 1}`}
                 onLoad={applyCardOrientation}
-                initial={{ opacity: 0, x: 28, filter: "blur(8px)" }}
-                animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-                transition={{ duration: 0.36, ease: MOTION.ease }}
+                initial={{ opacity: 0, x: 18 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.28, ease: MOTION.ease }}
               />
               <span className="card-reader-scan" aria-hidden="true" />
             </div>
             <button
               type="button"
               className="card-reader-nav is-next"
-              onClick={() => setSelectedFace((selectedFace + 1) % images.length)}
+              onMouseDown={(event) => event.stopPropagation()}
+              onClick={goNextFace}
               aria-label="Next card face"
             >
               ›
@@ -1064,7 +1087,11 @@ function CardDeckExperience({ deck, topic, system, onClose }) {
                   type="button"
                   key={src}
                   className={index === selectedFace ? "is-active" : ""}
-                  onClick={() => setSelectedFace(index)}
+                  onMouseDown={(event) => event.stopPropagation()}
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    setSelectedFace(index);
+                  }}
                   aria-label={`Go to face ${index + 1}`}
                   aria-current={index === selectedFace ? "true" : undefined}
                 />
