@@ -868,6 +868,177 @@ function applyCardOrientation(event) {
   frame.classList.toggle("is-portrait", !isLandscape);
 }
 
+const CARD_ZOOM_MIN = 1;
+const CARD_ZOOM_MAX = 4.5;
+const CARD_ZOOM_STEP = 1.14;
+
+function clampCardZoom(value) {
+  return Math.min(CARD_ZOOM_MAX, Math.max(CARD_ZOOM_MIN, value));
+}
+
+function clampCardPan(scale, x, y, width, height) {
+  if (scale <= 1) return { x: 0, y: 0 };
+  const maxX = ((scale - 1) * width) / 2;
+  const maxY = ((scale - 1) * height) / 2;
+  return {
+    x: Math.min(maxX, Math.max(-maxX, x)),
+    y: Math.min(maxY, Math.max(-maxY, y))
+  };
+}
+
+function CardReaderSurface({ src, alt, onLoad }) {
+  const shellRef = useRef(null);
+  const dragRef = useRef(null);
+  const [zoom, setZoom] = useState({ scale: 1, x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
+  const [orientation, setOrientation] = useState("portrait");
+  const isZoomed = zoom.scale > 1.01;
+
+  useEffect(() => {
+    setZoom({ scale: 1, x: 0, y: 0 });
+    setIsDragging(false);
+    setOrientation("portrait");
+    dragRef.current = null;
+  }, [src]);
+
+  useEffect(() => {
+    const shell = shellRef.current;
+    if (!shell) return undefined;
+
+    const onWheel = (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+
+      const rect = shell.getBoundingClientRect();
+      const mx = event.clientX - rect.left - rect.width / 2;
+      const my = event.clientY - rect.top - rect.height / 2;
+      const factor = event.deltaY < 0 ? CARD_ZOOM_STEP : 1 / CARD_ZOOM_STEP;
+
+      setZoom((prev) => {
+        const nextScale = clampCardZoom(prev.scale * factor);
+        if (nextScale <= CARD_ZOOM_MIN + 0.001) {
+          return { scale: 1, x: 0, y: 0 };
+        }
+
+        const ratio = nextScale / prev.scale;
+        const nextX = mx - (mx - prev.x) * ratio;
+        const nextY = my - (my - prev.y) * ratio;
+        return {
+          scale: nextScale,
+          ...clampCardPan(nextScale, nextX, nextY, rect.width, rect.height)
+        };
+      });
+    };
+
+    shell.addEventListener("wheel", onWheel, { passive: false });
+    return () => shell.removeEventListener("wheel", onWheel);
+  }, []);
+
+  const handleImageLoad = (event) => {
+    const image = event.currentTarget;
+    setOrientation(image.naturalWidth > image.naturalHeight ? "landscape" : "portrait");
+    onLoad?.(event);
+  };
+
+  const onPointerDown = (event) => {
+    if (zoom.scale <= 1.01 || event.button !== 0) return;
+    event.preventDefault();
+    event.currentTarget.setPointerCapture?.(event.pointerId);
+    dragRef.current = {
+      pointerId: event.pointerId,
+      startX: event.clientX,
+      startY: event.clientY,
+      originX: zoom.x,
+      originY: zoom.y
+    };
+    setIsDragging(true);
+  };
+
+  const onPointerMove = (event) => {
+    const drag = dragRef.current;
+    const shell = shellRef.current;
+    if (!drag || !shell || drag.pointerId !== event.pointerId) return;
+
+    const rect = shell.getBoundingClientRect();
+    const nextX = drag.originX + (event.clientX - drag.startX);
+    const nextY = drag.originY + (event.clientY - drag.startY);
+    setZoom((prev) => ({
+      scale: prev.scale,
+      ...clampCardPan(prev.scale, nextX, nextY, rect.width, rect.height)
+    }));
+  };
+
+  const endDrag = (event) => {
+    if (dragRef.current?.pointerId === event.pointerId) {
+      dragRef.current = null;
+      setIsDragging(false);
+    }
+  };
+
+  const onDoubleClick = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    const shell = shellRef.current;
+    if (!shell) return;
+
+    if (zoom.scale > 1.01) {
+      setZoom({ scale: 1, x: 0, y: 0 });
+      return;
+    }
+
+    const rect = shell.getBoundingClientRect();
+    const mx = event.clientX - rect.left - rect.width / 2;
+    const my = event.clientY - rect.top - rect.height / 2;
+    const nextScale = 2.35;
+    setZoom({
+      scale: nextScale,
+      ...clampCardPan(nextScale, -mx * (nextScale - 1), -my * (nextScale - 1), rect.width, rect.height)
+    });
+  };
+
+  return (
+    <div
+      ref={shellRef}
+      className={[
+        "card-reader-image-shell",
+        orientation === "landscape" ? "is-landscape" : "is-portrait",
+        isZoomed ? "is-zoomed" : ""
+      ]
+        .filter(Boolean)
+        .join(" ")}
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={endDrag}
+      onPointerCancel={endDrag}
+      onDoubleClick={onDoubleClick}
+      style={{ cursor: isZoomed ? (isDragging ? "grabbing" : "grab") : "zoom-in" }}
+    >
+      <div
+        className="card-reader-zoom-layer"
+        style={{
+          transform: `translate3d(${zoom.x}px, ${zoom.y}px, 0) scale(${zoom.scale})`,
+          transformOrigin: "50% 50%"
+        }}
+      >
+        <motion.img
+          key={src}
+          src={src}
+          alt={alt}
+          draggable="false"
+          onLoad={handleImageLoad}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.28, ease: MOTION.ease }}
+        />
+      </div>
+      <span className="card-reader-scan" aria-hidden="true" />
+      <span className="card-reader-zoom-hint" aria-hidden="true">
+        {isZoomed ? `${zoom.scale.toFixed(1)}x · drag to pan · double-click reset` : "scroll to zoom · double-click focus"}
+      </span>
+    </div>
+  );
+}
+
 function CardDeckExperience({ deck, topic, system, onClose }) {
   const [selectedFace, setSelectedFace] = useState(null);
   const fanRef = useRef(null);
@@ -952,7 +1123,7 @@ function CardDeckExperience({ deck, topic, system, onClose }) {
           <h3>{deck.title}</h3>
           <p>
             {activeImage
-              ? `Face ${String(selectedFace + 1).padStart(2, "0")} of ${String(images.length).padStart(2, "0")}`
+              ? `Face ${String(selectedFace + 1).padStart(2, "0")} of ${String(images.length).padStart(2, "0")} · scroll to zoom`
               : `Choose one of ${images.length} card faces`}
           </p>
         </div>
@@ -1060,18 +1231,11 @@ function CardDeckExperience({ deck, topic, system, onClose }) {
             >
               ‹
             </button>
-            <div className="card-reader-image-shell">
-              <motion.img
-                key={activeImage}
-                src={activeImage}
-                alt={`${deck.title}, face ${selectedFace + 1}`}
-                onLoad={applyCardOrientation}
-                initial={{ opacity: 0, x: 18 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.28, ease: MOTION.ease }}
-              />
-              <span className="card-reader-scan" aria-hidden="true" />
-            </div>
+            <CardReaderSurface
+              src={activeImage}
+              alt={`${deck.title}, face ${selectedFace + 1}`}
+              onLoad={applyCardOrientation}
+            />
             <button
               type="button"
               className="card-reader-nav is-next"

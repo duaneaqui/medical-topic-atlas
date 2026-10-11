@@ -12,9 +12,48 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_XLSX = Path.home() / "Downloads" / "Atlas_ListOfTopicsAndGroupings.xlsx"
-CARD_SOURCE = ROOT / "VSC Cards 2026 Final"
+CARD_SOURCE = Path.home() / "Desktop" / "Content CARDS"
 CARD_OUTPUT = ROOT / "public" / "assets" / "cards"
 CARD_MANIFEST = ROOT / "tools" / "card-image-manifest.json"
+
+# Card IDs whose Excel codes no longer match Content CARDS filename numbers.
+CARD_FILE_KEYS = {
+    "cv-cv-11-peripheral-artery-disease": ("CV", 6),
+    "rs-etc-etc-respiratory": ("RS", 7),
+    "mk-mk-01-arthritis": ("MSK", 1),
+    "mk-mk-02-fractures": ("MSK", 2),
+    "mk-mk-03-osteoporosis": ("MSK", 3),
+    "mk-mk-04-osteomyelitis": ("MSK", 4),
+    "mk-mk-05-rhabdomyolysis": ("MSK", 5),
+    "mk-mk-06-lupus": ("MSK", 6),
+    "mk-mk07-etc-musculoskeletal": ("MSK", 7),
+    "sk-sk-05-acne": ("SK", 5),
+    "sk-sk-05-skin-infections": ("SK", 6),
+    "sk-sk-06-etc-integumentary": ("SK", 7),
+    "mb-mb-01-pregnancy": ("MB", 0),
+    "mb-mb-01-labor-and-delivery": ("MB", 1),
+    "mb-mb-02-gestational-issues": ("MB", 2),
+    "mb-mb-03-fetal-malpositions": ("MB", 3),
+    "mb-mb-04-c-section": ("MB", 4),
+    "mb-mb-05-post-partum-issues": ("MB", 5),
+    "mb-mb-06-premature-birth": ("MB", 6),
+    "mb-mb-07-hyperbilirubinemia": ("MB", 7),
+    "mb-mb-08-hydrocephalus": ("MB", 8),
+    "mb-mb-09-congenital-heart-issues": ("MB", 9),
+    "pd-pd-07-neurological-issues": ("PED", 7),
+    "pd-pd-08-pediatric-etc": ("PED", 8),
+}
+
+CODE_PREFIX_ALIASES = {
+    "MK": ("MSK", "MK"),
+    "IF": ("IF", "IX"),
+    "CA": ("CA", "ONC"),
+    "CC": ("CC", "ICU"),
+    "GN": ("GN", "GYN"),
+    "MB": ("MB", "OB"),
+    "PD": ("PD", "PED"),
+    "NPH": ("NPH", "NP"),
+}
 
 CARD_DIRECTORIES = {
     "CV": "01_Cardiac",
@@ -224,6 +263,8 @@ VISUAL_ALIASES = {
     "if-cephalic": "if-head",
     "if-infection-by-area-2-lungs": "if-respiratory",
     "if-lungs": "if-respiratory",
+    "if-infection-by-area-3-others": "if-other-infections",
+    "if-others": "if-other-infections",
     "ne-icp": "ne-brain-issues",
     "ne-neurological-issues": "ne-brain-issues",
     "ne-eent": "ne-ent-issues",
@@ -349,11 +390,6 @@ def resolve_visual(prefix: str, visual_dir: str, topic_title: str, fallback: str
         f"{prefix}-{topic_slug}",
         VISUAL_ALIASES.get(f"{prefix}-{topic_slug}", ""),
     ]
-    # Second infection-by-area-2 group uses systemic topics; prefer other-infections art.
-    if prefix == "if" and topic_slug.startswith("infection-by-area-2") and "lungs" in topic_slug:
-        # First lungs group already uses if-respiratory via alias; for ambiguous second
-        # occurrence we resolve after the fact with used-set below.
-        pass
 
     public_dir = ROOT / "public" / visual_dir
     for name in candidates:
@@ -363,33 +399,77 @@ def resolve_visual(prefix: str, visual_dir: str, topic_title: str, fallback: str
 
 
 def normalize_infection_groups(groups):
-    """Keep Cephalic separate; merge duplicate Excel 'Lungs' groups into one."""
+    """Normalize Infection into Overview / Cephalic / Lungs / Others."""
     normalized = []
-    lungs = None
 
     for group in groups:
         name = group["name"]
         lower = name.lower()
 
-        if "cephalic" in lower:
+        if "overview" in lower:
+            normalized.append({**group, "name": "Infection Overview"})
+        elif "cephalic" in lower or "area 1" in lower:
             normalized.append({**group, "name": "Cephalic"})
-            continue
-
-        if "lungs" in lower or lower.startswith("infection by area 2"):
-            if lungs is None:
-                lungs = {
-                    "no": group["no"],
-                    "name": "Lungs",
-                    "cards": list(group["cards"]),
-                }
-                normalized.append(lungs)
-            else:
-                lungs["cards"].extend(group["cards"])
-            continue
-
-        normalized.append(group)
+        elif "lungs" in lower or "area 2" in lower:
+            normalized.append({**group, "name": "Lungs"})
+        elif "others" in lower or "area 3" in lower:
+            normalized.append({**group, "name": "Others"})
+        else:
+            normalized.append(group)
 
     return normalized
+
+
+def parse_code_parts(code: str):
+    text = str(code).strip().upper()
+    match = re.match(r"^([A-Z]+)\s*(\d+)$", text)
+    if not match:
+        return None
+    return match.group(1), int(match.group(2))
+
+
+def index_card_sources(source_root: Path):
+    """Index Content CARDS filenames by (PREFIX, number)."""
+    by_key: dict[tuple[str, int], list[Path]] = {}
+    source_by_name: dict[str, Path] = {}
+
+    for source in source_root.rglob("*.png"):
+        key_name = source.name.upper()
+        if key_name in source_by_name:
+            raise SystemExit(f"Duplicate card filename: {source.name}")
+        source_by_name[key_name] = source
+
+        match = re.match(r"^([A-Z]+)(\d+)_(.+)_(\d+)\.PNG$", key_name)
+        if not match:
+            # Allow GN03_CTR01.png (missing underscore before face index).
+            match = re.match(r"^([A-Z]+)(\d+)_([A-Z]+)(\d+)\.PNG$", key_name)
+        if not match:
+            raise SystemExit(f"Unrecognized card filename: {source.name}")
+
+        file_key = (match.group(1), int(match.group(2)))
+        by_key.setdefault(file_key, []).append(source)
+
+    for paths in by_key.values():
+        paths.sort(key=lambda path: natural_key(path.name))
+
+    return by_key, source_by_name
+
+
+def resolve_card_sources(card_id: str, code: str, by_key):
+    if card_id in CARD_FILE_KEYS:
+        key = CARD_FILE_KEYS[card_id]
+        return list(by_key.get(key, []))
+
+    parts = parse_code_parts(code)
+    if parts is None:
+        return []
+
+    prefix, number = parts
+    for alias in CODE_PREFIX_ALIASES.get(prefix, (prefix,)):
+        paths = by_key.get((alias, number))
+        if paths:
+            return list(paths)
+    return []
 
 
 def build_units(parsed, meta_map, *, is_patient: bool):
@@ -459,23 +539,16 @@ def natural_key(value: str):
 
 
 def attach_card_images(units):
-    """Attach optimized card faces by stable card ID, independent of Excel order."""
+    """Attach optimized card faces from Content CARDS and refresh the manifest."""
     if not CARD_SOURCE.exists():
         raise SystemExit(f"Card source directory not found: {CARD_SOURCE}")
-    if not CARD_MANIFEST.exists():
-        raise SystemExit(f"Card image manifest not found: {CARD_MANIFEST}")
 
-    manifest = json.loads(CARD_MANIFEST.read_text(encoding="utf-8"))["cards"]
-    source_by_name = {}
-    for source in CARD_SOURCE.rglob("*.png"):
-        key = source.name.upper()
-        if key in source_by_name:
-            raise SystemExit(f"Duplicate card filename: {source.name}")
-        source_by_name[key] = source
-
+    by_key, source_by_name = index_card_sources(CARD_SOURCE)
     converted = 0
     reused = 0
     used_sources = set()
+    manifest_cards = {}
+
     for unit in units:
         records = [card for topic in unit["topics"] for card in topic["cards"]]
         output_dir = CARD_OUTPUT / unit["id"].lower()
@@ -483,24 +556,22 @@ def attach_card_images(units):
 
         for record in records:
             expected = record.get("faces") or 0
-            filenames = manifest.get(record["id"])
-            if filenames is None:
-                raise SystemExit(f"No card image mapping for {record['id']}")
-            if len(filenames) != expected:
+            source_faces = resolve_card_sources(record["id"], record["code"], by_key)
+            if not source_faces:
                 raise SystemExit(
-                    f"{record['id']}: manifest has {len(filenames)} faces, data expects {expected}"
+                    f"No Content CARDS artwork for {record['id']} ({record['code']})"
+                )
+            if len(source_faces) != expected:
+                raise SystemExit(
+                    f"{record['id']}: found {len(source_faces)} faces, Excel expects {expected} "
+                    f"({', '.join(path.name for path in source_faces)})"
                 )
 
-            source_faces = []
-            for filename in filenames:
-                source = source_by_name.get(filename.upper())
-                if source is None:
-                    raise SystemExit(f"Missing source artwork: {filename}")
-                source_faces.append(source)
-                used_sources.add(source.resolve())
-
+            filenames = []
             urls = []
             for source in source_faces:
+                used_sources.add(source.resolve())
+                filenames.append(source.name.upper())
                 target = output_dir / f"{source.stem.lower()}.webp"
                 if not target.exists() or target.stat().st_mtime < source.stat().st_mtime:
                     with Image.open(source) as image:
@@ -510,7 +581,9 @@ def attach_card_images(units):
                 else:
                     reused += 1
                 urls.append(asset_url(f"assets/cards/{unit['id'].lower()}/{target.name}"))
+
             record["images"] = urls
+            manifest_cards[record["id"]] = filenames
 
     all_sources = {source.resolve() for source in source_by_name.values()}
     unused = all_sources - used_sources
@@ -520,7 +593,12 @@ def attach_card_images(units):
     if len(used_sources) != 588:
         raise SystemExit(f"Expected 588 mapped card faces, found {len(used_sources)}")
 
+    CARD_MANIFEST.write_text(
+        json.dumps({"version": "2026", "cards": manifest_cards}, indent=2) + "\n",
+        encoding="utf-8",
+    )
     print(f"Card artwork: {converted} optimized, {reused} reused")
+    print(f"Wrote {CARD_MANIFEST.relative_to(ROOT)} ({len(manifest_cards)} cards)")
 
 
 def emit_js_literal(value, indent=0):

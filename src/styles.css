@@ -2353,7 +2353,9 @@ a {
     0 0 58px rgba(var(--theme-rgb, 120, 244, 255), 0.18);
   overflow: hidden;
   transform-style: preserve-3d;
-  pointer-events: none;
+  pointer-events: auto;
+  touch-action: none;
+  user-select: none;
 }
 
 .card-reader-image-shell.is-landscape {
@@ -2362,11 +2364,30 @@ a {
   aspect-ratio: 3 / 2;
 }
 
+.card-reader-image-shell.is-zoomed {
+  box-shadow:
+    0 38px 90px rgba(0, 0, 0, 0.72),
+    0 0 0 1px rgba(var(--theme-rgb, 120, 244, 255), 0.42),
+    0 0 48px rgba(var(--theme-rgb, 120, 244, 255), 0.22);
+}
+
+.card-reader-zoom-layer {
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+  transition: transform 90ms linear;
+}
+
+.card-reader-image-shell.is-zoomed .card-reader-zoom-layer {
+  transition: none;
+}
+
 .card-reader-image-shell img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: contain;
+  pointer-events: none;
 }
 
 .card-reader-scan {
@@ -2377,6 +2398,34 @@ a {
   mix-blend-mode: screen;
   pointer-events: none;
   animation: cardReaderScan 4.8s ease-in-out infinite;
+}
+
+.card-reader-image-shell.is-zoomed .card-reader-scan {
+  opacity: 0;
+}
+
+.card-reader-zoom-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  z-index: 4;
+  transform: translateX(-50%);
+  padding: 5px 9px;
+  border: 1px solid rgba(var(--theme-rgb, 120, 244, 255), 0.28);
+  background: rgba(4, 7, 10, 0.72);
+  color: rgba(248, 248, 255, 0.72);
+  font: 750 0.58rem/1 var(--font-display);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 220ms ease;
+}
+
+.card-reader-image-shell:hover .card-reader-zoom-hint,
+.card-reader-image-shell.is-zoomed .card-reader-zoom-hint {
+  opacity: 1;
 }
 
 .card-reader-nav {
