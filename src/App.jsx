@@ -869,17 +869,30 @@ function applyCardOrientation(event) {
 }
 
 const CARD_ZOOM_MIN = 1;
-const CARD_ZOOM_MAX = 4.5;
-const CARD_ZOOM_STEP = 1.14;
+const CARD_ZOOM_MAX = 3.25;
+const CARD_ZOOM_STEP = 1.08;
+const CARD_ZOOM_PAD_X = 24;
+const CARD_ZOOM_PAD_Y = 72;
+const CARD_ZOOM_LERP = 16;
 
-function clampCardZoom(value) {
+function getCardExpandMetrics(shell) {
+  // offset* ignores CSS transforms, so base size stays stable while the card enlarges.
+  const baseW = Math.max(1, shell.offsetWidth);
+  const baseH = Math.max(1, shell.offsetHeight);
+  const viewW = Math.max(120, window.innerWidth - CARD_ZOOM_PAD_X * 2);
+  const viewH = Math.max(120, window.innerHeight - CARD_ZOOM_PAD_Y * 2);
+  const fillScale = Math.min(viewW / baseW, viewH / baseH);
+  return { baseW, baseH, viewW, viewH, fillScale };
+}
+
+function clampExpandZoom(value) {
   return Math.min(CARD_ZOOM_MAX, Math.max(CARD_ZOOM_MIN, value));
 }
 
-function clampCardPan(scale, x, y, width, height) {
-  if (scale <= 1) return { x: 0, y: 0 };
-  const maxX = ((scale - 1) * width) / 2;
-  const maxY = ((scale - 1) * height) / 2;
+function clampExpandPan(scale, x, y, baseW, baseH, viewW, viewH) {
+  if (scale <= 1.01) return { x: 0, y: 0 };
+  const maxX = Math.max(0, (baseW * scale - viewW) / 2);
+  const maxY = Math.max(0, (baseH * scale - viewH) / 2);
   return {
     x: Math.min(maxX, Math.max(-maxX, x)),
     y: Math.min(maxY, Math.max(-maxY, y))
@@ -890,11 +903,70 @@ function CardReaderSurface({ src, alt, onLoad }) {
   const shellRef = useRef(null);
   const imageRef = useRef(null);
   const dragRef = useRef(null);
+  const displayRef = useRef({ scale: 1, x: 0, y: 0 });
+  const targetRef = useRef({ scale: 1, x: 0, y: 0 });
+  const rafRef = useRef(0);
+  const lastFrameRef = useRef(0);
   const [zoom, setZoom] = useState({ scale: 1, x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const [orientation, setOrientation] = useState("portrait");
   const isZoomed = zoom.scale > 1.01;
   const isLandscape = orientation === "landscape";
+
+  const stopLerp = () => {
+    if (rafRef.current) {
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = 0;
+    }
+    lastFrameRef.current = 0;
+  };
+
+  const paintZoom = (next) => {
+    displayRef.current = next;
+    setZoom(next);
+  };
+
+  const hardCommitZoom = (next) => {
+    stopLerp();
+    targetRef.current = next;
+    paintZoom(next);
+  };
+
+  const softCommitZoom = (next) => {
+    targetRef.current = next;
+    if (rafRef.current) return;
+
+    const tick = (time) => {
+      const previous = lastFrameRef.current || time;
+      lastFrameRef.current = time;
+      const dt = Math.min(0.048, Math.max(0.001, (time - previous) / 1000));
+      const ease = 1 - Math.exp(-dt * CARD_ZOOM_LERP);
+      const display = displayRef.current;
+      const target = targetRef.current;
+      const next = {
+        scale: display.scale + (target.scale - display.scale) * ease,
+        x: display.x + (target.x - display.x) * ease,
+        y: display.y + (target.y - display.y) * ease
+      };
+
+      const settled =
+        Math.abs(next.scale - target.scale) < 0.0015 &&
+        Math.abs(next.x - target.x) < 0.2 &&
+        Math.abs(next.y - target.y) < 0.2;
+
+      if (settled) {
+        paintZoom(target);
+        rafRef.current = 0;
+        lastFrameRef.current = 0;
+        return;
+      }
+
+      paintZoom(next);
+      rafRef.current = requestAnimationFrame(tick);
+    };
+
+    rafRef.current = requestAnimationFrame(tick);
+  };
 
   const syncOrientation = (image) => {
     if (!image?.naturalWidth || !image?.naturalHeight) return;
@@ -903,7 +975,7 @@ function CardReaderSurface({ src, alt, onLoad }) {
   };
 
   useEffect(() => {
-    setZoom({ scale: 1, x: 0, y: 0 });
+    hardCommitZoom({ scale: 1, x: 0, y: 0 });
     setIsDragging(false);
     dragRef.current = null;
 
@@ -911,6 +983,8 @@ function CardReaderSurface({ src, alt, onLoad }) {
     if (image?.complete) {
       syncOrientation(image);
     }
+
+    return () => stopLerp();
   }, [src]);
 
   useEffect(() => {
@@ -920,27 +994,40 @@ function CardReaderSurface({ src, alt, onLoad }) {
     const onWheel = (event) => {
       event.preventDefault();
       event.stopPropagation();
+      if (dragRef.current) return;
 
+      const prev = targetRef.current;
+      const metrics = getCardExpandMetrics(shell);
+      if (metrics.baseW < 2 || metrics.baseH < 2) return;
+
+      // Visual center tracks the live transformed frame under the cursor.
       const rect = shell.getBoundingClientRect();
-      if (rect.width < 2 || rect.height < 2) return;
-
       const mx = event.clientX - rect.left - rect.width / 2;
       const my = event.clientY - rect.top - rect.height / 2;
-      const factor = event.deltaY < 0 ? CARD_ZOOM_STEP : 1 / CARD_ZOOM_STEP;
+      const intensity = Math.min(2.4, Math.max(0.55, Math.abs(event.deltaY) / 100));
+      const step = Math.pow(CARD_ZOOM_STEP, intensity);
+      const factor = event.deltaY < 0 ? step : 1 / step;
+      const nextScale = clampExpandZoom(prev.scale * factor);
 
-      setZoom((prev) => {
-        const nextScale = clampCardZoom(prev.scale * factor);
-        if (nextScale <= CARD_ZOOM_MIN + 0.001) {
-          return { scale: 1, x: 0, y: 0 };
-        }
+      if (nextScale <= CARD_ZOOM_MIN + 0.001) {
+        softCommitZoom({ scale: 1, x: 0, y: 0 });
+        return;
+      }
 
-        const ratio = nextScale / prev.scale;
-        const nextX = mx - (mx - prev.x) * ratio;
-        const nextY = my - (my - prev.y) * ratio;
-        return {
-          scale: nextScale,
-          ...clampCardPan(nextScale, nextX, nextY, rect.width, rect.height)
-        };
+      const ratio = nextScale / Math.max(prev.scale, 0.001);
+      const nextX = mx - (mx - prev.x) * ratio;
+      const nextY = my - (my - prev.y) * ratio;
+      softCommitZoom({
+        scale: nextScale,
+        ...clampExpandPan(
+          nextScale,
+          nextX,
+          nextY,
+          metrics.baseW,
+          metrics.baseH,
+          metrics.viewW,
+          metrics.viewH
+        )
       });
     };
 
@@ -948,21 +1035,54 @@ function CardReaderSurface({ src, alt, onLoad }) {
     return () => shell.removeEventListener("wheel", onWheel);
   }, []);
 
+  useEffect(() => {
+    if (!isZoomed) return undefined;
+
+    const onResize = () => {
+      const shell = shellRef.current;
+      if (!shell) return;
+      const prev = targetRef.current;
+      const metrics = getCardExpandMetrics(shell);
+      const nextScale = clampExpandZoom(prev.scale);
+      if (nextScale <= CARD_ZOOM_MIN + 0.001) {
+        hardCommitZoom({ scale: 1, x: 0, y: 0 });
+        return;
+      }
+      hardCommitZoom({
+        scale: nextScale,
+        ...clampExpandPan(
+          nextScale,
+          prev.x,
+          prev.y,
+          metrics.baseW,
+          metrics.baseH,
+          metrics.viewW,
+          metrics.viewH
+        )
+      });
+    };
+
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, [isZoomed]);
+
   const handleImageLoad = (event) => {
     syncOrientation(event.currentTarget);
     onLoad?.(event);
   };
 
   const onPointerDown = (event) => {
-    if (zoom.scale <= 1.01 || event.button !== 0) return;
+    if (displayRef.current.scale <= 1.01 || event.button !== 0) return;
     event.preventDefault();
     event.currentTarget.setPointerCapture?.(event.pointerId);
+    stopLerp();
+    targetRef.current = displayRef.current;
     dragRef.current = {
       pointerId: event.pointerId,
       startX: event.clientX,
       startY: event.clientY,
-      originX: zoom.x,
-      originY: zoom.y
+      originX: displayRef.current.x,
+      originY: displayRef.current.y
     };
     setIsDragging(true);
   };
@@ -972,13 +1092,22 @@ function CardReaderSurface({ src, alt, onLoad }) {
     const shell = shellRef.current;
     if (!drag || !shell || drag.pointerId !== event.pointerId) return;
 
-    const rect = shell.getBoundingClientRect();
+    const prev = displayRef.current;
+    const metrics = getCardExpandMetrics(shell);
     const nextX = drag.originX + (event.clientX - drag.startX);
     const nextY = drag.originY + (event.clientY - drag.startY);
-    setZoom((prev) => ({
+    hardCommitZoom({
       scale: prev.scale,
-      ...clampCardPan(prev.scale, nextX, nextY, rect.width, rect.height)
-    }));
+      ...clampExpandPan(
+        prev.scale,
+        nextX,
+        nextY,
+        metrics.baseW,
+        metrics.baseH,
+        metrics.viewW,
+        metrics.viewH
+      )
+    });
   };
 
   const endDrag = (event) => {
@@ -994,19 +1123,31 @@ function CardReaderSurface({ src, alt, onLoad }) {
     const shell = shellRef.current;
     if (!shell) return;
 
-    if (zoom.scale > 1.01) {
-      setZoom({ scale: 1, x: 0, y: 0 });
+    if (targetRef.current.scale > 1.01) {
+      softCommitZoom({ scale: 1, x: 0, y: 0 });
       return;
     }
 
+    const metrics = getCardExpandMetrics(shell);
+    if (metrics.baseW < 2 || metrics.baseH < 2) return;
+
+    const nextScale = clampExpandZoom(Math.max(metrics.fillScale, 1.85));
+    if (nextScale <= 1.01) return;
+
     const rect = shell.getBoundingClientRect();
-    if (rect.width < 2 || rect.height < 2) return;
     const mx = event.clientX - rect.left - rect.width / 2;
     const my = event.clientY - rect.top - rect.height / 2;
-    const nextScale = 2.35;
-    setZoom({
+    softCommitZoom({
       scale: nextScale,
-      ...clampCardPan(nextScale, -mx * (nextScale - 1), -my * (nextScale - 1), rect.width, rect.height)
+      ...clampExpandPan(
+        nextScale,
+        -mx * (nextScale - 1),
+        -my * (nextScale - 1),
+        metrics.baseW,
+        metrics.baseH,
+        metrics.viewW,
+        metrics.viewH
+      )
     });
   };
 
@@ -1016,7 +1157,8 @@ function CardReaderSurface({ src, alt, onLoad }) {
       className={[
         "card-reader-image-shell",
         isLandscape ? "is-landscape" : "is-portrait",
-        isZoomed ? "is-zoomed" : ""
+        isZoomed ? "is-zoomed" : "",
+        isDragging ? "is-dragging" : ""
       ]
         .filter(Boolean)
         .join(" ")}
@@ -1025,15 +1167,12 @@ function CardReaderSurface({ src, alt, onLoad }) {
       onPointerUp={endDrag}
       onPointerCancel={endDrag}
       onDoubleClick={onDoubleClick}
-      style={{ cursor: isZoomed ? (isDragging ? "grabbing" : "grab") : "zoom-in" }}
+      style={{
+        cursor: isZoomed ? (isDragging ? "grabbing" : "grab") : "zoom-in",
+        transform: `translate3d(${zoom.x}px, ${zoom.y}px, 0) scale(${zoom.scale})`
+      }}
     >
-      <div
-        className="card-reader-zoom-layer"
-        style={{
-          transform: `translate3d(${zoom.x}px, ${zoom.y}px, 0) scale(${zoom.scale})`,
-          transformOrigin: "50% 50%"
-        }}
-      >
+      <div className="card-reader-zoom-layer">
         <motion.img
           key={src}
           ref={imageRef}
@@ -1048,7 +1187,9 @@ function CardReaderSurface({ src, alt, onLoad }) {
       </div>
       <span className="card-reader-scan" aria-hidden="true" />
       <span className="card-reader-zoom-hint" aria-hidden="true">
-        {isZoomed ? `${zoom.scale.toFixed(1)}x · drag to pan · double-click reset` : "scroll to zoom · double-click focus"}
+        {isZoomed
+          ? `${zoom.scale.toFixed(1)}x · drag to pan · double-click reset`
+          : "scroll to enlarge · double-click fill"}
       </span>
     </div>
   );
@@ -1138,7 +1279,7 @@ function CardDeckExperience({ deck, topic, system, onClose }) {
           <h3>{deck.title}</h3>
           <p>
             {activeImage
-              ? `Face ${String(selectedFace + 1).padStart(2, "0")} of ${String(images.length).padStart(2, "0")} · scroll to zoom`
+              ? `Face ${String(selectedFace + 1).padStart(2, "0")} of ${String(images.length).padStart(2, "0")} · scroll to enlarge`
               : `Choose one of ${images.length} card faces`}
           </p>
         </div>
