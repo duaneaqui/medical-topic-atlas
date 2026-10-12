@@ -888,17 +888,29 @@ function clampCardPan(scale, x, y, width, height) {
 
 function CardReaderSurface({ src, alt, onLoad }) {
   const shellRef = useRef(null);
+  const imageRef = useRef(null);
   const dragRef = useRef(null);
   const [zoom, setZoom] = useState({ scale: 1, x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const [orientation, setOrientation] = useState("portrait");
   const isZoomed = zoom.scale > 1.01;
+  const isLandscape = orientation === "landscape";
+
+  const syncOrientation = (image) => {
+    if (!image?.naturalWidth || !image?.naturalHeight) return;
+    const next = image.naturalWidth > image.naturalHeight ? "landscape" : "portrait";
+    setOrientation((prev) => (prev === next ? prev : next));
+  };
 
   useEffect(() => {
     setZoom({ scale: 1, x: 0, y: 0 });
     setIsDragging(false);
-    setOrientation("portrait");
     dragRef.current = null;
+
+    const image = imageRef.current;
+    if (image?.complete) {
+      syncOrientation(image);
+    }
   }, [src]);
 
   useEffect(() => {
@@ -910,6 +922,8 @@ function CardReaderSurface({ src, alt, onLoad }) {
       event.stopPropagation();
 
       const rect = shell.getBoundingClientRect();
+      if (rect.width < 2 || rect.height < 2) return;
+
       const mx = event.clientX - rect.left - rect.width / 2;
       const my = event.clientY - rect.top - rect.height / 2;
       const factor = event.deltaY < 0 ? CARD_ZOOM_STEP : 1 / CARD_ZOOM_STEP;
@@ -935,8 +949,7 @@ function CardReaderSurface({ src, alt, onLoad }) {
   }, []);
 
   const handleImageLoad = (event) => {
-    const image = event.currentTarget;
-    setOrientation(image.naturalWidth > image.naturalHeight ? "landscape" : "portrait");
+    syncOrientation(event.currentTarget);
     onLoad?.(event);
   };
 
@@ -987,6 +1000,7 @@ function CardReaderSurface({ src, alt, onLoad }) {
     }
 
     const rect = shell.getBoundingClientRect();
+    if (rect.width < 2 || rect.height < 2) return;
     const mx = event.clientX - rect.left - rect.width / 2;
     const my = event.clientY - rect.top - rect.height / 2;
     const nextScale = 2.35;
@@ -1001,7 +1015,7 @@ function CardReaderSurface({ src, alt, onLoad }) {
       ref={shellRef}
       className={[
         "card-reader-image-shell",
-        orientation === "landscape" ? "is-landscape" : "is-portrait",
+        isLandscape ? "is-landscape" : "is-portrait",
         isZoomed ? "is-zoomed" : ""
       ]
         .filter(Boolean)
@@ -1022,6 +1036,7 @@ function CardReaderSurface({ src, alt, onLoad }) {
       >
         <motion.img
           key={src}
+          ref={imageRef}
           src={src}
           alt={alt}
           draggable="false"

@@ -2352,6 +2352,7 @@ a {
     0 0 0 1px rgba(248, 248, 255, 0.2),
     0 0 58px rgba(var(--theme-rgb, 120, 244, 255), 0.18);
   overflow: hidden;
+  isolation: isolate;
   transform-style: preserve-3d;
   pointer-events: auto;
   touch-action: none;
@@ -2359,7 +2360,9 @@ a {
 }
 
 .card-reader-image-shell.is-landscape {
-  width: min(68vw, calc((100vh - 180px) * 1.5));
+  /* Cap by both viewport width and the max landscape height so aspect stays 3/2. */
+  width: min(68vw, calc(min(72vh, 100vh - 160px) * 1.5));
+  max-width: 100%;
   max-height: min(72vh, calc(100vh - 160px));
   aspect-ratio: 3 / 2;
 }
@@ -2372,10 +2375,13 @@ a {
 }
 
 .card-reader-zoom-layer {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   will-change: transform;
   transition: transform 90ms linear;
+  transform-origin: 50% 50%;
 }
 
 .card-reader-image-shell.is-zoomed .card-reader-zoom-layer {
@@ -2387,7 +2393,10 @@ a {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  object-position: center;
   pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 .card-reader-scan {
@@ -6153,7 +6162,7 @@ a {
   }
 
   .card-reader-image-shell.is-landscape {
-    width: min(78vw, calc((100vh - 170px) * 1.5));
+    width: min(78vw, calc(min(72vh, 100vh - 170px) * 1.5));
     max-height: calc(100vh - 170px);
   }
 
